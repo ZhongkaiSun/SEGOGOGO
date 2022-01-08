@@ -1,2 +1,2 @@
 # SEGOGOGO
-This is the team project of SE2022
+This is the team project of SE2022.
