@@ -1,0 +1,8 @@
+Mysql:
+  driverName: mysql
+  host: 184.73.39.188
+  port: 3306
+  database: doordash
+  username: root
+  password: 123456
+  charset: utf8
