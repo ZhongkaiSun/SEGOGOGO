@@ -11,5 +11,6 @@ type Customer struct {
 	Password     string `gorm:"type:varchar(50)"`
 	AddressLine1 string `gorm:"type:varchar(50)"`
 	AddressLine2 string `gorm:"type:varchar(50)"`
-	Phone        string `gorm:"type:varchar(100)"`
+	Phone        string `gorm:"type:varchar(50)"`
+	Email        string `gorm:"type:varchar(50)"`
 }

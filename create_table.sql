@@ -29,7 +29,8 @@ CREATE TABLE customers (
 	password VARCHAR ( 50 ) NOT NULL, 
 	address_line1 VARCHAR ( 50 ) NOT NULL, 
 	address_line2 VARCHAR ( 50 ), 
-	phone VARCHAR ( 50 ) );
+	phone VARCHAR ( 50 ),
+	email VARCHAR ( 50 ) );
 
 CREATE TABLE ratings ( 
 	id int PRIMARY KEY, 
