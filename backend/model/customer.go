@@ -7,10 +7,10 @@ package model
 // 	address_line2 VARCHAR ( 50 ),
 // 	phone VARCHAR ( 50 ) );
 type Customer struct {
-	Username     string `gorm:"type:varchar(50)"`
-	Password     string `gorm:"type:varchar(50)"`
-	AddressLine1 string `gorm:"type:varchar(50)"`
-	AddressLine2 string `gorm:"type:varchar(50)"`
-	Phone        string `gorm:"type:varchar(50)"`
-	Email        string `gorm:"type:varchar(50)"`
+	Username     string `gorm:"type:varchar(50)" json:"username"`
+	Password     string `gorm:"type:varchar(50)" json:"password"`
+	AddressLine1 string `gorm:"type:varchar(50)" json:"addressLine1"`
+	AddressLine2 string `gorm:"type:varchar(50)" json:"addressLine2"`
+	Phone        string `gorm:"type:varchar(50)" json:"phone"`
+	Email        string `gorm:"type:varchar(50)" json:"email"`
 }

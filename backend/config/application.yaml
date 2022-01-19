@@ -1,3 +1,5 @@
+server:
+  port: 1016
 Mysql:
   driverName: mysql
   host: 184.73.39.188

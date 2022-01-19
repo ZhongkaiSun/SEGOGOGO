@@ -2,10 +2,12 @@ package main
 
 import (
 	"backend/common"
-	"backend/model"
-	"fmt"
+	"backend/controller"
+	_ "backend/model"
+	_ "fmt"
 	"os"
 
+	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
 
@@ -15,21 +17,32 @@ func main() {
 	DB := common.GetDB()
 	defer DB.Close()
 
-	var res model.Restaurant
-	DB.Table("restaurants").Where("ID=?", "F0001").Scan(&res)
-	fmt.Println(res)
+	r := gin.Default()
+	// route registration
+	customerRoutes := r.Group("/customer")
+	customerRoutes.POST("/register", controller.Register)
+	// route registration
+	port := viper.GetString("server.port")
+	if port != "" {
+		panic(r.Run(":" + port))
+	}
+	panic(r.Run())
 
-	var rat model.Rating
-	DB.Table("ratings").Where("ID=?", "R0001").Scan(&rat)
-	fmt.Println(rat)
+	// var res model.Restaurant
+	// DB.Table("restaurants").Where("ID=?", "F0001").Scan(&res)
+	// fmt.Println(res)
 
-	var cui model.Cuisine
-	DB.Table("cuisines").Where("Name=?", "8PC Nuggets A La Carte").Scan(&cui)
-	fmt.Println(cui)
+	// var rat model.Rating
+	// DB.Table("ratings").Where("ID=?", "R0001").Scan(&rat)
+	// fmt.Println(rat)
 
-	var cus model.Customer
-	DB.Table("customers").Where("Username=?", "ZhongkaiSun").Scan(&cus)
-	fmt.Println(cus)
+	// var cui model.Cuisine
+	// DB.Table("cuisines").Where("Name=?", "8PC Nuggets A La Carte").Scan(&cui)
+	// fmt.Println(cui)
+
+	// var cus model.Customer
+	// DB.Table("customers").Where("Username=?", "ZhongkaiSun").Scan(&cus)
+	// fmt.Println(cus)
 }
 
 func InitConfig() {
