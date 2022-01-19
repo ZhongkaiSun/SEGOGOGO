@@ -39,3 +39,5 @@ CREATE TABLE ratings (
 	star INT, 
 	rating_date date 
 );
+
+-- dsd
