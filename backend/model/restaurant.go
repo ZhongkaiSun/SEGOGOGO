@@ -11,11 +11,11 @@ package model
 // );
 
 type Restaurant struct {
-	ID          string  `gorm:"type:varchar(50)"`
-	Name        string  `gorm:"type:varchar(50)"`
-	Address     string  `gorm:"type:varchar(100)"`
-	DeliveryFee float64 `gorm:"type:float"`
-	ImgPath     string  `gorm:"type:varchar(100)"`
-	TypeofMeal  string  `gorm:"type:varchar(100)"`
-	Rating      float64 `gorm:"type:float"`
+	ID          string  `gorm:"type:varchar(50)" json:"id"`
+	Name        string  `gorm:"type:varchar(50)" json:"name"`
+	Address     string  `gorm:"type:varchar(100)" json:"address"`
+	DeliveryFee float64 `gorm:"type:float" json:"deliveryFee"`
+	ImgPath     string  `gorm:"type:varchar(100)" json:"imgPath"`
+	TypeofMeal  string  `gorm:"type:varchar(100)" json:"typeofMeal"`
+	Rating      float64 `gorm:"type:float" json:"rating"`
 }

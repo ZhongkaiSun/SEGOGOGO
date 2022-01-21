@@ -9,10 +9,10 @@ package model
 // );
 
 type Rating struct {
-	ID           string `gorm:"type:varchar(50)"`
-	Username     string `gorm:"type:varchar(50)"`
-	RestaurantId string `gorm:"type:varchar(50)"`
-	Star         int    `gorm:"type:int"`
-	Comment      string `gorm:"type:varchar(255)"`
-	rating_date  string `gorm:"type:int"`
+	ID           string `gorm:"type:varchar(50)" json:"id"`
+	Username     string `gorm:"type:varchar(50)" json:"username"`
+	RestaurantId string `gorm:"type:varchar(50)" json:"restaurantId"`
+	Star         int    `gorm:"type:int" json:"star"`
+	Comment      string `gorm:"type:varchar(255)" json:"comment"`
+	RatingDate   string `gorm:"type:varchar(50)" json:"ratingDate"`
 }
