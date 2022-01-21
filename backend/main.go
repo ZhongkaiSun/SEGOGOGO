@@ -22,7 +22,7 @@ func main() {
 	customerRoutes := r.Group("/customer")
 	customerRoutes.POST("/register", controller.Register)
 	customerRoutes.GET("/login", controller.Login)
-	// customerRoutes.GET("/delete", controller.Delete)
+	customerRoutes.GET("/delete", controller.Delete)
 	// route registration
 	port := viper.GetString("server.port")
 	if port != "" {

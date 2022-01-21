@@ -11,6 +11,33 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+func Delete(c *gin.Context) {
+	DB := common.GetDB()
+	var requestCustomer model.Customer
+	err := c.ShouldBindJSON(&requestCustomer)
+	if err != nil {
+		c.JSON(200, gin.H{
+			"msg":   "Binding error",
+			"error": err,
+			"data":  gin.H{},
+		})
+		return
+	}
+	username := requestCustomer.Username
+	password := requestCustomer.Password
+
+	targetCustomer := model.Customer{}
+	DB.Where("username = ?", username).First(&targetCustomer)
+	if targetCustomer.Password != password {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Does not exist or the password is wrong"})
+		return
+	} else {
+		DB.Delete(&targetCustomer)
+		c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully deleted"})
+		return
+	}
+}
+
 func Login(c *gin.Context) {
 	DB := common.GetDB()
 	var requestCustomer model.Customer
@@ -40,7 +67,6 @@ func Login(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"token": token}, "msg": "Successfully log in"})
-	return
 }
 
 // CREATE TABLE customers (
