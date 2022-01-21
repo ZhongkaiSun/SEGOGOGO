@@ -7,7 +7,7 @@ package model
 // 	address_line2 VARCHAR ( 50 ),
 // 	phone VARCHAR ( 50 ) );
 type Customer struct {
-	Username     string `gorm:"type:varchar(50)" json:"username"`
+	Username     string `gorm:"type:varchar(50);primary_key" json:"username"`
 	Password     string `gorm:"type:varchar(50)" json:"password"`
 	AddressLine1 string `gorm:"type:varchar(50)" json:"addressLine1"`
 	AddressLine2 string `gorm:"type:varchar(50)" json:"addressLine2"`

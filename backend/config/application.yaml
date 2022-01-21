@@ -2,9 +2,9 @@ server:
   port: 1016
 Mysql:
   driverName: mysql
-  host: 
-  port: 
-  database: 
-  username: 
-  password: 
+  host: 127.0.0.1
+  port: 3306
+  database: doordash
+  username: root
+  password: 123456
   charset: utf8

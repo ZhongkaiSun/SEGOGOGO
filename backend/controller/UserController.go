@@ -11,6 +11,38 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+func Login(c *gin.Context) {
+	DB := common.GetDB()
+	var requestCustomer model.Customer
+	err := c.ShouldBindJSON(&requestCustomer)
+	if err != nil {
+		c.JSON(200, gin.H{
+			"msg":   "Binding error",
+			"error": err,
+			"data":  gin.H{},
+		})
+		return
+	}
+	username := requestCustomer.Username
+	password := requestCustomer.Password
+
+	targetCustomer := model.Customer{}
+	DB.Where("username = ?", username).First(&targetCustomer)
+	if targetCustomer.Password != password {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The password is wrong"})
+		return
+	}
+
+	token, err := common.ReleaseToken(targetCustomer)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "系统异常"})
+		log.Printf("token generate error : %v", err)
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"token": token}, "msg": "Successfully log in"})
+	return
+}
+
 // CREATE TABLE customers (
 // 	username VARCHAR ( 50 ) PRIMARY KEY,
 // 	password VARCHAR ( 50 ) NOT NULL,

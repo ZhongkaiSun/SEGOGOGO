@@ -9,8 +9,8 @@ package model
 // );
 
 type Cuisine struct {
-	Name         string  `gorm:"type:varchar(50)" json:"name"`
-	RestaurantId string  `gorm:"type:varchar(50)" json:"restaurantId"`
+	Name         string  `gorm:"type:varchar(50);primary_key" json:"name"`
+	RestaurantId string  `gorm:"type:varchar(50);primary_key" json:"restaurantId"`
 	Price        float64 `gorm:"type:float" json:"price"`
 	Calories     int     `gorm:"type:int" json:"calories"`
 }
