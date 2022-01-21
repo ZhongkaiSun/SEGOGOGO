@@ -3,8 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- 引入 Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.css" >
+    <link rel="stylesheet" href="/css/bootstrap.rtl.css" >
+    <link rel="stylesheet" href="/css/bootstrap-grid.css" >
+    <link rel="stylesheet" href="/css/bootstrap-grid.rtl.css" >
+    <link rel="stylesheet" href="/css/bootstrap-reboot.css" >
+    <link rel="stylesheet" href="/css/bootstrap-reboot.rtl.css" >
+    <link rel="stylesheet" href="/css/bootstrap-utilities.css" >
+    <link rel="stylesheet" href="/css/bootstrap-utilities.rtl.css" >
+
+    <!--引入login格式-->
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+
+    <script src="js/bootstrap.bundle.js" ></script>
+    <script src="js/bootstrap.esm.js" ></script>
+    <script src="js/bootstrap.js" ></script>
 </head>
 <body>
-<h1>Hello, world!</h1>
+    <div class="login">
+        <form id="login" method="get" action="login.php">
+            <img width="150" src="gator_logo.png" class="center">
+            <h2>Login to Gator Delivery</h2>
+            <p>Please login with e-mail address</p>
+            <label><b>User Name
+            </b>
+            </label>
+            <input type="text" name="Uname" id="Uname" placeholder="Username">
+            <br><br>
+            <label><b>Password
+            </b>
+            </label>
+            <input type="Password" name="Pass" id="Pass" placeholder="Password">
+            <br><br>
+            <input type="checkbox" id="check">
+            <span>Remember me</span><a href="#">Forgot Password?</a>
+            <br><br>
+            <input type="button" name="log" id="log" value="Log In Here">
+            <br><br>
+            <input type="button" name="log" id="sign-up" value="Don't have an account? Sign up">
+            <br><br>
+        </form>
+    </div>
+
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
