@@ -2,7 +2,7 @@ package main
 
 import (
 	"backend/common"
-	"backend/controller"
+	_ "backend/controller"
 	_ "backend/model"
 	_ "fmt"
 	"os"
@@ -19,10 +19,7 @@ func main() {
 
 	r := gin.Default()
 	// route registration
-	customerRoutes := r.Group("/customer")
-	customerRoutes.POST("/register", controller.Register)
-	customerRoutes.GET("/login", controller.Login)
-	customerRoutes.GET("/delete", controller.Delete)
+	r = RegisterRoute(r)
 	// route registration
 	port := viper.GetString("server.port")
 	if port != "" {
