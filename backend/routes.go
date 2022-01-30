@@ -2,7 +2,8 @@ package main
 
 import (
 	"backend/controller"
-	"backend/model"
+	_ "backend/model"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,12 +15,12 @@ func RegisterRoute(r *gin.Engine) *gin.Engine {
 	return r
 }
 
-func ModelRoute(r *gin.Engine) *gin.Engine {
-	modelRoutes := r.Group("/model")
-	modelRoutes.POST("/createCuisine", model.CreateCuisine)
-	//modelRoutes.POST("/deleteCuisine", model.DeleteCuisine)
-	//modelRoutes.POST("/updateCuisine", model.UpdateCuisine)
-	//modelRoutes.GET("/readCuisine", model.ReadCuisine)
+func CuisineRoute(r *gin.Engine) *gin.Engine {
+	modelRoutes := r.Group("/cuisine")
+	modelRoutes.POST("/create", controller.Create)
+	// modelRoutes.POST("/delete", controller.Delete)
+	// modelRoutes.POST("/update", controller.Update)
+	// modelRoutes.GET("/read", controller.Read)
 
 	return r
 }
