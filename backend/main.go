@@ -20,6 +20,8 @@ func main() {
 	r := gin.Default()
 	// route registration
 	r = RegisterRoute(r)
+	// route model
+	r = ModelRoute(r)
 	// route registration
 	port := viper.GetString("server.port")
 	if port != "" {
