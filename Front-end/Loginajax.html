@@ -59,10 +59,10 @@
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    var username = "";
+    // var username = "";
     function login() {
         var xmlhttp;
-        // var url = "http://127.0.0.1:8080/login";
+        // var url = "http://10.136.183.231:1016/customer/login";
         var uname = document.getElementById("Uname").value;
         var pwd = document.getElementById("Pass").value;
 
@@ -87,11 +87,31 @@
         }
         // xmlhttp.open("GET","/try/ajax/gethint.php?q=",true);
         // xmlhttp.send();
-        xmlhttp.open("POST","Login2.html",true);
+        xmlhttp.open("POST","http://10.136.183.231:1016/customer/login",true);
         // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xmlhttp.send(uname + "," + pwd);
+        // xmlhttp.send(uname + "," + pwd);
+        // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(JSON.stringify({
+            'username':uname,
+            "password":pwd,
+            "addressLine1" : "4000 SW 23rd St",
+            "addressLine2" : "Apt 2-301",
+            "phone" : "3523280576",
+            "email" : "pipikai1204@gmail.com"}));
+
+
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                xmlhttp.open("GET","Home.html",true);
+            }
+        }
 
     }
+
+
 
 </script>
 </body>
