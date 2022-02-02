@@ -24,6 +24,8 @@ func main() {
 	r = CuisineRoute(r)
 	// route rating
 	r = RatingRoute(r)
+	// route order
+	r = OrderRoute(r)
 	port := viper.GetString("server.port")
 	if port != "" {
 		panic(r.Run(":" + port))
