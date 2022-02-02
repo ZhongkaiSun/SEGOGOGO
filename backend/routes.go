@@ -10,8 +10,15 @@ import (
 func RegisterRoute(r *gin.Engine) *gin.Engine {
 	customerRoutes := r.Group("/customer")
 	customerRoutes.POST("/register", controller.Register)
-	customerRoutes.GET("/login", controller.Login)
+	customerRoutes.POST("/login", controller.Login)
 	customerRoutes.GET("/delete", controller.Delete)
+	return r
+}
+
+func RatingRoute(r *gin.Engine) *gin.Engine {
+	customerRoutes := r.Group("/rating")
+	customerRoutes.POST("/create", controller.CreateRating)
+	customerRoutes.GET("/get", controller.GetRating)
 	return r
 }
 

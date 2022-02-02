@@ -50,6 +50,7 @@ func Login(c *gin.Context) {
 		})
 		return
 	}
+
 	username := requestCustomer.Username
 	password := requestCustomer.Password
 
