@@ -27,23 +27,26 @@
     <form id="login" method="get" action="login.php">
         <img width="150" src="gator_logo.png" class="center">
         <h2>Sign up</h2>
-        <span class="psw">Already has an account?<a href="Login.html">Sign in!</a></span>
-        <br>
-        <label><b>First Name
+        <label><b style="font-size:20px; font-weight:normal">First Name
         </b><br>
         </label>
         <input type="text" name="Fname" id="Fname" placeholder="First Name">
-        <br><br>
-        <label><b>Last Name
+        <br>
+        <label><b style="font-size:20px; font-weight:normal">Last Name
         </b><br>
         </label>
         <input type="text" name="Lname" id="Lname" placeholder="Last Name">
+        <br><br>
+        <label><b style="font-size:20px; font-weight:normal">E-mail Address
+        </b><br>
+        </label>
+        <input type="text" name="Email" id="Email" placeholder="E-mail Address">
         <br><br>
         <label><b>Create your Password
         </b>
         </label>
         <input type="Password" name="Pass" id="CPass" placeholder="Enter Your Password">
-        <br><br>
+        <br>
         <label><b>Re-enter Password
         </b>
         </label>
@@ -51,8 +54,8 @@
         <br><br>
         <input type="checkbox" id="check">
         <span>I agree to all the terms of service.</span>
-        <br><br>
-        <input type="button" name="log" id="log" value="Sign up">
+        <br>
+        <input type="button" style="background-color:#d51800" name="log" id="log" value="Sign up" onclick="window.location='Home.html'">
         <br><br>
 
     </form>
