@@ -29,7 +29,6 @@ func CreateRating(c *gin.Context) {
 		})
 		return
 	}
-	id := requestRating.ID
 	username := requestRating.Username
 	restaurantId := requestRating.RestaurantId
 	star := requestRating.Star
@@ -46,7 +45,6 @@ func CreateRating(c *gin.Context) {
 	}
 
 	newRating := model.Rating{
-		ID:           id,
 		Username:     username,
 		RestaurantId: restaurantId,
 		Star:         star,
