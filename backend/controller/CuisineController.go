@@ -137,7 +137,7 @@ func ReadCuisine(c *gin.Context) {
 
 func isCuisineExsit(db *gorm.DB, name string, restaurantId string) bool {
 	var cuisine model.Cuisine
-	db.Where("name = ? AND restaurant_id", name, restaurantId).First(&cuisine)
+	db.Where("name = ? AND restaurant_id = ?", name, restaurantId).First(&cuisine)
 	return cuisine.Name == ""
 }
 
