@@ -22,7 +22,8 @@ func main() {
 	r = RegisterRoute(r)
 	// route cuisine
 	r = CuisineRoute(r)
-	// route registration
+	// route rating
+	r = RatingRoute(r)
 	port := viper.GetString("server.port")
 	if port != "" {
 		panic(r.Run(":" + port))
