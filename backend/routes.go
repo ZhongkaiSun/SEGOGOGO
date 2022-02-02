@@ -23,11 +23,17 @@ func RatingRoute(r *gin.Engine) *gin.Engine {
 }
 
 func CuisineRoute(r *gin.Engine) *gin.Engine {
-	modelRoutes := r.Group("/cuisine")
-	modelRoutes.POST("/create", controller.Create)
-	// modelRoutes.POST("/delete", controller.Delete)
-	// modelRoutes.POST("/update", controller.Update)
-	// modelRoutes.GET("/read", controller.Read)
+	cuisineRoutes := r.Group("/cuisine")
+	cuisineRoutes.POST("/create", controller.CreateCuisine)
+	cuisineRoutes.POST("/delete", controller.DeleteCuisine)
+	// cuisineRoutes.POST("/update", controller.Update)
+	cuisineRoutes.GET("/read", controller.ReadCuisine)
+	return r
+}
 
+func OrderRoute(r *gin.Engine) *gin.Engine {
+	orderRoutes := r.Group("/order")
+	orderRoutes.POST("create", controller.CreateOrder)
+	orderRoutes.GET("read", controller.ReadOrder)
 	return r
 }
