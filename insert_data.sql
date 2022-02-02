@@ -10,3 +10,5 @@ insert into cuisines values ("Cheese Champ", "F0002", 5.79, NULL);
 
 
 insert into customers VALUES ("ZhongkaiSun", "123456", "4000 SW 24th St", "Apt 2-309", "3523280576", "pipikai1204@gmail.com");
+
+insert into orders VALUES("ZhongkaiSun","Popeyes","02/02/2022","20.00","Nuggets, Burger, Cola")

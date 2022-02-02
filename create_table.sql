@@ -40,4 +40,12 @@ CREATE TABLE ratings (
 	rating_date date 
 );
 
+CREATE TABLE orders (
+	username varchar(50) PRIMARY KEY,
+	restaurantName varchar(50),
+	orderDate varchar(50),
+	price FLOAT,
+	cuisineName varchar(100)
+)
+
 -- dsd
