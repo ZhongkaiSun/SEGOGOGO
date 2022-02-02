@@ -11,10 +11,11 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-func Delete(c *gin.Context) {
+func DeleteUser(c *gin.Context) {
+	// Get the database engine and bind objects
 	DB := common.GetDB()
 	var requestCustomer model.Customer
-	err := c.ShouldBindJSON(&requestCustomer)
+	err := c.ShouldBindQuery(&requestCustomer)
 	if err != nil {
 		c.JSON(200, gin.H{
 			"msg":   "Binding error",
@@ -23,9 +24,12 @@ func Delete(c *gin.Context) {
 		})
 		return
 	}
+
+	//Get the parameters
 	username := requestCustomer.Username
 	password := requestCustomer.Password
 
+	//Verification
 	targetCustomer := model.Customer{}
 	DB.Where("username = ?", username).First(&targetCustomer)
 	if targetCustomer.Password != password {
@@ -39,9 +43,10 @@ func Delete(c *gin.Context) {
 }
 
 func Login(c *gin.Context) {
+	// Get the database engine and bind objects
 	DB := common.GetDB()
 	var requestCustomer model.Customer
-	err := c.ShouldBindJSON(&requestCustomer)
+	err := c.ShouldBindQuery(&requestCustomer)
 	if err != nil {
 		c.JSON(200, gin.H{
 			"msg":   "Binding error",
@@ -51,9 +56,11 @@ func Login(c *gin.Context) {
 		return
 	}
 
+	// Get the parameters
 	username := requestCustomer.Username
 	password := requestCustomer.Password
 
+	// Verification
 	targetCustomer := model.Customer{}
 	DB.Where("username = ?", username).First(&targetCustomer)
 	if targetCustomer.Password != password {
@@ -61,6 +68,7 @@ func Login(c *gin.Context) {
 		return
 	}
 
+	// Release the token
 	token, err := common.ReleaseToken(targetCustomer)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "系统异常"})
@@ -77,6 +85,7 @@ func Login(c *gin.Context) {
 // 	address_line2 VARCHAR ( 50 ),
 // 	phone VARCHAR ( 50 ) );
 func Register(c *gin.Context) {
+	// Get the database engine
 	DB := common.GetDB()
 	var requestCustomer model.Customer
 	err := c.ShouldBindJSON(&requestCustomer)
@@ -89,10 +98,12 @@ func Register(c *gin.Context) {
 		return
 	}
 
+	// Get the parameter
 	username := requestCustomer.Username
 	password := requestCustomer.Password
 	phone := requestCustomer.Phone
 
+	// Verification
 	if isCustomerExist(DB, username) || username == "" {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Create a new username"})
 		return
@@ -108,6 +119,7 @@ func Register(c *gin.Context) {
 		return
 	}
 
+	// Create new Customer
 	newCustomer := model.Customer{
 		Username:     username,
 		Password:     password,
