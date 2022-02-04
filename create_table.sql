@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS customers;
 
 DROP TABLE IF EXISTS ratings;
 
+DROP TABLE IF EXISTS orders;
+
 CREATE TABLE restaurants ( 
 	id VARCHAR ( 50 ) PRIMARY KEY, 
 	name VARCHAR ( 50 ), 
@@ -33,7 +35,7 @@ CREATE TABLE customers (
 	email VARCHAR ( 50 ) );
 
 CREATE TABLE ratings ( 
-	id int PRIMARY KEY, 
+	id int PRIMARY KEY AUTO_INCREMENT, 
 	username VARCHAR (50),
 	restaurant_id VARCHAR ( 50 ), 
 	star INT, 

@@ -8,6 +8,7 @@ insert into cuisines values ("Chicken Bites & Fries Box", "F0002", 4.19, NULL);
 insert into cuisines values ("Big Buford Combo", "F0002", 10.79, NULL);
 insert into cuisines values ("Cheese Champ", "F0002", 5.79, NULL);
 
+insert into ratings VALUES ("ZhongkaiSun", "123456", "4000 SW 24th St", "Apt 2-309", "3523280576", "pipikai1204@gmail.com");
 
 insert into customers VALUES ("ZhongkaiSun", "123456", "4000 SW 24th St", "Apt 2-309", "3523280576", "pipikai1204@gmail.com");
 
