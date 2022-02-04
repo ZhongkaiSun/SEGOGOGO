@@ -23,19 +23,19 @@ func CreateOrder(c *gin.Context) {
 		})
 		return
 	}
-	userName := requestOrder.UserName
+	username := requestOrder.Username
 	restaurantName := requestOrder.RestaurantName
 	orderDate := requestOrder.OrderDate
 	price := requestOrder.Price
 	cuisineName := requestOrder.CuisineName
 
-	if isUserExsit(DB, userName) || userName == "" {
+	if isUserExsit(DB, username) || username == "" {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
 		return
 	}
 
 	newOrder := model.Order{
-		UserName:       userName,
+		Username:       username,
 		RestaurantName: restaurantName,
 		OrderDate:      orderDate,
 		Price:          price,
@@ -56,19 +56,19 @@ func ReadOrder(c *gin.Context) {
 		})
 		return
 	}
-	userName := requestOrder.UserName
-	log.Println(userName)
-	if isUserExsit(DB, userName) || userName == "" {
+	username := requestOrder.Username
+	log.Println(username)
+	if isUserExsit(DB, username) || username == "" {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
 		return
 	}
-	var newOrders []model.Order
-	DB.Where("username = ?", userName).Find(&newOrders)
-	c.JSON(http.StatusOK, newOrders)
+	newOrders := []model.Order{}
+	DB.Where("username = ?", username).Find(&newOrders)
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": newOrders, "msg": "Successfully"})
 }
 
-func isUserExsit(db *gorm.DB, userName string) bool {
+func isUserExsit(db *gorm.DB, username string) bool {
 	var order model.Order
-	db.Where("username = ?", userName).First((&order))
-	return order.UserName == ""
+	db.Where("username = ?", username).First((&order))
+	return order.Username == ""
 }

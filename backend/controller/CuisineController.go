@@ -127,7 +127,7 @@ func ReadCuisine(c *gin.Context) {
 
 	var newCuisines []model.Cuisine
 	DB.Where("restaurant_id = ?", restaurantId).Find(&newCuisines)
-	c.JSON(http.StatusOK, newCuisines)
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": newCuisines, "msg": "Successfully"})
 }
 
 //以什么去查/改？
@@ -146,5 +146,3 @@ func isRestaurantExsit(db *gorm.DB, restaurantId string) bool {
 	db.Where("restaurant_id = ?", restaurantId).First(&cuisine)
 	return cuisine.RestaurantId == ""
 }
-
-// func Delete
