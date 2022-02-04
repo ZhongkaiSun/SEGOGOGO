@@ -11,9 +11,9 @@ package model
 //create query
 
 type Order struct {
-	UserName       string  `gorm:"type:varchar(50);primary_key" json:"username"`
+	Username       string  `gorm:"type:varchar(50);primary_key" json:"username"`
 	RestaurantName string  `gorm:"type:varchar(50)" json:"restaurantName"`
-	OrderDate      string  `gorm:"type:varchar(50)" time_format:"02/02/2022" json:"orderDate"`
+	OrderDate      string  `gorm:"type:varchar(50);primary_key" time_format:"02/02/2022" json:"orderDate"`
 	Price          float64 `gorm:"type:float" json:"price"`
-	CuisineName    string  `gorm:"type:varchar(100)" json:"cuisineName"`
+	CuisineName    string  `gorm:"type:varchar(100);primary_key" json:"cuisineName"`
 }
