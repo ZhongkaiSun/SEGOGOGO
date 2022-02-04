@@ -29,8 +29,8 @@ func CreateOrder(c *gin.Context) {
 	price := requestOrder.Price
 	cuisineName := requestOrder.CuisineName
 
-	if isUserExsit(DB, username) || username == "" {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
+	if isOrderExsit(DB, username, orderDate, cuisineName) {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The order already exists"})
 		return
 	}
 
@@ -59,7 +59,7 @@ func ReadOrder(c *gin.Context) {
 	}
 	username := requestOrder.Username
 	log.Println(username)
-	if isUserExsit(DB, username) || username == "" {
+	if !isUserExsit(DB, username) || username == "" {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
 		return
 	}
@@ -71,5 +71,11 @@ func ReadOrder(c *gin.Context) {
 func isUserExsit(db *gorm.DB, username string) bool {
 	var order model.Order
 	db.Where("username = ?", username).First((&order))
-	return order.Username == ""
+	return order.Username != ""
+}
+
+func isOrderExsit(db *gorm.DB, username string, orderDate string, cuisineName string) bool {
+	var order model.Order
+	db.Where("username = ? AND order_date = ? AND cuisine_name = ?", username, orderDate, cuisineName).First((&order))
+	return order.Username != ""
 }
