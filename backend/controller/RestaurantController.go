@@ -15,7 +15,7 @@ import (
 func ReadRestaurant(c *gin.Context) {
 	DB := common.GetDB()
 	var requestRestaurant model.Restaurant
-	err := c.ShouldBindJSON(&requestRestaurant)
+	err := c.ShouldBindQuery(&requestRestaurant)
 	if err != nil {
 		c.JSON(200, gin.H{
 			"msg":   "Binding error",

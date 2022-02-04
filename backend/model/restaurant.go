@@ -11,8 +11,7 @@ package model
 // );
 
 type Restaurant struct {
-	ID          string  `gorm:"type:varchar(50);primary_key" json:"id"`
-	Name        string  `gorm:"type:varchar(50)" json:"name"`
+	Name        string  `gorm:"type:varchar(50);primary_key" json:"name" form:"name"`
 	Address     string  `gorm:"type:varchar(100)" json:"address"`
 	DeliveryFee float64 `gorm:"type:float" json:"deliveryFee"`
 	ImgPath     string  `gorm:"type:varchar(100)" json:"imgPath"`

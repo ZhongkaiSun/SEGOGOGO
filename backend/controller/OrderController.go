@@ -48,7 +48,7 @@ func CreateOrder(c *gin.Context) {
 func ReadOrder(c *gin.Context) {
 	DB := common.GetDB()
 	var requestOrder model.Order
-	err := c.ShouldBindJSON(&requestOrder)
+	err := c.ShouldBindQuery(&requestOrder)
 	if err != nil {
 		c.JSON(200, gin.H{
 			"msg":   "Binding error",
