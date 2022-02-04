@@ -42,6 +42,7 @@ func CreateOrder(c *gin.Context) {
 		CuisineName:    cuisineName,
 	}
 	DB.Create(&newOrder)
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }
 
 func ReadOrder(c *gin.Context) {

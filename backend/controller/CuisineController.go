@@ -55,7 +55,7 @@ func CreateCuisine(c *gin.Context) {
 		Calories:     calories,
 	}
 	DB.Create(&newCuisine)
-
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }
 
 func DeleteCuisine(c *gin.Context) {
@@ -102,6 +102,7 @@ func DeleteCuisine(c *gin.Context) {
 		Calories:     calories,
 	}
 	DB.Delete(&newCuisine)
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }
 
 //以restaurantId获取

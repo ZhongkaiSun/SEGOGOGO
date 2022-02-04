@@ -37,3 +37,12 @@ func OrderRoute(r *gin.Engine) *gin.Engine {
 	orderRoutes.GET("read", controller.ReadOrder)
 	return r
 }
+
+func RestaurantRoute(r *gin.Engine) *gin.Engine {
+	restaurantRoutes := r.Group("restaurant")
+	// restaurantRoutes.POST("create",)
+	// restaurantRoutes.POST("delete",)
+	// restaurantRoutes.POST("update",)
+	restaurantRoutes.GET("read", controller.ReadRestaurant)
+	return r
+}
