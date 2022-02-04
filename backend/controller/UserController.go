@@ -105,7 +105,7 @@ func Register(c *gin.Context) {
 
 	// Verification
 	if isCustomerExist(DB, username) || username == "" {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Create a new username"})
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The user already exists"})
 		return
 	}
 

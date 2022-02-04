@@ -12,7 +12,7 @@ import (
 // type Rating struct {
 // 	ID           string `gorm:"type:varchar(50);primary_key" json:"id"`
 // 	Username     string `gorm:"type:varchar(50)" json:"username"`
-// 	RestaurantId string `gorm:"type:varchar(50)" json:"restaurantId"`
+// 	RestaurantName string `gorm:"type:varchar(50)" json:"restaurantName"`
 // 	Star         int    `gorm:"type:int" json:"star"`
 // 	Comment      string `gorm:"type:varchar(255)" json:"comment"`
 // 	RatingDate   string `gorm:"type:varchar(50)" json:"ratingDate"`
@@ -30,7 +30,7 @@ func CreateRating(c *gin.Context) {
 		return
 	}
 	username := requestRating.Username
-	restaurantId := requestRating.RestaurantId
+	restaurantName := requestRating.RestaurantName
 	star := requestRating.Star
 	comment := requestRating.Comment
 	ratingDate := requestRating.RatingDate
@@ -39,17 +39,17 @@ func CreateRating(c *gin.Context) {
 		return
 	}
 
-	if !isRestaurantExist(DB, restaurantId) || restaurantId == "" {
+	if !isRestaurantExist(DB, restaurantName) || restaurantName == "" {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant does not exist"})
 		return
 	}
 
 	newRating := model.Rating{
-		Username:     username,
-		RestaurantId: restaurantId,
-		Star:         star,
-		Comment:      comment,
-		RatingDate:   ratingDate,
+		Username:       username,
+		RestaurantName: restaurantName,
+		Star:           star,
+		Comment:        comment,
+		RatingDate:     ratingDate,
 	}
 	DB.Create(&newRating)
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
@@ -68,19 +68,19 @@ func GetRating(c *gin.Context) {
 		return
 	}
 
-	restaurantId := requestRating.RestaurantId
-	if !isRestaurantExist(DB, restaurantId) || restaurantId == "" {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Create a new username"})
+	restaurantName := requestRating.RestaurantName
+	if !isRestaurantExist(DB, restaurantName) || restaurantName == "" {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant does not exist!"})
 		return
 	}
 
 	targetRatings := []model.Rating{}
-	DB.Where("restaurant_id = ?", restaurantId).Find(&targetRatings)
+	DB.Where("restaurant_name = ?", restaurantName).Find(&targetRatings)
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": targetRatings, "msg": "Successfully"})
 }
 
-func isRestaurantExist(db *gorm.DB, restaurantId string) bool {
+func isRestaurantExist(db *gorm.DB, restaurantName string) bool {
 	var restaurant model.Restaurant
-	db.Where("ID = ?", restaurantId).First(&restaurant)
-	return restaurant.ID != ""
+	db.Where("name = ?", restaurantName).First(&restaurant)
+	return restaurant.Name != ""
 }

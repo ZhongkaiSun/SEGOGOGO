@@ -19,7 +19,7 @@ func main() {
 
 	r := gin.Default()
 	// route registration
-	r = RegisterRoute(r)
+	r = CustomerRoute(r)
 	// route cuisine
 	r = CuisineRoute(r)
 	// route rating

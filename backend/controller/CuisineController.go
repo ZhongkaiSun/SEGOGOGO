@@ -24,17 +24,16 @@ func CreateCuisine(c *gin.Context) {
 		return
 	}
 	name := requestCuisine.Name
-	restaurantId := requestCuisine.RestaurantId
+	restaurantName := requestCuisine.RestaurantName
 	price := requestCuisine.Price
 	calories := requestCuisine.Calories
-
-	if isCuisineExsit(DB, name, restaurantId) || name == "" {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid name"})
+	if !isRestaurantExsit(DB, restaurantName) || restaurantName == "" {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant doesn't exist, please bind a valid restaurantName"})
 		return
 	}
 
-	if isRestaurantExsit(DB, restaurantId) || restaurantId == "" {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant doesn't exist, please bind a valid restaurantId"})
+	if isCuisineExsit(DB, name, restaurantName) || name == "" {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Cuisine already exists"})
 		return
 	}
 
@@ -49,10 +48,10 @@ func CreateCuisine(c *gin.Context) {
 	}
 
 	newCuisine := model.Cuisine{
-		Name:         name,
-		RestaurantId: restaurantId,
-		Price:        price,
-		Calories:     calories,
+		Name:           name,
+		RestaurantName: restaurantName,
+		Price:          price,
+		Calories:       calories,
 	}
 	DB.Create(&newCuisine)
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
@@ -71,17 +70,17 @@ func DeleteCuisine(c *gin.Context) {
 		return
 	}
 	name := requestCuisine.Name
-	restaurantId := requestCuisine.RestaurantId
+	restaurantName := requestCuisine.RestaurantName
 	price := requestCuisine.Price
 	calories := requestCuisine.Calories
 
-	if isCuisineExsit(DB, name, restaurantId) || name == "" {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid name"})
+	if !isRestaurantExsit(DB, restaurantName) || restaurantName == "" {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please bind a valid restaurantName"})
 		return
 	}
 
-	if isRestaurantExsit(DB, restaurantId) || restaurantId == "" {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please bind a valid restaurantId"})
+	if !isCuisineExsit(DB, name, restaurantName) || name == "" {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid name"})
 		return
 	}
 
@@ -95,21 +94,21 @@ func DeleteCuisine(c *gin.Context) {
 		return
 	}
 
-	newCuisine := model.Cuisine{
-		Name:         name,
-		RestaurantId: restaurantId,
-		Price:        price,
-		Calories:     calories,
+	deleteCuisine := model.Cuisine{
+		Name:           name,
+		RestaurantName: restaurantName,
+		Price:          price,
+		Calories:       calories,
 	}
-	DB.Delete(&newCuisine)
+	DB.Delete(&deleteCuisine)
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }
 
-//以restaurantId获取
+//以restaurantName获取
 func ReadCuisine(c *gin.Context) {
 	DB := common.GetDB()
 	var requestCuisine model.Cuisine
-	err := c.ShouldBindJSON(&requestCuisine)
+	err := c.ShouldBindQuery(&requestCuisine)
 	if err != nil {
 		c.JSON(200, gin.H{
 			"msg":   "Binding error",
@@ -119,15 +118,15 @@ func ReadCuisine(c *gin.Context) {
 		return
 	}
 
-	restaurantId := requestCuisine.RestaurantId
+	restaurantName := requestCuisine.RestaurantName
 
-	if isRestaurantExsit(DB, restaurantId) || restaurantId == "" {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please bind a valid restaurantId"})
+	if !isRestaurantExsit(DB, restaurantName) || restaurantName == "" {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please bind a valid restaurantName"})
 		return
 	}
 
 	var newCuisines []model.Cuisine
-	DB.Where("restaurant_id = ?", restaurantId).Find(&newCuisines)
+	DB.Where("restaurant_name = ?", restaurantName).Find(&newCuisines)
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": newCuisines, "msg": "Successfully"})
 }
 
@@ -136,14 +135,14 @@ func ReadCuisine(c *gin.Context) {
 
 // }
 
-func isCuisineExsit(db *gorm.DB, name string, restaurantId string) bool {
+func isCuisineExsit(db *gorm.DB, name string, restaurantName string) bool {
 	var cuisine model.Cuisine
-	db.Where("name = ? AND restaurant_id = ?", name, restaurantId).First(&cuisine)
-	return cuisine.Name == ""
+	db.Where("name = ? AND restaurant_name = ?", name, restaurantName).First(&cuisine)
+	return cuisine.Name != ""
 }
 
-func isRestaurantExsit(db *gorm.DB, restaurantId string) bool {
+func isRestaurantExsit(db *gorm.DB, restaurantName string) bool {
 	var cuisine model.Cuisine
-	db.Where("restaurant_id = ?", restaurantId).First(&cuisine)
-	return cuisine.RestaurantId == ""
+	db.Where("restaurant_name = ?", restaurantName).First(&cuisine)
+	return cuisine.RestaurantName != ""
 }
