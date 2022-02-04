@@ -28,7 +28,7 @@ func ReadRestaurant(c *gin.Context) {
 
 	//name? resId?? unique
 	if name != "" {
-		if isRestaurantNameExsit(DB, name) {
+		if !isRestaurantNameExsit(DB, name) {
 			c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant doesn't exist, please search a valid restaurant"})
 			return
 		} else {
@@ -46,5 +46,5 @@ func ReadRestaurant(c *gin.Context) {
 func isRestaurantNameExsit(db *gorm.DB, name string) bool {
 	var restaurant model.Restaurant
 	db.Where("name = ?", name).First(&restaurant)
-	return restaurant.Name == ""
+	return restaurant.Name != ""
 }
