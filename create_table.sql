@@ -20,10 +20,10 @@ CREATE TABLE restaurants (
 
 CREATE TABLE cuisines ( 
 	name VARCHAR ( 50 ), 
-	restaurant_id VARCHAR ( 50 ), 
+	restaurant_name VARCHAR ( 50 ), 
 	price FLOAT, 
 	calories INT,
-	PRIMARY KEY (name, restaurant_id)
+	PRIMARY KEY (name, restaurant_name)
 );
 
 CREATE TABLE customers ( 
