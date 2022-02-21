@@ -12,7 +12,7 @@ Yudi Zheng (zhengyudi@ufl.edu 6715-2504)
 
 #### Front-end
 
-Yinghuan Zhang (zhangyinghuan@ufl.edu, 2741-2242)
+Yinghuan Zhang (zhangyinghuan@ufl.edu, 2741-2242) gitname: **Felixzhang666**
 
 Hongru Liu (hongru.liu@ufl.edu, 5369-7439)
 
