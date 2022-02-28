@@ -4,10 +4,10 @@ import (
 	"backend/common"
 	_ "backend/controller"
 	_ "backend/model"
+	"backend/route"
 	_ "fmt"
 	"os"
 
-	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
 
@@ -17,17 +17,8 @@ func main() {
 	DB := common.GetDB()
 	defer DB.Close()
 
-	r := gin.Default()
-	// route registration
-	r = CustomerRoute(r)
-	// route cuisine
-	r = CuisineRoute(r)
-	// route rating
-	r = RatingRoute(r)
-	// route order
-	r = OrderRoute(r)
-	//route restaurant
-	r = RestaurantRoute(r)
+	r := route.SetupRouter()
+
 	port := viper.GetString("server.port")
 	if port != "" {
 		panic(r.Run(":" + port))
