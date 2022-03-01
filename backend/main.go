@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	config.InitConfig()
+	config.InitConfig("main")
 	common.InitDatabase()
 	DB := common.GetDB()
 	defer DB.Close()
