@@ -65,6 +65,7 @@
         // var url = "http://10.136.183.231:1016/customer/login";
         var uname = document.getElementById("Uname").value;
         var pwd = document.getElementById("Pass").value;
+        var url = "http://10.136.98.74:1016";
 
         if (window.XMLHttpRequest)
         {
@@ -87,7 +88,8 @@
         }
         // xmlhttp.open("GET","/try/ajax/gethint.php?q=",true);
         // xmlhttp.send();
-        xmlhttp.open("POST","http://10.136.183.231:1016/customer/login",true);
+
+        xmlhttp.open("GET",url +"/customer/login",true);
         // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         // xmlhttp.send(uname + "," + pwd);
         // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -105,7 +107,17 @@
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-                xmlhttp.open("GET","Home.html",true);
+                console.log(xmlhttp.responseText);
+                // var message = xmlhttp.responseText;
+                 eval("var jn_info="+xmlhttp.responseText);
+                 console.log(jn_info.msg);
+                // console.log(jn_info);
+                // console.log(jn_order.ff);
+                // console.log(jn_order.WD);
+                // console.log(jn_order.temp);
+                alert(jn_info.msg);
+                window.location.href="./newHome.html";
+                // xmlhttp.open("GET",url + "newHome.html",true);
             }
         }
 
