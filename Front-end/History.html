@@ -174,7 +174,8 @@
     // var url = "http://10.136.183.231:1016/customer/login";
     // var uname = document.getElementById("Uname").value;
     // var pwd = document.getElementById("Pass").value;
-    var username = "ZhongkaiSun";
+    var username = "root";
+    var url = "http://10.136.148.64:1016";
 
     if (window.XMLHttpRequest) {
       // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
@@ -195,13 +196,13 @@
       // xmlhttp.send();
       //http://localhost:1016/restaurant/read?username=ZhongkaiSun
 
-      xmlhttp.open("GET", "http://10.136.98.74:1016/restaurant/read?username=" + username, true);
+      xmlhttp.open("GET", url + "/restaurant/read?username=" + username, true);
       // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       // xmlhttp.send(uname + "," + pwd);
       // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
       xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {
+        if (xmlhttp.readyState == 200) {
           console.log(this.responseText);
           var jn_order = eval(xmlhttp.responseText);
            console.log(jn_order);
@@ -212,27 +213,13 @@
 
         }
       }
-      // xmlhttp.send(null);
 
   }
-    // xmlhttp.send(JSON.stringify({
-    //
-    //   "msg" : "Request history",
-    //     }));
 
 
 
 
-    // xmlhttp.onreadystatechange=function()
-    // {
-    //   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    //   {
-    //     // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-    //     xmlhttp.open("GET","Home.html",true);
-    //   }
-    // }
 
-  // }
 
 
 
