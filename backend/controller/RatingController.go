@@ -23,7 +23,7 @@ func CreateRating(c *gin.Context) {
 	err := c.ShouldBindJSON(&requestRating)
 	if err != nil {
 		c.Header("Access-Control-Allow-Origin", "*")
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -65,7 +65,7 @@ func GetRating(c *gin.Context) {
 	err := c.ShouldBindQuery(&requestRating)
 	if err != nil {
 		c.Header("Access-Control-Allow-Origin", "*")
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},

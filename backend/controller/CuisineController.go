@@ -16,7 +16,7 @@ func CreateCuisine(c *gin.Context) {
 	var requestCuisine model.Cuisine
 	err := c.ShouldBindJSON(&requestCuisine)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -66,7 +66,7 @@ func DeleteCuisine(c *gin.Context) {
 	err := c.ShouldBindJSON(&requestCuisine)
 	if err != nil {
 		c.Header("Access-Control-Allow-Origin", "*")
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -118,7 +118,7 @@ func ReadCuisine(c *gin.Context) {
 	err := c.ShouldBindQuery(&requestCuisine)
 	if err != nil {
 		c.Header("Access-Control-Allow-Origin", "*")
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
