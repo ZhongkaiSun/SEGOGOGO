@@ -9,7 +9,7 @@ package model
 // );
 
 type Rating struct {
-	// ID           string `gorm:"type:varchar(50);primary_key" json:"id"`
+	// ID          string `gorm:"type:varchar(50);primary_key" json:"id"`
 	Username       string `gorm:"type:varchar(50)" json:"username"`
 	RestaurantName string `gorm:"type:varchar(50)" form:"restaurantName" json:"restaurantName"`
 	Star           int    `gorm:"type:int" json:"star"`

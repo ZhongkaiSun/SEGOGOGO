@@ -26,8 +26,8 @@ func TestLogin(t *testing.T) {
 		password string
 	}{
 		{"ZhongkaiSun", "123456"},
-		{"ZhongkaiSun", "12345"},   // wrong password
-		{"ZhongkaiSun1", "123456"}, // wrong username
+		{"ZhongkaiSun", "12345"},    // wrong password
+		{"ZhongkaiSun10", "123456"}, // wrong username
 	}
 	for idx, test := range tests {
 		w := httptest.NewRecorder()
