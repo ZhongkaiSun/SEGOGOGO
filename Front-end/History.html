@@ -31,7 +31,7 @@
     </symbol>
   </svg>
 </head>
-<body>
+<body >
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
   <div class="container-fluid">
     <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
@@ -161,6 +161,84 @@
   </tr>
   </tbody>
 </table>
+<script type="text/javascript">
+  window.onload = function(){
+    console.log("sddd");
+    load();
+  }
+
+  // var username = "";
+  function load() {
+    console.log("sddd");
+    var xmlhttp;
+    // var url = "http://10.136.183.231:1016/customer/login";
+    // var uname = document.getElementById("Uname").value;
+    // var pwd = document.getElementById("Pass").value;
+    var username = "ZhongkaiSun";
+
+    if (window.XMLHttpRequest) {
+      // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+      xmlhttp = new XMLHttpRequest();
+    } else {
+      // IE6, IE5 浏览器执行代码
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+
+      //   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      //   {
+      //     // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+      //     xmlhttp.open("GET","Home.html",true);
+      //   }
+      // }
+      // xmlhttp.open("GET","/try/ajax/gethint.php?q=",true);
+      // xmlhttp.send();
+      //http://localhost:1016/restaurant/read?username=ZhongkaiSun
+
+      xmlhttp.open("GET", "http://10.136.98.74:1016/restaurant/read?username=" + username, true);
+      // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      // xmlhttp.send(uname + "," + pwd);
+      // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+          console.log(this.responseText);
+          var jn_order = eval(xmlhttp.responseText);
+           console.log(jn_order);
+          // console.log(jn_order.ff);
+          // console.log(jn_order.WD);
+          // console.log(jn_order.temp);
+          alert("Hello! I am an alert box!!" + xmlhttp.responseText);
+
+        }
+      }
+      // xmlhttp.send(null);
+
+  }
+    // xmlhttp.send(JSON.stringify({
+    //
+    //   "msg" : "Request history",
+    //     }));
+
+
+
+
+    // xmlhttp.onreadystatechange=function()
+    // {
+    //   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    //   {
+    //     // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    //     xmlhttp.open("GET","Home.html",true);
+    //   }
+    // }
+
+  // }
+
+
+
+</script>
+
+
 
 </body>
 </html>
