@@ -16,7 +16,8 @@ func CreateOrder(c *gin.Context) {
 	var requestOrder model.Order
 	err := c.ShouldBindJSON(&requestOrder)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -30,6 +31,7 @@ func CreateOrder(c *gin.Context) {
 	cuisineName := requestOrder.CuisineName
 	//避免反复提交订单
 	if isOrderExsit(DB, username, orderDate, cuisineName) {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The order already exists"})
 		return
 	}
@@ -42,6 +44,7 @@ func CreateOrder(c *gin.Context) {
 		CuisineName:    cuisineName,
 	}
 	DB.Create(&newOrder)
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }
 
@@ -50,7 +53,8 @@ func ReadOrder(c *gin.Context) {
 	var requestOrder model.Order
 	err := c.ShouldBindQuery(&requestOrder)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -60,11 +64,13 @@ func ReadOrder(c *gin.Context) {
 	username := requestOrder.Username
 	log.Println(username)
 	if !isUserExsit(DB, username) || username == "" {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
 		return
 	}
 	newOrders := []model.Order{}
 	DB.Where("username = ?", username).Find(&newOrders)
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": newOrders, "msg": "Successfully"})
 }
 

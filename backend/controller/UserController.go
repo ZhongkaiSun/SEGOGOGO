@@ -17,7 +17,7 @@ func DeleteUser(c *gin.Context) {
 	var requestCustomer model.Customer
 	err := c.ShouldBindQuery(&requestCustomer)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -48,7 +48,8 @@ func Login(c *gin.Context) {
 	var requestCustomer model.Customer
 	err := c.ShouldBindQuery(&requestCustomer)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -64,6 +65,7 @@ func Login(c *gin.Context) {
 	targetCustomer := model.Customer{}
 	DB.Where("username = ?", username).First(&targetCustomer)
 	if targetCustomer.Password != password {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The password is wrong"})
 		return
 	}
@@ -71,10 +73,12 @@ func Login(c *gin.Context) {
 	// Release the token
 	token, err := common.ReleaseToken(targetCustomer)
 	if err != nil {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "系统异常"})
 		log.Printf("token generate error : %v", err)
 		return
 	}
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"token": token}, "msg": "Successfully log in"})
 }
 
@@ -90,7 +94,7 @@ func Register(c *gin.Context) {
 	var requestCustomer model.Customer
 	err := c.ShouldBindJSON(&requestCustomer)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -105,16 +109,19 @@ func Register(c *gin.Context) {
 
 	// Verification
 	if isCustomerExist(DB, username) || username == "" {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The user already exists"})
 		return
 	}
 
 	if len(phone) != 10 {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "len of phone must be 10"})
 		return
 	}
 
 	if len(password) < 6 {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "len of pwd must be longer than 6"})
 		return
 	}
@@ -132,10 +139,12 @@ func Register(c *gin.Context) {
 
 	token, err := common.ReleaseToken(newCustomer)
 	if err != nil {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "system error"})
 		log.Printf("token generate error : %v", err)
 		return
 	}
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"token": token}, "msg": "Successfully"})
 }
 

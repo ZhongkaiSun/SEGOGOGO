@@ -16,7 +16,7 @@ func CreateCuisine(c *gin.Context) {
 	var requestCuisine model.Cuisine
 	err := c.ShouldBindJSON(&requestCuisine)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -28,11 +28,13 @@ func CreateCuisine(c *gin.Context) {
 	price := requestCuisine.Price
 	calories := requestCuisine.Calories
 	if !isRestaurantExsit(DB, restaurantName) || restaurantName == "" {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant doesn't exist, please bind a valid restaurantName"})
 		return
 	}
 
 	if isCuisineExsit(DB, name, restaurantName) || name == "" {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Cuisine already exists"})
 		return
 	}
@@ -54,6 +56,7 @@ func CreateCuisine(c *gin.Context) {
 		Calories:       calories,
 	}
 	DB.Create(&newCuisine)
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }
 
@@ -62,7 +65,8 @@ func DeleteCuisine(c *gin.Context) {
 	var requestCuisine model.Cuisine
 	err := c.ShouldBindJSON(&requestCuisine)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -75,11 +79,13 @@ func DeleteCuisine(c *gin.Context) {
 	calories := requestCuisine.Calories
 
 	if !isRestaurantExsit(DB, restaurantName) || restaurantName == "" {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please bind a valid restaurantName"})
 		return
 	}
 
 	if !isCuisineExsit(DB, name, restaurantName) || name == "" {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid name"})
 		return
 	}
@@ -101,6 +107,7 @@ func DeleteCuisine(c *gin.Context) {
 		Calories:       calories,
 	}
 	DB.Delete(&deleteCuisine)
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }
 
@@ -110,7 +117,8 @@ func ReadCuisine(c *gin.Context) {
 	var requestCuisine model.Cuisine
 	err := c.ShouldBindQuery(&requestCuisine)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -121,12 +129,14 @@ func ReadCuisine(c *gin.Context) {
 	restaurantName := requestCuisine.RestaurantName
 
 	if !isRestaurantExsit(DB, restaurantName) || restaurantName == "" {
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please bind a valid restaurantName"})
 		return
 	}
 
 	var newCuisines []model.Cuisine
 	DB.Where("restaurant_name = ?", restaurantName).Find(&newCuisines)
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": newCuisines, "msg": "Successfully"})
 }
 
