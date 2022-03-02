@@ -37,15 +37,15 @@ func CreateCuisine(c *gin.Context) {
 		return
 	}
 
-	if price < 0 {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid price"})
-		return
-	}
+	// if price < 0 {
+	// 	c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid price"})
+	// 	return
+	// }
 
-	if calories < 0 {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid calories value "})
-		return
-	}
+	// if calories < 0 {
+	// 	c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid calories value "})
+	// 	return
+	// }
 
 	newCuisine := model.Cuisine{
 		Name:           name,
@@ -84,15 +84,15 @@ func DeleteCuisine(c *gin.Context) {
 		return
 	}
 
-	if price < 0 {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid price"})
-		return
-	}
+	// if price < 0 {
+	// 	c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid price"})
+	// 	return
+	// }
 
-	if calories < 0 {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid calories value "})
-		return
-	}
+	// if calories < 0 {
+	// 	c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Please create a valid calories value "})
+	// 	return
+	// }
 
 	deleteCuisine := model.Cuisine{
 		Name:           name,
