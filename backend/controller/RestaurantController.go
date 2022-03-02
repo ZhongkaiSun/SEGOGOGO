@@ -36,7 +36,7 @@ func ReadRestaurant(c *gin.Context) {
 			DB.Where("name = ?", name).First(&newRestaurant)
 			c.JSON(http.StatusOK, gin.H{"code": 200, "data": newRestaurant, "msg": "Successfully"})
 		}
-	} else {
+	} else { //get all restaurants
 		var newRestaurantList []model.Restaurant
 		DB.Find(&newRestaurantList)
 		c.JSON(http.StatusOK, gin.H{"code": 200, "data": newRestaurantList, "msg": "Successfully"})
