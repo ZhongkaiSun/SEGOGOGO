@@ -28,7 +28,7 @@ func CreateOrder(c *gin.Context) {
 	orderDate := requestOrder.OrderDate
 	price := requestOrder.Price
 	cuisineName := requestOrder.CuisineName
-
+	//避免反复提交订单
 	if isOrderExsit(DB, username, orderDate, cuisineName) {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The order already exists"})
 		return
