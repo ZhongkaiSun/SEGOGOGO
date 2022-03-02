@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS customers;
 
 DROP TABLE IF EXISTS ratings;
 
+DROP TABLE IF EXISTS orders;
+
 CREATE TABLE restaurants ( 
 	id VARCHAR ( 50 ) PRIMARY KEY, 
 	name VARCHAR ( 50 ), 
@@ -18,10 +20,10 @@ CREATE TABLE restaurants (
 
 CREATE TABLE cuisines ( 
 	name VARCHAR ( 50 ), 
-	restaurant_id VARCHAR ( 50 ), 
+	restaurant_name VARCHAR ( 50 ), 
 	price FLOAT, 
 	calories INT,
-	PRIMARY KEY (name, restaurant_id)
+	PRIMARY KEY (name, restaurant_name)
 );
 
 CREATE TABLE customers ( 
@@ -33,11 +35,20 @@ CREATE TABLE customers (
 	email VARCHAR ( 50 ) );
 
 CREATE TABLE ratings ( 
-	id int PRIMARY KEY, 
+	id int PRIMARY KEY AUTO_INCREMENT, 
 	username VARCHAR (50),
 	restaurant_id VARCHAR ( 50 ), 
 	star INT, 
 	rating_date date 
 );
+
+CREATE TABLE orders (
+	username varchar(50),
+	restaurant_name varchar(50),
+	order_date varchar(50),
+	price FLOAT,
+	cuisine_name varchar(100),
+	PRIMARY KEY(username, order_date, cuisine_name)
+)
 
 -- dsd

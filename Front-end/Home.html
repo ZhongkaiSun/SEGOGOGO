@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <!-- 引入 Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.css" >
+<!--    <link rel="stylesheet" href="css/bootstrap.min.css" >-->
     <link rel="stylesheet" href="css/bootstrap.rtl.css" >
     <link rel="stylesheet" href="css/bootstrap-grid.css" >
     <link rel="stylesheet" href="css/bootstrap-grid.rtl.css" >
@@ -13,13 +14,30 @@
     <link rel="stylesheet" href="css/bootstrap-reboot.rtl.css" >
     <link rel="stylesheet" href="css/bootstrap-utilities.css" >
     <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css" >
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Gem style -->
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+
+
+</head>
+
+
+
 
     <script src="js/bootstrap.bundle.js" ></script>
     <script src="js/bootstrap.esm.js" ></script>
     <script src="js/bootstrap.js" ></script>
+
+
+
+
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
+
+
+<nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #ffc107;">
     <div class="container-fluid">
 <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
         <img width="100" height="60" src="gator_logo.png" href="#" >
@@ -32,14 +50,14 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">history</a>
+                    <a class="nav-link" href="History.html">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         About
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Pay</a></li>
+                        <li><a class="dropdown-item" href="PaymentInfo.html">Pay</a></li>
                         <li><a class="dropdown-item" href="#">Discount</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
@@ -49,36 +67,189 @@
                     <a class="nav-link disabled">Spotlights</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
+            <a href="Login.html" class="btn btn-danger" role="button">Login</a>
+
+            <form class="d-flex" role="form" >
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
 
+
             </form>
-
-
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" > </a>
-            </li>
             <form class="d-flex" role="form" >
-                <a href="Login.html" class="btn btn-danger" role="button">Login</a>
-<!--                <button type="button" class="btn btn-danger" >Login</button>-->
+                <a href="Login.html" class="btn btn-warning" role="button"> Cartsssss</a>
+
+
+
+
             </form>
+
+
+
+
+
+
+<!--                <button type="button" class="btn btn-danger" >Login</button>-->
+
+
+                <div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
+
+
         </div>
     </div>
 </nav>
 <h1> </h1>
-<div class="card" style="width: 18rem; position:absolute;left:100px;top:100px">
-    <img src="Chick.png" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Chick Fil A</h5>
-        <p class="card-text">A play on the American English pronunciation of "filet",which is one of the largest American fast food restaurant chains and the largest whose specialty is chicken sandwiches.</p>
-        <a href="#" class="btn btn-primary">Order Now</a>
-    </div>
-</div>
 
-<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<!-- 包括所有已编译的插件 -->
-<script src="js/bootstrap.min.js"></script>
+
+
+
+
+
+
+<!--<div class="row" style="padding:0px 50px  100px;">-->
+    <div class="card-deck" style="position:relative;left:20px;top:50px;">
+        <!-- 4 of these -->
+        <div class="card" style="width: 18rem;">
+                <img src="Chick.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                        <h5 class="card-title">Chick Fil A</h5>
+                        <p class="card-text"></p>
+                        <a href="#" class="btn btn-primary">Order Now</a>
+            </div>
+        </div>
+        <br>
+
+        <div class="card" style="width: 18rem;" >
+            <img src="Chick.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Chick Fil A</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Order Now</a>
+            </div>
+        </div>
+
+
+<!--</div>-->
+    <div class="col" style="padding:0px 50px  100px;">
+        <div class="card-deck" style="position:relative;left:20px;top:50px;">
+            <!-- 4 of these -->
+            <div class="card" style="width: 18rem;">
+                <img src="Chick.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chick Fil A</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+            <br>
+
+            <div class="card" style="width: 18rem;" >
+                <img src="Chick.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chick Fil A</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+
+
+        </div>
+    <br>
+    <br>
+    <br>
+
+
+
+<!--<div class="row" style="padding: 0 50px 50px" >-->
+<!--    <div class="card-deck" style="position:relative;left:20px;">-->
+<!--        &lt;!&ndash; 4 of these &ndash;&gt;-->
+<!--        <div class="card" style="width: 18rem;">-->
+<!--            <img src="Chick.png" class="card-img-top" alt="...">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Chick Fil A</h5>-->
+<!--                <p class="card-text"></p>-->
+<!--                <a href="#" class="btn btn-primary">Order Now</a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="card" style="width: 18rem;" >-->
+<!--            <img src="Chick.png" class="card-img-top" alt="...">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Chick Fil A</h5>-->
+<!--                <p class="card-text"></p>-->
+<!--                <a href="#" class="btn btn-primary">Order Now</a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="card" style="width: 18rem;" >-->
+<!--            <img src="Chick.png" class="card-img-top" alt="...">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Chick Fil A</h5>-->
+<!--                <p class="card-text"></p>-->
+<!--                <a href="#" class="btn btn-primary">Order Now</a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="card" style="width: 18rem;" >-->
+<!--            <img src="Chick.png" class="card-img-top" alt="...">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Chick Fil A</h5>-->
+<!--                <p class="card-text"></p>-->
+<!--                <a href="#" class="btn btn-primary">Order Now</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+    </div>
+
+<nav aria-label="Page navigation " >
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>
+
+
+    </div>
+
+
+<div id="cd-shadow-layer"></div>
+<div id="cd-cart">
+    <h2>Cart</h2>
+    <ul class="cd-cart-items">
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+
+        <li>
+            <span class="cd-qty">2x</span> Product Name
+            <div class="cd-price">$19.98</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+    </ul> <!-- cd-cart-items -->
+
+    <div class="cd-cart-total">
+        <p>Total <span>$39.96</span></p>
+    </div> <!-- cd-cart-total -->
+
+    <a href="#0" class="checkout-btn">Checkout</a>
+
+    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+</div> <!-- cd-cart -->
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/main.js"></script> <!-- Gem jQuery -->
+
+
 </body>
 </html>

@@ -2,7 +2,7 @@ body
 {
     margin: 0;
     padding: 0;
-    background-color:#6abadeba;
+    background-color: #53b6f5;
     font-family: 'Arial';
 }
 .center {
@@ -12,18 +12,18 @@ body
     width: 50%;
 }
 .login{
-    width: 382px;
+    width: 400px;
     overflow: hidden;
     margin: auto;
-    margin: 20 0 0 450px;
-    padding: 80px;
-    background: #e79c2f;
+    margin-top: 40px;
+    padding: 50px;
+    background: #ffb81e;
     border-radius: 15px ;
 
 }
 h2{
     text-align: center;
-    color: #277582;
+    color: #000000;
     padding: 20px;
 }
 label{
@@ -31,40 +31,49 @@ label{
     font-size: 17px;
 }
 #Uname{
-    width: 300px;
-    height: 30px;
+    width: 320px;
+    height: 50px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     padding-left: 8px;
+}
+#Pass{
+    width: 320px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 8px;
+
 }
 
 #Fname{
-    width: 150px;
-    height: 30px;
+    width: 300px;
+    height: 40px;
     border: none;
     border-radius: 3px;
     padding-left: 8px;
 }
 
 #Lname{
-    width: 150px;
-    height: 30px;
-    border: none;
-    border-radius: 3px;
-    padding-left: 8px;
-}
-
-#Pass{
     width: 300px;
-    height: 30px;
+    height: 40px;
     border: none;
     border-radius: 3px;
     padding-left: 8px;
-
 }
+
+#Email{
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+
 #CPass{
     width: 300px;
-    height: 30px;
+    height: 40px;
     border: none;
     border-radius: 3px;
     padding-left: 8px;
@@ -72,7 +81,7 @@ label{
 
 #RPass{
     width: 300px;
-    height: 30px;
+    height: 40px;
     border: none;
     border-radius: 3px;
     padding-left: 8px;
@@ -80,21 +89,21 @@ label{
 
 #log{
     width: 300px;
-    height: 30px;
+    height: 35px;
     border: none;
     border-radius: 17px;
     padding-left: 7px;
-    color: #0077ff;
+    color: #ffffff;
 
 
 }
 #sign-up{
     width: 300px;
-    height: 30px;
+    height: 35px;
     border: none;
     border-radius: 17px;
     padding-left: 7px;
-    color: #0077ff;
+    color: #ffffff;
 }
 span{
     color: black;

@@ -2,27 +2,23 @@ package main
 
 import (
 	"backend/common"
+	"backend/config"
 	_ "backend/controller"
 	_ "backend/model"
+	"backend/route"
 	_ "fmt"
-	"os"
 
-	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
 
 func main() {
-	InitConfig()
+	config.InitConfig("main")
 	common.InitDatabase()
 	DB := common.GetDB()
 	defer DB.Close()
 
-	r := gin.Default()
-	// route registration
-	r = RegisterRoute(r)
-	// route cuisine
-	r = CuisineRoute(r)
-	// route registration
+	r := route.SetupRouter()
+
 	port := viper.GetString("server.port")
 	if port != "" {
 		panic(r.Run(":" + port))
@@ -44,15 +40,4 @@ func main() {
 	// var cus model.Customer
 	// DB.Table("customers").Where("Username=?", "ZhongkaiSun").Scan(&cus)
 	// fmt.Println(cus)
-}
-
-func InitConfig() {
-	workDir, _ := os.Getwd()
-	viper.SetConfigName("application")
-	viper.SetConfigType("yml")
-	viper.AddConfigPath(workDir + "/config")
-	err := viper.ReadInConfig()
-	if err != nil {
-		panic(err)
-	}
 }

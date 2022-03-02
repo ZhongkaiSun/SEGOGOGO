@@ -25,25 +25,26 @@
 <body>
     <div class="login">
         <form id="login" method="get" action="login.php">
-            <img width="150" src="gator_logo.png" class="center">
-            <h2>Login to Gator Delivery</h2>
-            <p>Please login with your e-mail address or phone number</p>
-            <label><b>User Name
+            <a href="Home.html">
+                <img width="150" src="gator_logo.png" class="center">
+            </a>
+            <h2 style="color:#000000;font-size:40px;">Login</h2>
+            <label><b style="font-size:20px; font-weight:normal">User Name
             </b>
             </label>
             <input type="text" name="Uname" id="Uname" placeholder="Username">
             <br><br>
-            <label><b>Password
+            <label><b style="font-size:20px; font-weight:normal">Password
             </b>
             </label>
             <input type="Password" name="Pass" id="Pass" placeholder="Password">
-            <br><br>
+            <br>
             <input type="checkbox" id="check">
-            <span>Remember me</span><a href="#">Forgot Password?</a>
+            <span style="font-size:18px">Remember me</span><a href="Forget_Password.html" style="font-size:18px">Forgot Password?</a>
             <br><br>
-            <input type="button" name="log" id="log" value="Log In Here" onclick="window.location='Login.html'">
+            <input type="button" style="background-color:#d51800" name="log" id="log" value="Log In Here" onclick="window.location='Home_loggedin.html'">
             <br><br>
-            <input type="button" name="log" id="sign-up" value="Don't have an account? Sign up" onclick="window.location='Sign_Up.html'">
+            <input type="button" style="background-color:#d51800" name="log" id="sign-up" value="Sign up" onclick="window.location='Sign_Up.html'">
             <br><br>
         </form>
     </div>
