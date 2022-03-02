@@ -17,7 +17,7 @@ func DeleteUser(c *gin.Context) {
 	var requestCustomer model.Customer
 	err := c.ShouldBindQuery(&requestCustomer)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -49,7 +49,7 @@ func Login(c *gin.Context) {
 	err := c.ShouldBindQuery(&requestCustomer)
 	if err != nil {
 		c.Header("Access-Control-Allow-Origin", "*")
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
@@ -94,7 +94,7 @@ func Register(c *gin.Context) {
 	var requestCustomer model.Customer
 	err := c.ShouldBindJSON(&requestCustomer)
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
 			"data":  gin.H{},
