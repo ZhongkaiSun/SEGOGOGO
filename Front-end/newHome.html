@@ -1,41 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GatorDash</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <!-- 引入 Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.css" >
-<!--    <link rel="stylesheet" href="css/bootstrap.min.css" >-->
-    <link rel="stylesheet" href="css/bootstrap.rtl.css" >
-    <link rel="stylesheet" href="css/bootstrap-grid.css" >
-    <link rel="stylesheet" href="css/bootstrap-grid.rtl.css" >
-    <link rel="stylesheet" href="css/bootstrap-reboot.css" >
-    <link rel="stylesheet" href="css/bootstrap-reboot.rtl.css" >
-    <link rel="stylesheet" href="css/bootstrap-utilities.css" >
-    <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css" >
-
-
-</head>
-
-
-
-    <link rel="stylesheet" href="css/home.css" >
-
-    <script src="js/bootstrap.bundle.js" ></script>
-    <script src="js/bootstrap.esm.js" ></script>
-    <script src="js/bootstrap.js" ></script>
-
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body>
-
-
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
+
     <div class="container-fluid">
-<!--        <a class="navbar-brand" href="#">GatorDash</a>-->
+        <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
         <img width="100" height="60" src="gator_logo.png" href="#" >
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,33 +47,56 @@
 
             <form class="d-flex" role="form" >
                 <a href="Login.html" class="btn btn-danger" role="button">Login</a>
-<!--                <button type="button" class="btn btn-danger" >Login</button>-->
+                <!--                <button type="button" class="btn btn-danger" >Login</button>-->
             </form>
         </div>
     </div>
 </nav>
-<h1> </h1>
 
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
 
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
 
-
-
-
-
-<!--<div class="row" style="padding:0px 50px  100px;">-->
-    <div class="card-deck" style="position:relative;left:20px;top:50px;">
-        <!-- 4 of these -->
-        <div class="card" style="width: 18rem;">
-                <img src="Chick.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                        <h5 class="card-title">Chick Fil A</h5>
-                        <p class="card-text"></p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="./img/3.jpeg" alt="Los Angeles" class="d-block" style="width:100%">
+            <div class="carousel-caption">
+                <h1>Enjoy GatorDoor</h1>
+                <h4>We had such a great time in UF!</h4>
             </div>
         </div>
-        <br>
+        <div class="carousel-item">
+            <img src="./img/1.jpeg" alt="Chicago" class="d-block" style="width:100%">
+        </div>
+        <div class="carousel-item">
+            <img src="./img/2.jpeg" alt="New York" class="d-block" style="width:100%">
+        </div>
+    </div>
 
-        <div class="card" style="width: 18rem;" >
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+
+
+<!--favorite-->
+
+<table style="border-collapse:separate; border-spacing:100px 20px;padding:50px 50px  50px;">
+    <tr>
+        <td>
+            <div class="card" style="width: 18rem;" >
             <img src="Chick.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Chick Fil A</h5>
@@ -107,22 +104,9 @@
                 <a href="#" class="btn btn-primary">Order Now</a>
             </div>
         </div>
+        </td>
 
-
-<!--</div>-->
-    <div class="col" style="padding:0px 50px  100px;">
-        <div class="card-deck" style="position:relative;left:20px;top:50px;">
-            <!-- 4 of these -->
-            <div class="card" style="width: 18rem;">
-                <img src="Chick.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Chick Fil A</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-            <br>
-
+        <td>
             <div class="card" style="width: 18rem;" >
                 <img src="Chick.png" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -131,56 +115,54 @@
                     <a href="#" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
+        </td>
 
-
+        <td>
+            <div class="card" style="width: 18rem;" >
+            <img src="Chick.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Chick Fil A</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Order Now</a>
+            </div>
         </div>
-    <br>
-    <br>
-    <br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="card" style="width: 18rem;" >
+                <img src="Chick.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chick Fil A</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </td>
 
+        <td>
+            <div class="card" style="width: 18rem;" >
+                <img src="Chick.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chick Fil A</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </td>
 
-
-<!--<div class="row" style="padding: 0 50px 50px" >-->
-<!--    <div class="card-deck" style="position:relative;left:20px;">-->
-<!--        &lt;!&ndash; 4 of these &ndash;&gt;-->
-<!--        <div class="card" style="width: 18rem;">-->
-<!--            <img src="Chick.png" class="card-img-top" alt="...">-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title">Chick Fil A</h5>-->
-<!--                <p class="card-text"></p>-->
-<!--                <a href="#" class="btn btn-primary">Order Now</a>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="card" style="width: 18rem;" >-->
-<!--            <img src="Chick.png" class="card-img-top" alt="...">-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title">Chick Fil A</h5>-->
-<!--                <p class="card-text"></p>-->
-<!--                <a href="#" class="btn btn-primary">Order Now</a>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="card" style="width: 18rem;" >-->
-<!--            <img src="Chick.png" class="card-img-top" alt="...">-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title">Chick Fil A</h5>-->
-<!--                <p class="card-text"></p>-->
-<!--                <a href="#" class="btn btn-primary">Order Now</a>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="card" style="width: 18rem;" >-->
-<!--            <img src="Chick.png" class="card-img-top" alt="...">-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title">Chick Fil A</h5>-->
-<!--                <p class="card-text"></p>-->
-<!--                <a href="#" class="btn btn-primary">Order Now</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
+        <td>
+            <div class="card" style="width: 18rem;" >
+                <img src="Chick.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chick Fil A</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
 
 
 <nav aria-label="Page navigation " >
@@ -192,14 +174,5 @@
         <li class="page-item"><a class="page-link" href="#">Next</a></li>
     </ul>
 </nav>
-
-
-
-
-
-
-
-
-
 </body>
 </html>
