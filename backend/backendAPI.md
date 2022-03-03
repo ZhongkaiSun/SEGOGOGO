@@ -162,4 +162,285 @@ Body:
 
 ## Cuisine API
 
+### 1. Cuisine Create API
+
+```java
+POST    http://localhost:1016/cuisine/create
+```
+Create a new cuisine for a restaurant
+
+#### *Example Request*
+```java
+POST    http://localhost:1016/cuisine/create
+```
+Request Body:
+```java
+{
+"name":"banana pie",        
+"restaurantName":"Popeyes", 
+"price":2.0,        
+"calories":3
+}
+```
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": null,
+    "msg": "Successfully"
+}
+
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
+
+### 2. Cuisine Read API
+
+
+```java
+GET    localhost:1016/cuisine/read?restaurantName=Popeyes
+```
+Read a cuisine from a restaurant
+
+#### *Example Request*
+```java
+GET    http://localhost:1016/cuisine/create
+```
+
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": [
+        {
+            "name": "8PC Nuggets A La Carte",
+            "restaurantName": "Popeyes",
+            "price": 4.79,
+            "calories": 0
+        },
+        {
+            "name": "apple pie",
+            "restaurantName": "Popeyes",
+            "price": 2,
+            "calories": 3
+        },
+        {
+            "name": "banana pie",
+            "restaurantName": "Popeyes",
+            "price": 2,
+            "calories": 3
+        },
+        {
+            "name": "Mixed Chicken",
+            "restaurantName": "Popeyes",
+            "price": 22.79,
+            "calories": 0
+        },
+        {
+            "name": "Red Beans and Rice",
+            "restaurantName": "Popeyes",
+            "price": 4.19,
+            "calories": 0
+        }
+    ],
+    "msg": "Successfully"
+}
+
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
+
+### 3. Cuisine Delete API
+
+```java
+POST    http://localhost:1016/cuisine/delete
+```
+Delete the cuisine from a restaurant
+
+#### *Example Request*
+```java
+POST    http://localhost:1016/cuisine/delete
+```
+Request Body:
+```java
+{
+"name":"banana pie",        
+"restaurantName":"Popeyes", 
+"price":2.0,        
+"calories":3
+}
+```
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": null,
+    "msg": "Successfully"
+}
+
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
+
+## Order API
+
+### 1. Order Create API
+
+```java
+POST    http://localhost:1016/order/create
+```
+Create a new order for a customer
+
+#### *Example Request*
+```java
+POST    http://localhost:1016/order/create
+```
+Request Body:
+```java
+{
+    "userName":"Raindrop",
+	"restaurantName":"Checkers",
+	"orderDate":"03/02/2022",
+	"price":8.88,
+	"cuisineName":"burger"
+}
+```
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": null,
+    "msg": "Successfully"
+}
+
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
+  
+### 2. Order Read API
+
+```java
+GET    http://localhost:1016/order/read?username=Raindrop
+```
+Create a new cuisine for a restaurant
+
+#### *Example Request*
+```java
+GET    http://localhost:1016/order/read?username=Raindrop
+```
+
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": [
+        {
+            "username": "Raindrop",
+            "restaurantName": "Checkers",
+            "orderDate": "03/02/2022",
+            "price": 8.88,
+            "cuisineName": "burger"
+        }
+    ],
+    "msg": "Successfully"
+}
+
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
+- 
+## Restaurant API
+
+### 1. Restaurant Read API
+```java
+GET    http://localhost:1016/restaurant/read
+```
+Read a restaurant or get the restaurant list 
+
+#### *Example Request*
+```java
+GET    http://localhost:1016/restaurant/read?name=Popeyes
+```
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": {
+        "name": "Popeyes",
+        "address": "1412N Main St, Gainesville, FL 32601, USA",
+        "deliveryFee": 3.99,
+        "imgPath": "",
+        "typeofMeal": "Chicken",
+        "rating": 4.1
+    },
+    "msg": "Successfully"
+}
+
+```
+
+#### *Example Request*
+```java
+GET    http://localhost:1016/restaurant/read
+```
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": [
+        {
+            "name": "Popeyes",
+            "address": "1412N Main St, Gainesville, FL 32601, USA",
+            "deliveryFee": 3.99,
+            "imgPath": "",
+            "typeofMeal": "Chicken",
+            "rating": 4.1
+        },
+        {
+            "name": "Checkers",
+            "address": "3325 W University Ave, Gainesville, FL 32607, USA",
+            "deliveryFee": 1.99,
+            "imgPath": "",
+            "typeofMeal": "Burgers",
+            "rating": 4.2
+        }
+    ],
+    "msg": "Successfully"
+}
+
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
+
 
