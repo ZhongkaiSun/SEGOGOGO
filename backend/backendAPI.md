@@ -157,4 +157,9 @@ Body:
 
 ### 2. Rating GET API
 
+//
+
+
+## Cuisine API
+
 
