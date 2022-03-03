@@ -24,8 +24,8 @@
 </head>
 <body>
 <div class="login">
-    <form id="login" method="get" action="login.php">
-        <a href="Home.html">
+    <form id="login" method="post" action="Sign_Up.html">
+        <a href="newHome_logged.html">
             <img width="150" src="gator_logo.png" class="center">
         </a>
         <h2>Sign up</h2>
@@ -81,7 +81,7 @@
     function signup() {
         var xmlhttp;
         // var url = "http://10.136.183.231:1016/customer/login";
-        var Uname = document.getElementById("Uname").value;
+        var Uname = document.getElementById("Lname").value;
         var email = document.getElementById("Email").value;
         var pass = document.getElementById("CPass").value;
         var url = "http://10.136.198.238:1016";
@@ -113,10 +113,12 @@
                 window.location.href="./newHome_logged.html";
                 // xmlhttp.open("GET",url + "newHome.html",true);
             }
-            else {
-                eval("var jn_info2="+xmlhttp.responseText);
-                console.log(jn_info2.msg);
-                alert(jn_info2.msg);
+            else{
+                //eval("var jn_info2="+xmlhttp.responseText);
+                var signup_msg = JSON.parse( xmlhttp.responseText );
+                console.log(signup_msg.msg);
+                alert(signup_msg.msg);
+                window.location.href="./Sign_Up.html";
             }
 
 
