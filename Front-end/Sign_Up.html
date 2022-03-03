@@ -29,15 +29,10 @@
             <img width="150" src="gator_logo.png" class="center">
         </a>
         <h2>Sign up</h2>
-        <label><b style="font-size:20px; font-weight:normal">First Name
+        <label><b style="font-size:20px; font-weight:normal">User Name
         </b><br>
         </label>
-        <input type="text" name="Fname" id="Fname" placeholder="First Name">
-        <br>
-        <label><b style="font-size:20px; font-weight:normal">Last Name
-        </b><br>
-        </label>
-        <input type="text" name="Lname" id="Lname" placeholder="Last Name">
+        <input type="text" name="Uname" id="Lname" placeholder="User Name">
         <br><br>
         <label><b style="font-size:20px; font-weight:normal">E-mail Address
         </b><br>
@@ -52,12 +47,13 @@
         <label><b>Re-enter Password
         </b>
         </label>
-        <input type="Password" name="Pass" id="RPass" placeholder="Re-enter Your Password">
+        <input type="Password" name="Pass" id="RPass" onkeyup="validate()" placeholder="Re-enter Your Password">
+        <span id="notice"></span></input>
         <br><br>
         <input type="checkbox" id="check">
         <span>I agree to all the terms of service.</span>
         <br>
-        <input type="button" style="background-color:#d51800" name="log" id="log" value="Sign up" onclick="window.location='Home_loggedin.html'">
+        <input style="background-color:#d51800" name="log" id="sign-up" type="submit" value="Sign up" onclick="signup()" >
         <br><br>
 
     </form>
@@ -67,5 +63,82 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    // var username = "";
+    function validate() {
+        var pwd1 = document.getElementById("CPass").value;
+        var pwd2 = document.getElementById("RPass").value;
+        <!-- 对比两次输入的密码 -->
+        if(pwd1 == pwd2) {
+            document.getElementById("notice").innerHTML="<font color='green'>Passwords match</font>";
+            document.getElementById("submit").disabled = false;
+        }
+        else {
+            document.getElementById("notice").innerHTML="<font color='red'>PassWords do not match</font>";
+            document.getElementById("submit").disabled = true;
+        }
+    }
+    function signup() {
+        var xmlhttp;
+        // var url = "http://10.136.183.231:1016/customer/login";
+        var Uname = document.getElementById("Uname").value;
+        var email = document.getElementById("Email").value;
+        var pass = document.getElementById("CPass").value;
+        var url = "http://10.136.198.238:1016";
+        console.log(Uname);
+        console.log(email);
+        console.log(pass);
+
+        if (window.XMLHttpRequest)
+        {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange=function()
+        {
+            if ( xmlhttp.status==200)
+            {
+                // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                console.log(xmlhttp.responseText);
+                // var message = xmlhttp.responseText;
+                eval("var jn_info="+xmlhttp.responseText);
+                console.log(jn_info.msg);
+                alert(jn_info.msg);
+                window.location.href="./newHome_logged.html";
+                // xmlhttp.open("GET",url + "newHome.html",true);
+            }
+            else {
+                eval("var jn_info2="+xmlhttp.responseText);
+                console.log(jn_info2.msg);
+                alert(jn_info2.msg);
+            }
+
+
+        }
+        xmlhttp.open("POST", url +"/customer/register", true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(JSON.stringify({
+                'username':Uname,
+                "password":pass,
+                "addressLine1" : "4000 SW 23rd St",
+                "addressLine2" : "Apt 2-301",
+                "phone" : "3523280576",
+                "email" : email}));
+
+        // xmlhttp.open("POST","/try/ajax/demo_post.php",true);
+        // xmlhttp.send();
+
+    }
+
+
+
+</script>
+
 </body>
 </html>
