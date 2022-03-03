@@ -163,19 +163,18 @@
 </table>
 <script type="text/javascript">
   window.onload = function(){
-    console.log("sddd");
+
     load();
   }
 
-  // var username = "";
   function load() {
-    console.log("sddd");
+
     var xmlhttp;
     // var url = "http://10.136.183.231:1016/customer/login";
     // var uname = document.getElementById("Uname").value;
     // var pwd = document.getElementById("Pass").value;
     var username = "root";
-    var url = "http://10.136.148.64:1016";
+    var url = "http://10.136.198.238:1016";
 
     if (window.XMLHttpRequest) {
       // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
@@ -185,26 +184,16 @@
       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-
-      //   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-      //   {
-      //     // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-      //     xmlhttp.open("GET","Home.html",true);
-      //   }
-      // }
-      // xmlhttp.open("GET","/try/ajax/gethint.php?q=",true);
-      // xmlhttp.send();
       //http://localhost:1016/restaurant/read?username=ZhongkaiSun
 
       xmlhttp.open("GET", url + "/restaurant/read?username=" + username, true);
-      // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      // xmlhttp.send(uname + "," + pwd);
-      // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
 
       xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 200) {
+        if (xmlhttp.status==200) {
           console.log(this.responseText);
-          var jn_order = eval(xmlhttp.responseText);
+          // var jn_order = eval(xmlhttp.responseText);
+          eval("var jn_order="+xmlhttp.responseText);
            console.log(jn_order);
           // console.log(jn_order.ff);
           // console.log(jn_order.WD);
@@ -214,15 +203,13 @@
         }
       }
 
+    xmlhttp.open("GET", url + "/restaurant/read?username=" + username, true);
+    xmlhttp.send();
+
   }
 
 
-
-
-
-
-
-
+  
 </script>
 
 
