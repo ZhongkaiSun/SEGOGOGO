@@ -29,7 +29,7 @@
 <body>
 <div class="login">
     <form id="login" method="post" action="Sign_Up.html">
-        <a href="newHome_logged.html">
+        <a href="newHome.html">
             <img width="150" src="gator_logo.png" class="center">
         </a>
         <h2>Sign up</h2>
@@ -54,7 +54,7 @@
         <input type="Password" name="Pass" id="RPass" onkeyup="validate()" placeholder="Re-enter Your Password">
         <span id="notice"></span></input>
         <br><br>
-        <input type="checkbox" id="check">
+        <input type="checkbox" id="check" value="I agree to all the terms of service.">
         <span>I agree to all the terms of service.</span>
         <br>
         <input type="button" style="background-color:#d51800" name="log" id="sign-up"  value="Sign up" onclick="signup()" >
@@ -78,7 +78,7 @@
             document.getElementById("submit").disabled = false;
         }
         else {
-            document.getElementById("notice").innerHTML="<font color='red'>PassWords do not match</font>";
+            document.getElementById("notice").innerHTML="<font color='red'>Passwords do not match</font>";
             document.getElementById("submit").disabled = true;
         }
     }
