@@ -53,7 +53,7 @@
         <input type="checkbox" id="check">
         <span>I agree to all the terms of service.</span>
         <br>
-        <input style="background-color:#d51800" name="log" id="sign-up" type="submit" value="Sign up" onclick="signup()" >
+        <input type="button" style="background-color:#d51800" name="log" id="sign-up"  value="Sign up" onclick="signup()" >
         <br><br>
 
     </form>
@@ -84,7 +84,7 @@
         var Uname = document.getElementById("Lname").value;
         var email = document.getElementById("Email").value;
         var pass = document.getElementById("CPass").value;
-        var url = "http://10.136.198.238:1016";
+        var url = "http://192.168.0.147:1016";
         console.log(Uname);
         console.log(email);
         console.log(pass);
@@ -114,7 +114,10 @@
                 // xmlhttp.open("GET",url + "newHome.html",true);
             }
             else{
-                //eval("var jn_info2="+xmlhttp.responseText);
+                // eval("var jn_info2="+xmlhttp.responseText);
+                // console.log(jn_info2.msg);
+                // alert(jn_info2.msg);
+                // window.location.href="./Sign_Up.html";
                 var signup_msg = JSON.parse( xmlhttp.responseText );
                 console.log(signup_msg.msg);
                 alert(signup_msg.msg);
