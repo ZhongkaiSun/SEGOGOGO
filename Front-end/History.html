@@ -186,12 +186,16 @@
 
   function load() {
 
+    //get token from cookie
+    var token1 = document.cookie.split(";")[0];
+    console.log(token1);
+
     var xmlhttp;
     // var url = "http://10.136.183.231:1016/customer/login";
     // var uname = document.getElementById("Uname").value;
     // var pwd = document.getElementById("Pass").value;
     var username = "root";
-    var url = "http://10.136.198.238:1016";
+    var url = "http://192.168.0.147:1016";
 
     if (window.XMLHttpRequest) {
       // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
@@ -213,6 +217,11 @@
           // eval("var jn_order="+xmlhttp.responseText);
           var jn_order = JSON.parse( xmlhttp.responseText );
           console.log(jn_order);
+
+
+
+
+
           // var dataname =jn_order .filter((item) => {
           //   return item.name == "dataname";
           // });

@@ -119,6 +119,21 @@
                 // console.log(jn_order.WD);
                 // console.log(jn_order.temp);
                 alert(jn_info.msg);
+
+                // save token in cookie for later use
+                token = jn_info.data.token;
+                document.cookie = token;
+                console.log(token);
+
+                //get token from cookie
+                // var token1 = document.cookie.split(";")[0];
+                // console.log(token1);
+
+
+                //remove token from cookie?
+
+
+
                 window.location.href="./newHome_logged.html";
                 // xmlhttp.open("GET",url + "newHome.html",true);
             }
