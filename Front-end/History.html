@@ -32,27 +32,32 @@
   </svg>
 </head>
 <body >
+
+
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
+
   <div class="container-fluid">
     <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
-    <img width="100" height="60" src="gator_logo.png" href="#" >
+    <a href="./newHome.html">
+    <img width="100" height="60" src="gator_logo.png" >
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="Home.html">Home</a>
+          <a class="nav-link active" aria-current="page" href="./newHome.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">History</a>
+          <a class="nav-link" href="./History.html">History</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             About
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Pay</a></li>
+            <li><a class="dropdown-item" href="PaymentInfo.html">Pay</a></li>
             <li><a class="dropdown-item" href="#">Discount</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
@@ -62,22 +67,34 @@
           <a class="nav-link disabled">Spotlights</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <!--            <form class="d-flex" role="search">-->
+      <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+      <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
+
+      <!--            </form>-->
+
+
+
+      <!--            <form class="d-flex" role="form" >-->
+      <!--                <a href="Login.html" class="btn btn-danger" role="button">Login</a>-->
+      <!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
+      <!--            </form>-->
+
+      <a href="Login.html" class="btn btn-danger" role="button">Login</a>
+
+      <form class="d-flex" role="form" >
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
 
-      </form>
 
-
-      <form class="d-flex" role="form" >
-        <a href="Login.html" class="btn btn-danger" role="button">Login</a>
-        <!--                <button type="button" class="btn btn-danger" >Login</button>-->
       </form>
+<!--      <form class="d-flex" role="form" >-->
+<!--        <a href="Login.html" class="btn btn-warning" role="button"> Cartsssss</a>-->
+<!--      </form>-->
+<!--      <div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>-->
     </div>
   </div>
 </nav>
-
-
 <div class="alert alert-warning d-flex align-items-center" role="alert">
   <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close"></button>
   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
@@ -98,10 +115,10 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">restaurant_id</th>
+    <th scope="col">name</th>
     <th scope="col">Cuisines message</th>
-    <th scope="col">Date</th>
-    <th scope="col">Price</th>
+    <th scope="col">Deliver fee</th>
+    <th scope="col">rating</th>
 <!--    // total-->
 
   </tr>
@@ -109,30 +126,30 @@
   <tbody>
   <tr>
     <th scope="col">1</th>
-    <td>Chicken Fil-A</td>
-    <td>Spicy Deluxe Meal</td>
-    <td>01/01/2021</td>
-    <td>9.8</td>
+    <td id="name0" ></td>
+    <td id="typeofMeal0"></td>
+    <td id="fee0"></td>
+    <td id="rating0"></td>
   </tr>
   <tr>
     <th scope="col">2</th>
-    <td>Chicken Fil-A</td>
-    <td>Spicy Deluxe Meal</td>
-    <td>01/02/2021</td>
-    <td>9.8</td>
+    <td id="name1" ></td>
+    <td id="typeofMeal1"></td>
+    <td id="fee1"></td>
+    <td id="rating1"></td>
   </tr> <tr>
     <th scope="col">3</th>
-    <td>Chicken Fil-A</td>
-    <td>Spicy Deluxe Meal</td>
-    <td>01/03/2021</td>
-    <td>9.8</td>
+    <td id="name2"></td>
+    <td id="typeofMeal2"></td>
+    <td id="fee2"></td>
+    <td id="rating2"></td>
   </tr>
   </tr> <tr>
     <th scope="col">4</th>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
+    <td id="name3"> </td>
+    <td id="typeofMeal3"> </td>
+    <td id="fee3"></td>
+    <td id="rating3"></td>
   </tr>
   </tr> <tr>
     <th scope="col">5</th>
@@ -163,18 +180,22 @@
 </table>
 <script type="text/javascript">
   window.onload = function(){
-    console.log("sddd");
+
     load();
   }
 
-  // var username = "";
   function load() {
-    console.log("sddd");
+
+    //get token from cookie
+    var token1 = document.cookie.split(";")[0];
+    console.log(token1);
+
     var xmlhttp;
     // var url = "http://10.136.183.231:1016/customer/login";
     // var uname = document.getElementById("Uname").value;
     // var pwd = document.getElementById("Pass").value;
-    var username = "ZhongkaiSun";
+    var username = "root";
+    var url = "http://192.168.0.147:1016";
 
     if (window.XMLHttpRequest) {
       // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
@@ -184,55 +205,45 @@
       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-
-      //   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-      //   {
-      //     // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-      //     xmlhttp.open("GET","Home.html",true);
-      //   }
-      // }
-      // xmlhttp.open("GET","/try/ajax/gethint.php?q=",true);
-      // xmlhttp.send();
       //http://localhost:1016/restaurant/read?username=ZhongkaiSun
 
-      xmlhttp.open("GET", "http://10.136.98.74:1016/restaurant/read?username=" + username, true);
-      // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      // xmlhttp.send(uname + "," + pwd);
-      // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      // xmlhttp.open("GET", url + "/restaurant/read?username=" + username, true);
+
 
       xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {
+        if (xmlhttp.status==200) {
           console.log(this.responseText);
-          var jn_order = eval(xmlhttp.responseText);
-           console.log(jn_order);
+          // var jn_order = eval(xmlhttp.responseText);
+          // eval("var jn_order="+xmlhttp.responseText);
+          var jn_order = JSON.parse( xmlhttp.responseText );
+          console.log(jn_order);
+
+
+
+
+
+          // var dataname =jn_order .filter((item) => {
+          //   return item.name == "dataname";
+          // });
           // console.log(jn_order.ff);
           // console.log(jn_order.WD);
           // console.log(jn_order.temp);
-          alert("Hello! I am an alert box!!" + xmlhttp.responseText);
+          // alert(jn_order.data[0].name);
+          for(let i = 0 ; i < jn_order.data.length ; i ++ ){
+            document.getElementById("name" + i.toString() ).innerHTML=jn_order.data[i].name;
+            document.getElementById("typeofMeal" + i.toString() ).innerHTML=jn_order.data[i].typeofMeal;
+            document.getElementById("rating" + i.toString() ).innerHTML=jn_order.data[i].rating;
+            document.getElementById("fee" + i.toString() ).innerHTML=jn_order.data[i].deliveryFee;
+          }
+
 
         }
       }
-      // xmlhttp.send(null);
+
+    xmlhttp.open("GET", url + "/restaurant/read?username=" + username, true);
+    xmlhttp.send();
 
   }
-    // xmlhttp.send(JSON.stringify({
-    //
-    //   "msg" : "Request history",
-    //     }));
-
-
-
-
-    // xmlhttp.onreadystatechange=function()
-    // {
-    //   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    //   {
-    //     // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-    //     xmlhttp.open("GET","Home.html",true);
-    //   }
-    // }
-
-  // }
 
 
 

@@ -65,7 +65,9 @@
         // var url = "http://10.136.183.231:1016/customer/login";
         var uname = document.getElementById("Uname").value;
         var pwd = document.getElementById("Pass").value;
-        var url = "http://10.136.98.74:1016";
+        var url = "http://10.136.148.64:1016";
+        console.log(uname);
+        console.log(pwd);
 
         if (window.XMLHttpRequest)
         {
@@ -78,33 +80,33 @@
             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
 
-        xmlhttp.onreadystatechange=function()
-        {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
-                // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-                xmlhttp.open("GET","Home.html",true);
-            }
-        }
+        // xmlhttp.onreadystatechange=function()
+        // {
+        //     if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        //     {
+        //         // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+        //         xmlhttp.open("GET","Home.html",true);
+        //     }
+        // }
         // xmlhttp.open("GET","/try/ajax/gethint.php?q=",true);
         // xmlhttp.send();
-
-        xmlhttp.open("GET",url +"/customer/login",true);
+        // /customer/login?username=ZhongkaiSun&password=123456
+        // xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
         // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        // xmlhttp.send(uname + "," + pwd);
-        // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xmlhttp.send(JSON.stringify({
-            'username':uname,
-            "password":pwd,
-            "addressLine1" : "4000 SW 23rd St",
-            "addressLine2" : "Apt 2-301",
-            "phone" : "3523280576",
-            "email" : "pipikai1204@gmail.com"}));
 
+        // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        // xmlhttp.send(JSON.stringify({
+        //     'username':uname,
+        //     "password":pwd,
+        //     "addressLine1" : "4000 SW 23rd St",
+        //     "addressLine2" : "Apt 2-301",
+        //     "phone" : "3523280576",
+        //     "email" : "pipikai1204@gmail.com"}));
+        // xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
 
         xmlhttp.onreadystatechange=function()
         {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            if ( xmlhttp.status==200)
             {
                 // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
                 console.log(xmlhttp.responseText);
@@ -116,10 +118,20 @@
                 // console.log(jn_order.WD);
                 // console.log(jn_order.temp);
                 alert(jn_info.msg);
-                window.location.href="./newHome.html";
+                // window.location.href="./newHome.html";
                 // xmlhttp.open("GET",url + "newHome.html",true);
             }
+            else {
+                eval("var jn_info2="+xmlhttp.responseText);
+                console.log(jn_info2.msg);
+                alert(jn_info2.msg);
+            }
+
+
         }
+        xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
+        xmlhttp.send();
+
 
     }
 
