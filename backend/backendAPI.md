@@ -15,7 +15,7 @@ POST    http://localhost:1016/customer/register
 Body:
 ```java
 {
-    "username":"PIPIKAI",
+    "username":"root",
     "password":"123456",
     "addressLine1":"3824 SW Archer Road",
     "addressLine2":"Apt 5-501",
@@ -61,7 +61,7 @@ GET    http://localhost:1016/customer/login
 
 Parameters:
 
-- username:PIPIKAI
+- username:root
 - password:123456
 
 #### *Example Response*
@@ -97,7 +97,7 @@ GET    http://localhost:1016/customer/delete
 
 Parameters:
 
-- username:PIPIKAI
+- username:root
 - password:123456
 
 #### *Example Response*
@@ -131,7 +131,7 @@ POST    http://localhost:1016/rating/create
 Body:
 ```java
 {
-    "username": "ZhongkaiSun",
+    "username": "root",
     "restaurantName": "Popeyes",
     "star": 5,
     "comment": "Taste so good !!!!",
@@ -157,4 +157,68 @@ Body:
 
 ### 2. Rating GET API
 
+```java
+GET    http://localhost:1016/rating/get
+```
 
+Get the rating of one restaurant if restaurant exists
+
+#### *Example Request*
+
+```java
+GET    http://localhost:1016/rating/get
+```
+
+Parameters:
+- restaurantName:Popeyes
+
+#### *Example Response*
+
+```java
+{
+    "code": 200,
+    "data": [
+        {
+            "username": "ZhongkaiSun",
+            "restaurantName": "Popeyes",
+            "star": 5,
+            "comment": "Yummy!!",
+            "ratingDate": "2022/02/04"
+        },
+        {
+            "username": "ZhongkaiSun",
+            "restaurantName": "Popeyes",
+            "star": 5,
+            "comment": "Taste so good !!!!",
+            "ratingDate": "2022/01/04"
+        },
+        {
+            "username": "ZhongkaiSun",
+            "restaurantName": "Popeyes",
+            "star": 5,
+            "comment": "Taste so good !!!!",
+            "ratingDate": "2022/01/06"
+        },
+        {
+            "username": "ZhongkaiSun",
+            "restaurantName": "Popeyes",
+            "star": 5,
+            "comment": "I would like to come again",
+            "ratingDate": "2021/01/03"
+        },
+        {
+            "username": "Nugget",
+            "restaurantName": "Popeyes",
+            "star": 5,
+            "comment": "Taste so good !!!!",
+            "ratingDate": "2022/01/06"
+        }
+    ],
+    "msg": "Successfully"
+}
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
