@@ -45,7 +45,7 @@
         </label>
         <input type="Password" name="Pass" id="Pass" placeholder="Password">
         <br>
-        <input type="checkbox" id="check">
+        <input type="checkbox" id="check" value="Remember me">
         <span style="font-size:18px">Remember me</span><a href="Forget_Password.html" style="font-size:18px">Forgot Password?</a>
         <br><br>
         <input type="button" style="background-color:#d51800" name="log" id="log" type="submit" value="Log In Here" onclick="login()">
@@ -66,7 +66,7 @@
         // var url = "http://10.136.183.231:1016/customer/login";
         var uname = document.getElementById("Uname").value;
         var pwd = document.getElementById("Pass").value;
-        var url = "http://10.136.198.238:1016";
+        var url = "http://192.168.0.147:1016";
         console.log(uname);
         console.log(pwd);
 
@@ -119,6 +119,21 @@
                 // console.log(jn_order.WD);
                 // console.log(jn_order.temp);
                 alert(jn_info.msg);
+
+                // save token in cookie for later use
+                token = jn_info.data.token;
+                document.cookie = token;
+                console.log(token);
+
+                //get token from cookie
+                // var token1 = document.cookie.split(";")[0];
+                // console.log(token1);
+
+
+                //remove token from cookie?
+
+
+
                 window.location.href="./newHome_logged.html";
                 // xmlhttp.open("GET",url + "newHome.html",true);
             }
