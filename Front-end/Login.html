@@ -66,7 +66,7 @@
         // var url = "http://10.136.183.231:1016/customer/login";
         var uname = document.getElementById("Uname").value;
         var pwd = document.getElementById("Pass").value;
-        var url = "http://192.168.0.147:1016";
+        var url = "http://10.136.106.98:1016";
         console.log(uname);
         console.log(pwd);
 
@@ -107,12 +107,12 @@
 
         xmlhttp.onreadystatechange=function()
         {
-            if ( xmlhttp.status==200)
-            {
+
+            if (xmlhttp.status == 200) {
                 // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
                 console.log(xmlhttp.responseText);
                 // var message = xmlhttp.responseText;
-                eval("var jn_info="+xmlhttp.responseText);
+                eval("var jn_info=" + xmlhttp.responseText);
                 console.log(jn_info.msg);
                 // console.log(jn_info);
                 // console.log(jn_order.ff);
@@ -121,26 +121,32 @@
                 alert(jn_info.msg);
 
                 // save token in cookie for later use
-                token = jn_info.data.token;
-                document.cookie = token;
-                console.log(token);
+                var tk = jn_info.data.token;
+                // user = uname;
+                // user = uname ;
+                // document.cookie = user;
+                // console.log(user);
+                setCookie(tk,uname,0)
 
                 //get token from cookie
+                let ca = document.cookie.split('|');
                 // var token1 = document.cookie.split(";")[0];
-                // console.log(token1);
+                // var user1 = document.cookie.split(";")[1];
+                console.log(ca[0]);
+                console.log(ca[1]);
+                console.log(ca[2]);
 
 
+                delCookie();
                 //remove token from cookie?
 
 
-
-                window.location.href="./newHome_logged.html";
+                window.location.href = "./newHome_logged.html";
                 // xmlhttp.open("GET",url + "newHome.html",true);
-            }
-            else {
-                eval("var jn_info2="+xmlhttp.responseText);
-                console.log(jn_info2.msg);
-                 alert(jn_info2.msg);
+            } else {
+                eval("var jn_info2=" + xmlhttp.responseText);
+                 console.log(jn_info2.msg);
+                alert(jn_info2.msg);
             }
 
 
@@ -149,6 +155,17 @@
         xmlhttp.send();
 
 
+    }
+
+
+    function setCookie(tk, cname, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname+ "|" + + "token="+ tk +  "|"  +   expires + "|";
+    }
+    function delCookie(){
+        document.cookie = "cname=| token=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
     }
 
 

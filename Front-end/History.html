@@ -194,8 +194,9 @@
     // var url = "http://10.136.183.231:1016/customer/login";
     // var uname = document.getElementById("Uname").value;
     // var pwd = document.getElementById("Pass").value;
-    var username = "root";
-    var url = "http://192.168.0.147:1016";
+    // var username = "root";
+    var username = document.cookie.split(";")[0];
+    var url = "http://10.136.106.98:1016";
 
     if (window.XMLHttpRequest) {
       // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
@@ -244,6 +245,8 @@
     xmlhttp.send();
 
   }
+
+
 
 
 
