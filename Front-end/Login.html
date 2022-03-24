@@ -38,7 +38,8 @@
         <label><b style="font-size:20px; font-weight:normal">User Name
         </b>
         </label>
-        <input type="text" name="Uname" id="Uname" placeholder="Username">
+        <input type="text" name="Uname" id="Uname" onkeyup="emailValidation()" placeholder="Username">
+        <span id="notice1"></span></input>
         <br><br>
         <label><b style="font-size:20px; font-weight:normal">Password
         </b>
@@ -61,12 +62,28 @@
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
     // var username = "";
+    function emailValidation(){
+        var email = document.getElementById("Uname").value;
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(email.match(mailformat))
+        {
+            document.getElementById("notice1").innerHTML="<font color='green'>Valid email address</font>";
+            document.getElementById("log").disabled = false;
+        }
+        else
+        {
+            document.getElementById("notice1").innerHTML="<font color='red'>Invalid email address!</font>";
+            document.getElementById("log").disabled = true;
+        }
+    }
+
+
     function login() {
         var xmlhttp;
         // var url = "http://10.136.183.231:1016/customer/login";
         var uname = document.getElementById("Uname").value;
         var pwd = document.getElementById("Pass").value;
-        var url = "http://10.136.106.98:1016";
+        var url = "http://192.168.0.147:1016";
         console.log(uname);
         console.log(pwd);
 

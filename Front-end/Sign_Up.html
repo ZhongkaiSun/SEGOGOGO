@@ -41,7 +41,8 @@
         <label><b style="font-size:20px; font-weight:normal">E-mail Address
         </b><br>
         </label>
-        <input type="text" name="Email" id="Email" placeholder="E-mail Address">
+        <input type="text" name="Email" id="Email" onkeyup="emailValidation()" placeholder="E-mail Address">
+        <span id="notice1"></span></input>
         <br><br>
         <label><b>Create your Password
         </b>
@@ -51,8 +52,8 @@
         <label><b>Re-enter Password
         </b>
         </label>
-        <input type="Password" name="Pass" id="RPass" onkeyup="validate()" placeholder="Re-enter Your Password">
-        <span id="notice"></span></input>
+        <input type="Password" name="Pass" id="RPass" onkeyup="passwordValidate()" placeholder="Re-enter Your Password">
+        <span id="notice2"></span></input>
         <br><br>
         <input type="checkbox" id="check" value="I agree to all the terms of service.">
         <span>I agree to all the terms of service.</span>
@@ -69,19 +70,35 @@
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
     // var username = "";
-    function validate() {
+    function passwordValidate() {
         var pwd1 = document.getElementById("CPass").value;
         var pwd2 = document.getElementById("RPass").value;
         <!-- 对比两次输入的密码 -->
         if(pwd1 == pwd2) {
-            document.getElementById("notice").innerHTML="<font color='green'>Passwords match</font>";
-            document.getElementById("submit").disabled = false;
+            document.getElementById("notice2").innerHTML="<font color='green'>Passwords match</font>";
+            document.getElementById("sign-up").disabled = false;
         }
         else {
-            document.getElementById("notice").innerHTML="<font color='red'>Passwords do not match</font>";
-            document.getElementById("submit").disabled = true;
+            document.getElementById("notice2").innerHTML="<font color='red'>Passwords do not match</font>";
+            document.getElementById("sign-up").disabled = true;
         }
     }
+
+    function emailValidation(){
+        var email = document.getElementById("Email").value;
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(email.match(mailformat))
+        {
+            document.getElementById("notice1").innerHTML="<font color='green'>Valid email address</font>";
+            document.getElementById("sign-up").disabled = false;
+        }
+        else
+        {
+            document.getElementById("notice1").innerHTML="<font color='red'>Invalid email address!</font>";
+            document.getElementById("sign-up").disabled = true;
+        }
+    }
+
     function signup() {
         var xmlhttp;
         // var url = "http://10.136.183.231:1016/customer/login";
