@@ -13,6 +13,8 @@ import (
 )
 
 func DeleteUser(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Header("Access-Control-Allow-Origin", "*")
 	// Get the database engine and bind objects
 	DB := common.GetDB()
 	var requestCustomer model.Customer
@@ -45,6 +47,8 @@ func DeleteUser(c *gin.Context) {
 
 func Login(c *gin.Context) {
 	// Get the database engine and bind objects
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Header("Access-Control-Allow-Origin", "*")
 	DB := common.GetDB()
 	var requestCustomer model.Customer
 	err := c.ShouldBindQuery(&requestCustomer)
@@ -66,7 +70,6 @@ func Login(c *gin.Context) {
 	targetCustomer := model.Customer{}
 	DB.Where("username = ?", username).First(&targetCustomer)
 	if targetCustomer.Password != password {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The password is wrong"})
 		return
 	}
@@ -74,12 +77,9 @@ func Login(c *gin.Context) {
 	// Release the token
 	token, err := common.ReleaseToken(targetCustomer)
 	if err != nil {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "系统异常"})
-		log.Printf("token generate error : %v", err)
 		return
 	}
-	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"token": token}, "msg": "Successfully log in"})
 }
 
@@ -90,6 +90,8 @@ func Login(c *gin.Context) {
 // 	address_line2 VARCHAR ( 50 ),
 // 	phone VARCHAR ( 50 ) );
 func Register(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Header("Access-Control-Allow-Origin", "*")
 	// Get the database engine
 	DB := common.GetDB()
 	var requestCustomer model.Customer
@@ -110,19 +112,16 @@ func Register(c *gin.Context) {
 
 	// Verification
 	if isCustomerExist(DB, username) || username == "" {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The user already exists"})
 		return
 	}
 
 	if len(phone) != 10 {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "len of phone must be 10"})
 		return
 	}
 
 	if len(password) < 6 {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "len of pwd must be longer than 6"})
 		return
 	}
@@ -140,22 +139,21 @@ func Register(c *gin.Context) {
 
 	token, err := common.ReleaseToken(newCustomer)
 	if err != nil {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "system error"})
 		log.Printf("token generate error : %v", err)
 		return
 	}
-	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"token": token}, "msg": "Successfully"})
 }
 
 func ReadUser(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Header("Access-Control-Allow-Origin", "*")
 	DB := common.GetDB()
 	//var requestCustomer model.Customer
 	token := c.Param("token")
 	err := c.Bind(&token)
 	if err != nil {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
@@ -169,21 +167,18 @@ func ReadUser(c *gin.Context) {
 	_, claims, err := common.ParseToken(token)
 
 	if err != nil {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "系统异常"})
 		log.Printf("token generate error : %v", err)
 		return
 	}
 	fmt.Println("username: " + claims.Username)
 	if !isCustomerExist(DB, claims.Username) || claims.Username == "" {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
 		return
 	}
 	var user model.Customer
 	DB.Where("username = ?", claims.Username).First(&user)
 	log.Println("zipcode: " + user.Zipcode)
-	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": user, "msg": "Successfully"})
 }
 

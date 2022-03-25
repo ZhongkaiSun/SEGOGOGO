@@ -14,10 +14,11 @@ import (
 
 //可以输入餐厅名字查找，若无输入则展示全部餐厅
 func ReadRestaurant(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Header("Access-Control-Allow-Origin", "*")
 	DB := common.GetDB()
 	var requestRestaurant model.Restaurant
 	err := c.ShouldBindQuery(&requestRestaurant)
-	c.Header("Access-Control-Allow-Origin", "*")
 	if err != nil {
 		c.JSON(422, gin.H{
 			"msg":   "Binding error",

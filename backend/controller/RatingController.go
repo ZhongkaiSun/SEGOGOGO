@@ -18,6 +18,8 @@ import (
 // 	RatingDate   string `gorm:"type:varchar(50)" json:"ratingDate"`
 // }
 func CreateRating(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Header("Access-Control-Allow-Origin", "*")
 	DB := common.GetDB()
 	var requestRating model.Rating
 	err := c.ShouldBindJSON(&requestRating)
@@ -36,13 +38,11 @@ func CreateRating(c *gin.Context) {
 	comment := requestRating.Comment
 	ratingDate := requestRating.RatingDate
 	if !isCustomerExist(DB, username) || username == "" {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Customer does not exist"})
 		return
 	}
 
 	if !isRestaurantExist(DB, restaurantName) || restaurantName == "" {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant does not exist"})
 		return
 	}
@@ -55,16 +55,16 @@ func CreateRating(c *gin.Context) {
 		RatingDate:     ratingDate,
 	}
 	DB.Create(&newRating)
-	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }
 
 func GetRating(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Header("Access-Control-Allow-Origin", "*")
 	DB := common.GetDB()
 	var requestRating model.Rating
 	err := c.ShouldBindQuery(&requestRating)
 	if err != nil {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
@@ -75,14 +75,12 @@ func GetRating(c *gin.Context) {
 
 	restaurantName := requestRating.RestaurantName
 	if !isRestaurantExist(DB, restaurantName) || restaurantName == "" {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant does not exist!"})
 		return
 	}
 
 	targetRatings := []model.Rating{}
 	DB.Where("restaurant_name = ?", restaurantName).Find(&targetRatings)
-	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": targetRatings, "msg": "Successfully"})
 }
 
