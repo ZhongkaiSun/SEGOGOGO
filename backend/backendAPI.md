@@ -115,6 +115,47 @@ Parameters:
 - **200**: No error
 - **422**: Internal Server Error
 
+### 4. Read DeleCustomerte API
+
+```java
+GET    http://localhost:1016/customer/read
+```
+
+Read the customer's information if the token is valid
+
+#### *Example Request*
+
+```java
+GET    http://localhost:1016/customer/token_value
+```
+
+Parameters:
+
+
+#### *Example Response*
+
+```java
+"code": 200,
+    "data": {
+        "username": "root",
+        "password": "123456",
+        "addressLine1": "3824 SW Archer Road",
+        "addressLine2": "Apt 5-501",
+        "phone": "7839291765",
+        "email": "kdlaif@gmail.com",
+        "city": "",
+        "state": "",
+        "zipcode": ""
+    },
+    "msg": "Successfully"
+}
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
+
 ## Rating API
 
 ### 1. Rating Create API
