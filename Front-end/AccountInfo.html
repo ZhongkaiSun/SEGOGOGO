@@ -105,86 +105,67 @@
 </div>
 </div>
 
-<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<!-- 包括所有已编译的插件 -->
-<script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-  // var username = "";
-  function profile() {
+  window.onload = function(){
+
+    load();
+  }
+
+  function load() {
+
+    //get token from cookie
+    var username = document.cookie.split("|")[0].substring(6);
+    var token = document.cookie.split("|")[1].substring(6);
+    console.log(username);
+    console.log(token);
     var xmlhttp;
     // var url = "http://10.136.183.231:1016/customer/login";
-    var uname = document.getElementById("Uname").value;
-    var pwd = document.getElementById("Pass").value;
+    // var uname = document.getElementById("Uname").value;
+    // var pwd = document.getElementById("Pass").value;
+    // var username = "root";
+
+    //var url = "http://10.136.106.98:1016";
     var url = "http://192.168.0.147:1016";
-    console.log(uname);
-    console.log(pwd);
-
-    if (window.XMLHttpRequest)
-    {
+    var username = document.cookie.split("|")[0].substring(6);
+    var tk = document.cookie.split("|")[1].substring(6);
+    console.log(username);
+    console.log(tk);
+    if (window.XMLHttpRequest) {
       // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-      xmlhttp=new XMLHttpRequest();
-    }
-    else
-    {
+      xmlhttp = new XMLHttpRequest();
+    } else {
       // IE6, IE5 浏览器执行代码
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    // xmlhttp.onreadystatechange=function()
-    // {
-    //     if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    //     {
-    //         // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-    //         xmlhttp.open("GET","Home.html",true);
-    //     }
-    // }
-    // xmlhttp.open("GET","/try/ajax/gethint.php?q=",true);
-    // xmlhttp.send();
-    // /customer/login?username=ZhongkaiSun&password=123456
-    // xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
-    // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
-    // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    // xmlhttp.send(JSON.stringify({
-    //     'username':uname,
-    //     "password":pwd,
-    //     "addressLine1" : "4000 SW 23rd St",
-    //     "addressLine2" : "Apt 2-301",
-    //     "phone" : "3523280576",
-    //     "email" : "pipikai1204@gmail.com"}));
-    // xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.status==200) {
+        console.log(this.responseText);
+        // var jn_order = eval(xmlhttp.responseText);
+        // eval("var jn_order="+xmlhttp.responseText);
+        var jn_order = JSON.parse( xmlhttp.responseText );
+        // console.log(jn_order);
+        for(let i = 0 ; i < jn_order.data.length ; i ++ ){
+          document.getElementById("name" + i.toString() ).innerHTML=jn_order.data[i].name;
+          document.getElementById("typeofMeal" + i.toString() ).innerHTML=jn_order.data[i].typeofMeal;
+          document.getElementById("rating" + i.toString() ).innerHTML=jn_order.data[i].rating;
+          document.getElementById("fee" + i.toString() ).innerHTML=jn_order.data[i].deliveryFee;
+        }
 
-    xmlhttp.onreadystatechange=function()
-    {
-      if ( xmlhttp.status==200)
-      {
-        // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-        console.log(xmlhttp.responseText);
-        // var message = xmlhttp.responseText;
-        eval("var jn_info="+xmlhttp.responseText);
-        console.log(jn_info.msg);
-        // console.log(jn_info);
-        // console.log(jn_order.ff);
-        // console.log(jn_order.WD);
-        // console.log(jn_order.temp);
-        alert(jn_info.msg);
-        window.location.href="./newHome_logged.html";
-        // xmlhttp.open("GET",url + "newHome.html",true);
+
       }
-      else {
-        eval("var jn_info2="+xmlhttp.responseText);
-        console.log(jn_info2.msg);
-        alert(jn_info2.msg);
+      else{
+        alert("Please login to check personal information!")
       }
-
-
     }
-    xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
+
+    xmlhttp.open("GET", url + "/customer/personalInfo?username=" + username, true);
     xmlhttp.send();
 
-
   }
+
+
 
 
 
