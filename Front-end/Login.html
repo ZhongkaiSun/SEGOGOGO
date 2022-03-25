@@ -15,43 +15,182 @@
     <link rel="stylesheet" href="css/bootstrap-utilities.css" >
     <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css" >
 
+
     <!--引入login格式-->
     <link rel="stylesheet" type="text/css" href="css/login.css">
 
     <script src="js/bootstrap.bundle.js" ></script>
     <script src="js/bootstrap.esm.js" ></script>
     <script src="js/bootstrap.js" ></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <div class="login">
-        <form id="login" method="get" action="login.php">
-            <a href="Home.html">
-                <img width="150" src="gator_logo.png" class="center">
-            </a>
-            <h2 style="color:#000000;font-size:40px;">Login</h2>
-            <label><b style="font-size:20px; font-weight:normal">User Name
-            </b>
-            </label>
-            <input type="text" name="Uname" id="Uname" placeholder="Username">
-            <br><br>
-            <label><b style="font-size:20px; font-weight:normal">Password
-            </b>
-            </label>
-            <input type="Password" name="Pass" id="Pass" placeholder="Password">
-            <br>
-            <input type="checkbox" id="check">
-            <span style="font-size:18px">Remember me</span><a href="Forget_Password.html" style="font-size:18px">Forgot Password?</a>
-            <br><br>
-            <input type="button" style="background-color:#d51800" name="log" id="log" value="Log In Here" onclick="window.location='Home_loggedin.html'">
-            <br><br>
-            <input type="button" style="background-color:#d51800" name="log" id="sign-up" value="Sign up" onclick="window.location='Sign_Up.html'">
-            <br><br>
-        </form>
-    </div>
+<div class="login">
+    <form id="login" method="get" action="login.php">
+        <a href="./newHome.html">
+            <img width="150" src="gator_logo.png" class="center">
+        </a>
+        <h2 style="color:#000000;font-size:40px;">Login</h2>
+        <label><b style="font-size:20px; font-weight:normal">User Name
+        </b>
+        </label>
+        <input type="text" name="Uname" id="Uname"  placeholder="Username">
+        <span id="notice1"></span></input>
+        <br><br>
+        <label><b style="font-size:20px; font-weight:normal">Password
+        </b>
+        </label>
+        <input type="Password" name="Pass" id="Pass" placeholder="Password">
+        <br>
+        <input type="checkbox" id="check" value="Remember me">
+        <span style="font-size:18px">Remember me</span><a href="Forget_Password.html" style="font-size:18px">Forgot Password?</a>
+        <br><br>
+        <input type="button" style="background-color:#d51800" name="log" id="log" type="submit" value="Log In Here" onclick="login()">
+        <br><br>
+        <input type="button" style="background-color:#d51800" name="log" id="sign-up" value="Sign up" onclick="window.location='Sign_Up.html'">
+        <br><br>
+    </form>
+</div>
 
-    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    // var username = "";
+    function emailValidation(){
+        var email = document.getElementById("Uname").value;
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(email.match(mailformat))
+        {
+            document.getElementById("notice1").innerHTML="<font color='green'>Valid email address</font>";
+            document.getElementById("log").disabled = false;
+        }
+        else
+        {
+            document.getElementById("notice1").innerHTML="<font color='red'>Invalid email address!</font>";
+            document.getElementById("log").disabled = true;
+        }
+    }
+
+
+    function login() {
+        var xmlhttp;
+        // var url = "http://10.136.183.231:1016/customer/login";
+        var uname = document.getElementById("Uname").value;
+        var pwd = document.getElementById("Pass").value;
+        var url = "http://10.136.122.93:1016";
+
+        console.log(uname);
+        console.log(pwd);
+
+        if (window.XMLHttpRequest)
+        {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        // xmlhttp.onreadystatechange=function()
+        // {
+        //     if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        //     {
+        //         // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+        //         xmlhttp.open("GET","Home.html",true);
+        //     }
+        // }
+        // xmlhttp.open("GET","/try/ajax/gethint.php?q=",true);
+        // xmlhttp.send();
+        // /customer/login?username=ZhongkaiSun&password=123456
+        // xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
+        // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+        // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        // xmlhttp.send(JSON.stringify({
+        //     'username':uname,
+        //     "password":pwd,
+        //     "addressLine1" : "4000 SW 23rd St",
+        //     "addressLine2" : "Apt 2-301",
+        //     "phone" : "3523280576",
+        //     "email" : "pipikai1204@gmail.com"}));
+        // xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
+        delCookie();
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState == 4) {
+                if (xmlhttp.status == 200) {
+                    // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                    console.log(xmlhttp.responseText);
+                    // var message = xmlhttp.responseText;
+                    eval("var jn_info=" + xmlhttp.responseText);
+                    console.log(jn_info.msg);
+                    // console.log(jn_info);
+                    // console.log(jn_order.ff);
+                    // console.log(jn_order.WD);
+                    // console.log(jn_order.temp);
+                    alert(jn_info.msg);
+
+                    // save token in cookie for later use
+                    var tk = jn_info.data.token;
+                    // user = uname;
+                    // user = uname ;
+                    // document.cookie = user;
+                    // console.log(user);
+                    setCookie(tk,uname,0)
+
+                    //get token from cookie
+                    let ca = document.cookie.split('|');
+                    // var token1 = document.cookie.split(";")[0];
+                    // var user1 = document.cookie.split(";")[1];
+                    console.log(ca[0]);
+                    console.log(ca[1]);
+                    console.log(ca[2]);
+                    console.log(document.cookie);
+
+
+
+                    //remove token from cookie?
+
+
+                    window.location.href = "./newHome_logged.html";
+                    // xmlhttp.open("GET",url + "newHome.html",true);
+                } else {
+                    eval("var jn_info2=" + xmlhttp.responseText);
+                    console.log(jn_info2.msg);
+                    alert(jn_info2.msg);
+                }
+            }
+
+
+
+        }
+        xmlhttp.open("GET",url +"/customer/login?username=" + uname +"&password=" + pwd  ,true);
+        xmlhttp.send();
+
+
+    }
+
+
+    function setCookie(tk, cname, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|"  +  "expires=" + expires + "|";
+    }
+    function delCookie(){
+        document.cookie = "cname=| token=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
+    }
+
+
+
+</script>
 </body>
 </html>

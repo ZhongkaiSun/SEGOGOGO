@@ -65,7 +65,7 @@
             </div>
 
             <form class="d-flex" role="form" >
-                <a href="Home.html" class="btn btn-danger" role="button">Log out</a>
+                <a href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log out</a>
                 <!--                <button type="button" class="btn btn-danger" >Login</button>-->
             </form>
         </div>
@@ -74,7 +74,7 @@
 <h1> </h1>
 
 <!--restaurant name-->
-<h1 class="pl-4" style="font-family: Arial">Chick-Fil-A </h1>
+<h1 class="pl-4" style="font-family: Arial; margin-left: 50px">Popeyes </h1>
 
 
 <div class="col-12 mt-4">
@@ -192,7 +192,57 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    window.onload = function(){
 
+        load();
+    }
+
+    function load() {
+
+        //get token from cookie
+
+
+        var xmlhttp;
+        //var url = "http://10.136.106.98:1016";
+        var url = "http://10.136.122.93:1016";
+        //var username = document.cookie.split("|")[0].substring(6);
+        //var tk = document.cookie.split("|")[1].substring(6);
+        //console.log(username);
+        //console.log(tk);
+
+        //var pass = document.getElementById("CPass").value;
+        var restaurantName = "Popeyes";
+        if (window.XMLHttpRequest) {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4){
+                if (xmlhttp.status==200) {
+                    console.log(this.responseText);
+                    eval("var foodList="+xmlhttp.responseText);
+                    console.log(foodList);
+                    console.log(foodList.msg);
+                }
+            }
+
+        }
+
+        xmlhttp.open("GET", url + "/cuisine/read?restaurantName=" + restaurantName, true);
+        xmlhttp.send();
+    }
+
+
+
+
+
+</script>
 
 
 

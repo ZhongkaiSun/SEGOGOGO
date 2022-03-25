@@ -33,7 +33,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="Home_loggedin.html">Home</a>
+          <a class="nav-link active" aria-current="page" href="newHome_logged.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="History.html">History</a>
@@ -65,7 +65,7 @@
       </div>
 
       <form class="d-flex" role="form" >
-        <a href="Home.html" class="btn btn-danger" role="button">Log out</a>
+        <a href="newHome.html" class="btn btn-danger" role="button">Log out</a>
         <!--                <button type="button" class="btn btn-danger" >Login</button>-->
       </form>
     </div>
@@ -82,27 +82,94 @@
         <h2 class="text-right">Profile Settings</h2>
       </div>
       <div class="row mt-2">
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" id="Uname">Name</label><input type="text" class="form-control" placeholder="user name" value=""></div>
       </div>
       <div class="row mt-3">
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div><br/><br/>
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">E-mail Address</label><input type="text" class="form-control" placeholder="enter email address" value=""></div>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="mobileNumber">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div><br/><br/>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="email">E-mail Address</label><input type="text" class="form-control" placeholder="enter email address" value=""></div>
       </div>
       <div class="row mt-3">
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Area</label><input type="text" class="form-control" placeholder="Area" value=""></div>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="address1">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="address2">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="city">City</label><input type="text" class="form-control" placeholder="City" value=""></div>
       </div>
       <div class="row mt-3">
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">State</label><input type="text" class="form-control" placeholder="State" value=""></div>
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Postcode</label><input type="text" class="form-control" value="" placeholder="Postcode"></div>
+        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" id="state">State</label><input type="text" class="form-control" placeholder="State" value=""></div>
+        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" id="zipcode">ZIPcode</label><input type="text" class="form-control" value="" placeholder="ZIP code"></div>
       </div>
 
-      <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Changes</button></div>
+      <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" onclick="profile()">Save Changes</button></div>
     </div>
   </div>
 </div>
 </div>
+
+<script type="text/javascript">
+  window.onload = function(){
+
+    load();
+  }
+
+  function load() {
+
+    //get token from cookie
+    var username = document.cookie.split("|")[0].substring(6);
+    var token = document.cookie.split("|")[1].substring(6);
+    console.log(username);
+    console.log(token);
+    var xmlhttp;
+    // var url = "http://10.136.183.231:1016/customer/login";
+    // var uname = document.getElementById("Uname").value;
+    // var pwd = document.getElementById("Pass").value;
+    // var username = "root";
+
+    //var url = "http://10.136.106.98:1016";
+    var url = "http://192.168.0.147:1016";
+    var username = document.cookie.split("|")[0].substring(6);
+    var tk = document.cookie.split("|")[1].substring(6);
+    console.log(username);
+    console.log(tk);
+    if (window.XMLHttpRequest) {
+      // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+      xmlhttp = new XMLHttpRequest();
+    } else {
+      // IE6, IE5 浏览器执行代码
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+
+    xmlhttp.onreadystatechange = function () {
+      if(xmlhttp.readyState == 4){
+        if (xmlhttp.status==200) {
+          console.log(this.responseText);
+          // var jn_order = eval(xmlhttp.responseText);
+          // eval("var jn_order="+xmlhttp.responseText);
+          //var jn_order = JSON.parse( xmlhttp.responseText );
+          var personalInfo = JSON.parse( xmlhttp.responseText );
+
+          // console.log(jn_order);
+          document.getElementById("Uname").innerHTML=personalInfo.data.Uname;
+          document.getElementById("mobileNumber").innerHTML=personalInfo.data.mobileNumber;
+          document.getElementById("email").innerHTML=personalInfo.data.email;
+          document.getElementById("address1").innerHTML=personalInfo.data.address1;
+          document.getElementById("address2").innerHTML=personalInfo.data.address2;
+          document.getElementById("city").innerHTML=personalInfo.data.city;
+          document.getElementById("state").innerHTML=personalInfo.data.state;
+          document.getElementById("zipcode").innerHTML=personalInfo.data.zipcode;
+        }
+      }
+
+    }
+
+    xmlhttp.open("GET", url + "/customer/personalInfo?username=" + username, true);
+    xmlhttp.send();
+
+  }
+
+
+
+
+
+</script>
 </body>
 </html>

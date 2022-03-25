@@ -46,6 +46,25 @@ label{
 
 }
 
+#Pass1{
+    width: 320px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 8px;
+
+}
+
+#Pass2{
+    width: 320px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 8px;
+
+}
+
+
 #Fname{
     width: 300px;
     height: 40px;
