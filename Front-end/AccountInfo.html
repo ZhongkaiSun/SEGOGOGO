@@ -124,7 +124,7 @@
     // var username = "root";
 
     //var url = "http://10.136.106.98:1016";
-    var url = "http://192.168.0.147:1016";
+    var url = "http://10.136.5.204:1016";
     var username = document.cookie.split("|")[0].substring(6);
     var tk = document.cookie.split("|")[1].substring(6);
     console.log(username);
@@ -146,13 +146,12 @@
           // eval("var jn_order="+xmlhttp.responseText);
           //var jn_order = JSON.parse( xmlhttp.responseText );
           var personalInfo = JSON.parse( xmlhttp.responseText );
-
-          // console.log(jn_order);
-          document.getElementById("Uname").innerHTML=personalInfo.data.Uname;
-          document.getElementById("mobileNumber").innerHTML=personalInfo.data.mobileNumber;
+          console.log(personalInfo);
+          document.getElementById("Uname").innerHTML=personalInfo.data.username;
+          document.getElementById("mobileNumber").innerHTML=personalInfo.data.phone;
           document.getElementById("email").innerHTML=personalInfo.data.email;
-          document.getElementById("address1").innerHTML=personalInfo.data.address1;
-          document.getElementById("address2").innerHTML=personalInfo.data.address2;
+          document.getElementById("address1").innerHTML=personalInfo.data.addressLine1;
+          document.getElementById("address2").innerHTML=personalInfo.data.addressLine2;
           document.getElementById("city").innerHTML=personalInfo.data.city;
           document.getElementById("state").innerHTML=personalInfo.data.state;
           document.getElementById("zipcode").innerHTML=personalInfo.data.zipcode;
@@ -161,7 +160,7 @@
 
     }
 
-    xmlhttp.open("GET", url + "/customer/personalInfo?username=" + username, true);
+    xmlhttp.open("GET", url + "/customer/read/" + token, true);
     xmlhttp.send();
 
   }
