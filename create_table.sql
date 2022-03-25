@@ -32,7 +32,11 @@ CREATE TABLE customers (
 	address_line1 VARCHAR ( 50 ) NOT NULL, 
 	address_line2 VARCHAR ( 50 ), 
 	phone VARCHAR ( 50 ),
-	email VARCHAR ( 50 ) );
+	email VARCHAR ( 50 ) ,
+	city VARCHAR ( 50 ),
+	state VARCHAR ( 50 ),
+	zipcode VARCHAR ( 50 ));
+
 
 CREATE TABLE ratings ( 
 	id int PRIMARY KEY AUTO_INCREMENT, 
