@@ -12,10 +12,17 @@ import (
 )
 
 func CreateOrder(c *gin.Context) {
+	if c.Request.Method == "OPTIONS" {
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.AbortWithStatus(204)
+		return
+	}
 	DB := common.GetDB()
 	var requestOrder model.Order
 	err := c.ShouldBindJSON(&requestOrder)
 	if err != nil {
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
 		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(422, gin.H{
 			"msg":   "Binding error",
@@ -31,11 +38,11 @@ func CreateOrder(c *gin.Context) {
 	cuisineName := requestOrder.CuisineName
 	//避免反复提交订单
 	if isOrderExsit(DB, username, orderDate, cuisineName) {
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
 		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The order already exists"})
 		return
 	}
-
 	newOrder := model.Order{
 		Username:       username,
 		RestaurantName: restaurantName,
@@ -44,6 +51,7 @@ func CreateOrder(c *gin.Context) {
 		CuisineName:    cuisineName,
 	}
 	DB.Create(&newOrder)
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
 	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": nil, "msg": "Successfully"})
 }

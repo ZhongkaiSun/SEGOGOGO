@@ -48,7 +48,7 @@ func CuisineRoute(r *gin.Engine) *gin.Engine {
 
 func OrderRoute(r *gin.Engine) *gin.Engine {
 	orderRoutes := r.Group("/order")
-	orderRoutes.POST("create", controller.CreateOrder)
+	orderRoutes.Any("create", controller.CreateOrder)
 	orderRoutes.GET("read", controller.ReadOrder)
 	return r
 }

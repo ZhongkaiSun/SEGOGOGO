@@ -3,6 +3,7 @@ package controller
 import (
 	"backend/common"
 	"backend/model"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -16,8 +17,8 @@ func ReadRestaurant(c *gin.Context) {
 	DB := common.GetDB()
 	var requestRestaurant model.Restaurant
 	err := c.ShouldBindQuery(&requestRestaurant)
+	c.Header("Access-Control-Allow-Origin", "*")
 	if err != nil {
-		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(422, gin.H{
 			"msg":   "Binding error",
 			"error": err,
@@ -25,25 +26,25 @@ func ReadRestaurant(c *gin.Context) {
 		})
 		return
 	}
-	name := requestRestaurant.Name
 
+	name := requestRestaurant.Name
+	typeOfMeal := requestRestaurant.TypeofMeal
 	//name? resId?? unique
 	if name != "" {
 		if !isRestaurantNameExsit(DB, name) {
-			c.Header("Access-Control-Allow-Origin", "*")
 			c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "Restaurant doesn't exist, please search a valid restaurant"})
 			return
 		} else {
 			var newRestaurant model.Restaurant
 			DB.Where("name = ?", name).First(&newRestaurant)
-			c.Header("Access-Control-Allow-Origin", "*")
 			c.JSON(http.StatusOK, gin.H{"code": 200, "data": newRestaurant, "msg": "Successfully"})
 		}
-	} else { //get all restaurants
+	} else if typeOfMeal != "" { //get all restaurants
 		var newRestaurantList []model.Restaurant
-		DB.Find(&newRestaurantList)
-		c.Header("Access-Control-Allow-Origin", "*")
+		DB.Where("typeof_meal = ?", typeOfMeal).Find(&newRestaurantList)
 		c.JSON(http.StatusOK, gin.H{"code": 200, "data": newRestaurantList, "msg": "Successfully"})
+	} else {
+		fmt.Println("all empty")
 	}
 }
 
