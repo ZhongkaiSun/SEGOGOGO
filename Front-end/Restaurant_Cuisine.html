@@ -74,8 +74,9 @@
 
 <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center" >
     <li id="american" >
-        <div href="#"><img height="180"   src="img/american.png" alt="list item 1" />
-            <h2 style="position: center;">American</h2>
+        <div style="text-align: center"  href="#" >
+            <img height="180"   src="img/american.png" alt="list item 1" onclick="load()"/>
+            <h2 style="position: center;font-size:30px;">American</h2>
             <div style="clear:left"></div>
         </div>
     </li>
@@ -223,6 +224,56 @@
 </div> <!-- cd-cart -->
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/main.js"></script> <!-- Gem jQuery -->
+<script type="text/javascript">
+    // window.onload = function(){
+    //
+    //     load();
+    // }
 
+    function load() {
+
+        //get token from cookie
+
+
+        var xmlhttp;
+        //var url = "http://10.136.106.98:1016";
+        var url = "http://10.136.122.93:1016";
+        //var username = document.cookie.split("|")[0].substring(6);
+        //var tk = document.cookie.split("|")[1].substring(6);
+        //console.log(username);
+        //console.log(tk);
+
+        //var pass = document.getElementById("CPass").value;
+        var typeofMeal = "Chicken";
+        if (window.XMLHttpRequest) {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4){
+                if (xmlhttp.status==200) {
+                console.log(this.responseText);
+                eval("var restaurantList="+xmlhttp.responseText);
+                console.log(restaurantList);
+                console.log(restaurantList.msg);
+                }
+            }
+
+        }
+
+        xmlhttp.open("GET", url + "/restaurant/read?typeofMeal=" + typeofMeal, true);
+        xmlhttp.send();
+    }
+
+
+
+
+
+</script>
 </body>
 </html>

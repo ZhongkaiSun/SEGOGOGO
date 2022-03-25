@@ -82,21 +82,20 @@
         <h2 class="text-right">Profile Settings</h2>
       </div>
       <div class="row mt-2">
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" id="Uname">Name</label><input type="text" class="form-control" placeholder="user name" value=""></div>
       </div>
       <div class="row mt-3">
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div><br/><br/>
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">E-mail Address</label><input type="text" class="form-control" placeholder="enter email address" value=""></div>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="mobileNumber">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div><br/><br/>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="email">E-mail Address</label><input type="text" class="form-control" placeholder="enter email address" value=""></div>
       </div>
       <div class="row mt-3">
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Area</label><input type="text" class="form-control" placeholder="Area" value=""></div>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="address1">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="address2">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+        <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" id="city">City</label><input type="text" class="form-control" placeholder="City" value=""></div>
       </div>
       <div class="row mt-3">
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">State</label><input type="text" class="form-control" placeholder="State" value=""></div>
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Postcode</label><input type="text" class="form-control" value="" placeholder="Postcode"></div>
+        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" id="state">State</label><input type="text" class="form-control" placeholder="State" value=""></div>
+        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" id="zipcode">ZIPcode</label><input type="text" class="form-control" value="" placeholder="ZIP code"></div>
       </div>
 
       <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" onclick="profile()">Save Changes</button></div>
@@ -140,24 +139,36 @@
 
 
     xmlhttp.onreadystatechange = function () {
-      if (xmlhttp.status==200) {
-        console.log(this.responseText);
-        // var jn_order = eval(xmlhttp.responseText);
-        // eval("var jn_order="+xmlhttp.responseText);
-        var jn_order = JSON.parse( xmlhttp.responseText );
-        // console.log(jn_order);
-        for(let i = 0 ; i < jn_order.data.length ; i ++ ){
-          document.getElementById("name" + i.toString() ).innerHTML=jn_order.data[i].name;
-          document.getElementById("typeofMeal" + i.toString() ).innerHTML=jn_order.data[i].typeofMeal;
-          document.getElementById("rating" + i.toString() ).innerHTML=jn_order.data[i].rating;
-          document.getElementById("fee" + i.toString() ).innerHTML=jn_order.data[i].deliveryFee;
+      if(xmlhttp.readyState == 4){
+        if (xmlhttp.status==200) {
+          console.log(this.responseText);
+          // var jn_order = eval(xmlhttp.responseText);
+          // eval("var jn_order="+xmlhttp.responseText);
+          //var jn_order = JSON.parse( xmlhttp.responseText );
+          var personalInfo = JSON.parse( xmlhttp.responseText );
+
+          // console.log(jn_order);
+          for(let i = 0 ; i < jn_order.data.length ; i ++ ){
+            document.getElementById("Uname").innerHTML=personalInfo.data.Uname;
+            document.getElementById("mobileNumber").innerHTML=personalInfo.data.mobileNumber;
+            document.getElementById("email").innerHTML=personalInfo.data.email;
+            document.getElementById("address1").innerHTML=personalInfo.data.address1;
+            document.getElementById("address2").innerHTML=personalInfo.data.address2;
+            document.getElementById("city").innerHTML=personalInfo.data.city;
+            document.getElementById("state").innerHTML=personalInfo.data.state;
+            document.getElementById("zipcode").innerHTML=personalInfo.data.zipcode;
+
+
+
+          }
+
+
         }
-
-
+        else{
+          alert("Please login to check personal information!")
+        }
       }
-      else{
-        alert("Please login to check personal information!")
-      }
+
     }
 
     xmlhttp.open("GET", url + "/customer/personalInfo?username=" + username, true);
