@@ -143,24 +143,16 @@
                     // eval("var jn_order="+xmlhttp.responseText);
                     //var jn_order = JSON.parse( xmlhttp.responseText );
                     var personalInfo = JSON.parse( xmlhttp.responseText );
+                    document.getElementById("Uname").innerHTML=personalInfo.data.Uname;
+                    document.getElementById("cardNumber").innerHTML=personalInfo.data.cardNumber;
+                    document.getElementById("exp").innerHTML=personalInfo.data.exp;
+                    document.getElementById("security").innerHTML=personalInfo.data.security;
+                    document.getElementById("address1").innerHTML=personalInfo.data.address1;
+                    document.getElementById("address2").innerHTML=personalInfo.data.address2;
+                    document.getElementById("city").innerHTML=personalInfo.data.city;
+                    document.getElementById("state").innerHTML=personalInfo.data.state;
+                    document.getElementById("zipcode").innerHTML=personalInfo.data.zipcode;
 
-                    // console.log(jn_order);
-                    for(let i = 0 ; i < jn_order.data.length ; i ++ ){
-                        document.getElementById("Uname").innerHTML=personalInfo.data.Uname;
-                        document.getElementById("cardNumber").innerHTML=personalInfo.data.cardNumber;
-                        document.getElementById("exp").innerHTML=personalInfo.data.exp;
-                        document.getElementById("security").innerHTML=personalInfo.data.security;
-                        document.getElementById("address1").innerHTML=personalInfo.data.address1;
-                        document.getElementById("address2").innerHTML=personalInfo.data.address2;
-                        document.getElementById("city").innerHTML=personalInfo.data.city;
-                        document.getElementById("state").innerHTML=personalInfo.data.state;
-                        document.getElementById("zipcode").innerHTML=personalInfo.data.zipcode;
-                    }
-
-
-                }
-                else{
-                    alert("Please login to check personal information!")
                 }
             }
 
