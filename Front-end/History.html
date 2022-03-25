@@ -18,6 +18,7 @@
   <script src="js/bootstrap.bundle.js" ></script>
   <script src="js/bootstrap.esm.js" ></script>
   <script src="js/bootstrap.js" ></script>
+  <script src="js/jquery-1.11.0.min.js"></script>
 
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -134,8 +135,8 @@
   <tr>
     <th scope="col">2</th>
     <td id="restaurantName1" ></td>
+    <td id="orderDate1"></td>
     <td id="cuisineName1"></td>
-    <td id="fee1"></td>
     <td id="price1"></td>
   </tr> <tr>
     <th scope="col">3</th>
@@ -148,7 +149,7 @@
     <th scope="col">4</th>
     <td id="restaurantName3"> </td>
     <td id="orderDate3"> </td>
-    <td id="fee3"></td>
+    <td id="cuisineName3"></td>
     <td id="price3"></td>
   </tr>
   </tr> <tr>
@@ -181,7 +182,28 @@
 
 <script src="js/index.js.js" ></script>
 <script type="text/javascript">
-  window.onload = function(){
+
+  window.onload = function () {
+
+
+      //使用getJSON读取userinfo.json文件中的数据
+      $.getJSON("config.json", function(url) {
+        console.log(JSON.stringify(url));
+        //获取jsonTip的div
+        // var $jsontip = $("#jsonTip");
+        // //存储数据的变量
+        // var strHtml = "123";
+        // //清空内容
+        // $jsontip.empty();
+        // //将获取到的json格式数据遍历到div中
+        // $.each(data, function(infoIndex, info) {
+        //   strHtml += "姓名：" + info["name"] + "<br>";
+        //   strHtml += "性别：" + info["sex"] + "<br>";
+        //   strHtml += "<hr>"
+        // })
+        // //显示处理后的数据
+        // $jsontip.html(strHtml);
+      })
 
     load();
   }
@@ -189,6 +211,7 @@
   function load() {
 
     //get token from cookie
+
 
 
     var xmlhttp;
