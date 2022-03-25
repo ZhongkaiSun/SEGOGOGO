@@ -331,7 +331,7 @@
 
     function checkOut(){
         var xmlhttp;
-        var url = "http://192.168.0.147:1016";
+        var url = "http://10.136.122.93:1016";
         var username = document.cookie.split("|")[0].substring(6);
         console.log(username);
         if (window.XMLHttpRequest) {
@@ -351,13 +351,12 @@
         }
 
         xmlhttp.open("POST",url +"/order/create");
-
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xmlhttp.send(JSON.stringify({
             "userName": username,
             "restaurantName":"Checkers",
             "orderDate":"03/24/2022",
-            "price":21.00,
+            "price":21,
             "cuisineName":"burger"}));
 
 
