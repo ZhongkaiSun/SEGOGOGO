@@ -3,6 +3,7 @@ package controller
 import (
 	"backend/common"
 	"backend/model"
+	"fmt"
 	_ "fmt"
 	"log"
 	"net/http"
@@ -146,6 +147,44 @@ func Register(c *gin.Context) {
 	}
 	c.Header("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"token": token}, "msg": "Successfully"})
+}
+
+func ReadUser(c *gin.Context) {
+	DB := common.GetDB()
+	//var requestCustomer model.Customer
+	token := c.Param("token")
+	err := c.Bind(&token)
+	if err != nil {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.JSON(422, gin.H{
+			"msg":   "Binding error",
+			"error": err,
+			"data":  gin.H{},
+		})
+		return
+	}
+
+	log.Println("token: " + token)
+	//parse token
+	_, claims, err := common.ParseToken(token)
+
+	if err != nil {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "系统异常"})
+		log.Printf("token generate error : %v", err)
+		return
+	}
+	fmt.Println("username: " + claims.Username)
+	if !isCustomerExist(DB, claims.Username) || claims.Username == "" {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
+		return
+	}
+	var user model.Customer
+	DB.Where("username = ?", claims.Username).First(&user)
+	log.Println("zipcode: " + user.Zipcode)
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": user, "msg": "Successfully"})
 }
 
 func isCustomerExist(db *gorm.DB, username string) bool {

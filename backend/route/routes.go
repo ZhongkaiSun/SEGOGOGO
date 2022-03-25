@@ -27,6 +27,7 @@ func CustomerRoute(r *gin.Engine) *gin.Engine {
 	customerRoutes.POST("/register", controller.Register)
 	customerRoutes.GET("/login", controller.Login)
 	customerRoutes.GET("/delete", controller.DeleteUser)
+	customerRoutes.GET("/read/:token", controller.ReadUser)
 	return r
 }
 

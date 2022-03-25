@@ -13,4 +13,9 @@ type Customer struct {
 	AddressLine2 string `gorm:"type:varchar(50)" json:"addressLine2"`
 	Phone        string `gorm:"type:varchar(50)" json:"phone"`
 	Email        string `gorm:"type:varchar(50)" json:"email"`
+	City         string `gorm:"type:varchar(50)" json:"city"`
+	State        string `gorm:"type:varchar(50)" json:"state"`
+	Zipcode      string `gorm:"type:varchar(50)" json:"zipcode"`
 }
+
+//payment api (create, read)

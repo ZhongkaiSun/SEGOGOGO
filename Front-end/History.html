@@ -115,10 +115,10 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">name</th>
-    <th scope="col">Cuisines message</th>
-    <th scope="col">Deliver fee</th>
-    <th scope="col">rating</th>
+    <th scope="col">restaurantName</th>
+    <th scope="col">Date</th>
+    <th scope="col">cuisineName</th>
+    <th scope="col">Total price</th>
 <!--    // total-->
 
   </tr>
@@ -126,30 +126,30 @@
   <tbody>
   <tr>
     <th scope="col">1</th>
-    <td id="name0" ></td>
-    <td id="typeofMeal0"></td>
-    <td id="fee0"></td>
-    <td id="rating0"></td>
+    <td id="restaurantName0" ></td>
+    <td id="orderDate0"></td>
+    <td id="cuisineName0"></td>
+    <td id="price0"></td>
   </tr>
   <tr>
     <th scope="col">2</th>
-    <td id="name1" ></td>
-    <td id="typeofMeal1"></td>
+    <td id="restaurantName1" ></td>
+    <td id="cuisineName1"></td>
     <td id="fee1"></td>
-    <td id="rating1"></td>
+    <td id="price1"></td>
   </tr> <tr>
     <th scope="col">3</th>
-    <td id="name2"></td>
-    <td id="typeofMeal2"></td>
-    <td id="fee2"></td>
-    <td id="rating2"></td>
+    <td id="restaurantName2"></td>
+    <td id="orderDate2"></td>
+    <td id="cuisineName2"></td>
+    <td id="price2"></td>
   </tr>
   </tr> <tr>
     <th scope="col">4</th>
-    <td id="name3"> </td>
-    <td id="typeofMeal3"> </td>
+    <td id="restaurantName3"> </td>
+    <td id="orderDate3"> </td>
     <td id="fee3"></td>
-    <td id="rating3"></td>
+    <td id="price3"></td>
   </tr>
   </tr> <tr>
     <th scope="col">5</th>
@@ -178,6 +178,8 @@
   </tr>
   </tbody>
 </table>
+
+<script src="js/index.js.js" ></script>
 <script type="text/javascript">
   window.onload = function(){
 
@@ -194,9 +196,7 @@
     // var uname = document.getElementById("Uname").value;
     // var pwd = document.getElementById("Pass").value;
     // var username = "root";
-
-    //var url = "http://10.136.106.98:1016";
-    var url = "http://192.168.0.147:1016";
+    var url = "http://10.136.122.93:1016";
     var username = document.cookie.split("|")[0].substring(6);
     var tk = document.cookie.split("|")[1].substring(6);
     console.log(username);
@@ -218,17 +218,17 @@
           var jn_order = JSON.parse( xmlhttp.responseText );
           // console.log(jn_order);
           for(let i = 0 ; i < jn_order.data.length ; i ++ ){
-            document.getElementById("name" + i.toString() ).innerHTML=jn_order.data[i].name;
-            document.getElementById("typeofMeal" + i.toString() ).innerHTML=jn_order.data[i].typeofMeal;
-            document.getElementById("rating" + i.toString() ).innerHTML=jn_order.data[i].rating;
-            document.getElementById("fee" + i.toString() ).innerHTML=jn_order.data[i].deliveryFee;
+            document.getElementById("restaurantName" + i.toString() ).innerHTML=jn_order.data[i].restaurantName;
+            document.getElementById("orderDate" + i.toString() ).innerHTML=jn_order.data[i].orderDate;
+            document.getElementById("price" + i.toString() ).innerHTML=jn_order.data[i].price;
+            document.getElementById("cuisineName" + i.toString() ).innerHTML=jn_order.data[i].cuisineName;
           }
 
 
         }
       }
 
-    xmlhttp.open("GET", url + "/restaurant/read?username=" + username, true);
+    xmlhttp.open("GET", url + "/order/read?username=" + username, true);
     xmlhttp.send();
 
   }
