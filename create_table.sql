@@ -53,6 +53,17 @@ CREATE TABLE orders (
 	price FLOAT,
 	cuisine_name varchar(100),
 	PRIMARY KEY(username, order_date, cuisine_name)
-)
+);
 
+CREATE TABLE payment (
+	username VARCHAR ( 50 ) PRIMARY KEY,
+ 	card_number VARCHAR ( 50 ),
+ 	exp_date VARCHAR ( 50 ),
+ 	security_code VARCHAR ( 50 ),
+ 	address_line1 VARCHAR ( 50 ),
+ 	address_line2 VARCHAR ( 50 ),
+ 	city VARCHAR ( 50 ),
+ 	state VARCHAR ( 50 ),
+ 	zipcode VARCHAR ( 50 )
+ );
 -- dsd
