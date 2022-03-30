@@ -25,14 +25,14 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
     <div class="container-fluid">
         <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
-        <img width="100" height="60" src="gator_logo.png" href="#" >
+        <img width="100" height="60" src="gator_logo.png" onclick="window.location='newHome_logged.html'" >
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="newHome_logged.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="History.html">History</a>
@@ -71,7 +71,7 @@
 <div class="container rounded bg-warning mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png"><span class="font-weight-bold">Gator No.1</span><span class="text-black-50">gator@ufl.edu</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png"><span class="font-weight-bold" id="name">User name</span><span class="text-black-50" id="E-mail">Email address</span><span> </span></div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -96,6 +96,8 @@
                 </div>
 
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Changes</button></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" onclick="window.location='newHome_logged.html'">Back to home</button></div>
+
             </div>
         </div>
     </div>
@@ -103,6 +105,14 @@
 </div>
 <script type="text/javascript">
     window.onload = function(){
+        var username = document.cookie.split("|")[0].substring(6);
+        var token = document.cookie.split("|")[1].substring(7);
+        console.log(username);
+        console.log(token);
+        if(token.length == 0){
+            alert("Please login first")
+            window.location.href = "./newHome_logged.html";
+        }
 
         load();
     }
@@ -143,6 +153,11 @@
                     // eval("var jn_order="+xmlhttp.responseText);
                     //var jn_order = JSON.parse( xmlhttp.responseText );
                     var personalInfo = JSON.parse( xmlhttp.responseText );
+
+                    document.getElementById("name").innerHTML=personalInfo.data.username;
+                    document.getElementById("E-name").innerHTML=personalInfo.data.email;
+
+
                     document.getElementById("Uname").innerHTML=personalInfo.data.Uname;
                     document.getElementById("cardNumber").innerHTML=personalInfo.data.cardNumber;
                     document.getElementById("exp").innerHTML=personalInfo.data.exp;
