@@ -225,11 +225,18 @@
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/main.js"></script> <!-- Gem jQuery -->
 <script type="text/javascript">
-    // window.onload = function(){
-    //
-    //     load();
-    // }
+    window.onload = function () {
+        $.ajaxSettings.async = false;
 
+        //使用getJSON读取userinfo.json文件中的数据
+        $.getJSON("config.json", function(index){
+            category = JSON.stringify(index.category).slice(1, -1);
+            console.log(category)
+            $.ajaxSettings.async = true;
+        })
+        console.log(category);
+        load();
+    }
     function load() {
 
         //get token from cookie
