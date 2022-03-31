@@ -137,8 +137,6 @@
           console.log(this.responseText);
           var personalInfo = JSON.parse( xmlhttp.responseText );
           console.log(personalInfo);
-
-
           document.getElementById("name").innerHTML=personalInfo.data.username;
 
           document.getElementById("Uname").value=personalInfo.data.username;
@@ -151,15 +149,72 @@
           document.getElementById("zipcode").value=personalInfo.data.zipcode;
         }
       }
-
     }
-
     xmlhttp.open("GET", url + "/customer/read/" + token, true);
     xmlhttp.send();
+  }
+</script>
+
+<script type="text/javascript">
+  function profile() {
+    var xmlhttp;
+    var Uname = document.getElementById("Uname").value;
+    var phone = document.getElementById("mobileNumber").value;
+    var email = document.getElementById("Email").value;
+    var addressLine1= document.getElementById("address1").value;
+    var addressLine2= document.getElementById("address2").value;
+    var city= document.getElementById("city").value;
+    var state= document.getElementById("state").value;
+    var zipcode= document.getElementById("zipcode").value;
+
+    var url = "http://10.136.70.250:1016";
+
+    if (window.XMLHttpRequest)
+    {
+      // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+      xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+      // IE6, IE5 浏览器执行代码
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange=function() {
+      if(xmlhttp.readyState == 4){
+        if ( xmlhttp.status==200)
+        {
+         // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+          console.log(xmlhttp.responseText);
+         // var message = xmlhttp.responseText;
+          eval("var jn_info="+xmlhttp.responseText);
+          console.log(jn_info.msg);
+          alert(jn_info.msg);
+          window.location.href="./AccountInfo.html";
+          // xmlhttp.open("GET",url + "newHome.html",true);
+        }
+        else{
+          var profile = JSON.parse( xmlhttp.responseText );
+          console.log(profile.msg);
+          alert(profile.msg);
+          window.location.href="./AccountInfo.html";
+        }
+      }
+    }
+    xmlhttp.open("POST", url +"/customer/register", true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send(JSON.stringify({
+      'username':Uname,
+      "phone":phone,
+      "email":email,
+      "addressLine1":addressLine1,
+      "addressLine2":addressLine2,
+      "city":city,
+      "state":state,
+      "zipcode":zipcode
+      }));
 
   }
-
-
 
 
 
