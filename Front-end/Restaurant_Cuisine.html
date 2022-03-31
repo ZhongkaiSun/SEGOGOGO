@@ -92,9 +92,10 @@
             <div class="card" style="width: 14rem; margin: 50px 50px 50px 50px;" >
                 <img src="img/Chick.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
-                    <h5 class="card-title">Chick-Fil-A</h5>
+                    <h5 class="card-title" id="restaurantName0" style="font-size: 30px;">restaurant</h5>
                     <p class="card-text"></p>
                     <a href="Restaurant.html" class="btn btn-primary">Order Now</a>
+                    <p id="rate0">rate</p>
                 </div>
             </div>
         </td>
@@ -103,9 +104,10 @@
             <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
                 <img src="img/taco_bell.jpeg" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
-                    <h5 class="card-title">Taco Bell</h5>
+                    <h5 class="card-title" id="restaurantName1" style="font-size: 30px;">restaurant</h5>
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">Order Now</a>
+                    <p id="rate1">rate</p>
                 </div>
             </div>
         </td>
@@ -114,9 +116,10 @@
             <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
                 <img src="img/chipotle.png" class="card-img-top" alt="..."  height="240">
                 <div class="card-body">
-                    <h5 class="card-title">Chipotle's</h5>
+                    <h5 class="card-title" id="restaurantName2" style="font-size: 30px;"></h5>
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">Order Now</a>
+                    <p id="rate2">rate</p>
                 </div>
             </div>
         </td>
@@ -125,9 +128,10 @@
             <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
                 <img src="img/chipotle.png" class="card-img-top" alt="..."  height="240">
                 <div class="card-body">
-                    <h5 class="card-title">Chipotle's</h5>
+                    <h5 class="card-title" id="restaurantName3"  style="font-size: 30px;">Chipotle's</h5>
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">Order Now</a>
+                    <p id="rate3">rate</p>
                 </div>
             </div>
         </td>
@@ -137,9 +141,10 @@
             <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
                 <img src="img/McDonald.jpeg" class="card-img-top" alt="..."  height="240">
                 <div class="card-body">
-                    <h5 class="card-title">McDonald's</h5>
+                    <h5 class="card-title" id="restaurantName4" style="font-size: 30px;">McDonald's</h5>
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">Order Now</a>
+                    <p id="rate4">rate</p>
                 </div>
             </div>
         </td>
@@ -148,9 +153,10 @@
             <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
                 <img src="img/panda.png" class="card-img-top" alt="..."  height="240">
                 <div class="card-body">
-                    <h5 class="card-title">Panda Express</h5>
+                    <h5 class="card-title" id="restaurantName5" style="font-size: 30px;">Panda Express</h5>
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">Order Now</a>
+                    <p id="rate5">rate</p>
                 </div>
             </div>
         </td>
@@ -159,9 +165,10 @@
             <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
                 <img src="img/windys.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
-                    <h5 class="card-title">Windy's</h5>
+                    <h5 class="card-title" id="restaurantName6" style="font-size: 30px;">Windy's</h5>
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">Order Now</a>
+                    <p id="rate6">rate</p>
                 </div>
             </div>
         </td>
@@ -170,9 +177,10 @@
             <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
                 <img src="img/windys.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
-                    <h5 class="card-title">Windy's</h5>
+                    <h5 class="card-title" id="restaurantName7" style="font-size: 30px;">Windy's</h5>
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">Order Now</a>
+                    <p id="rate7">rate</p>
                 </div>
             </div>
         </td>
@@ -259,6 +267,12 @@
                     eval("var restaurantList="+xmlhttp.responseText);
                     console.log(restaurantList);
                     console.log(restaurantList.msg);
+                    for(let i = 0 ; i < restaurantList.data.length ; i ++ ){
+                        console.log(restaurantList.data[0].name);
+                        document.getElementById("restaurantName" + i.toString() ).innerText=restaurantList.data[i].name;
+                        document.getElementById("rate" + i.toString() ).innerText='rate='+ restaurantList.data[i].rating + '/5.0';
+                        //document.getElementById("calories" + i.toString() ).innerText='Calories='+restaurantList.data[i].calories;
+                    }
                 }
             }
 
