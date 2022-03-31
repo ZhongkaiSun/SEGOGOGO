@@ -21,6 +21,7 @@
   <script src="js/bootstrap.bundle.js" ></script>
   <script src="js/bootstrap.esm.js" ></script>
   <script src="js/bootstrap.js" ></script>
+  <script src="js/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
@@ -106,8 +107,20 @@
 </div>
 
 <script type="text/javascript">
-  window.onload = function(){
+  // window.onload = function(){
+  //
+  //   load();
+  // }
+  window.onload = function () {
+    $.ajaxSettings.async = false;
 
+    //使用getJSON读取userinfo.json文件中的数据
+    $.getJSON("config.json", function(index){
+      url = JSON.stringify(index.url).slice(1, -1);
+      // console.log(JSON.stringify(index.url));
+      $.ajaxSettings.async = true;
+    })
+    console.log(url);
     load();
   }
 
@@ -121,7 +134,7 @@
     console.log(document.cookie);
     var xmlhttp;
 
-    var url = "http://10.136.70.250:1016";
+    // var url = "http://10.136.70.250:1016";
     if (window.XMLHttpRequest) {
       // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
       xmlhttp = new XMLHttpRequest();
@@ -167,7 +180,7 @@
     var state= document.getElementById("state").value;
     var zipcode= document.getElementById("zipcode").value;
 
-    var url = "http://10.136.70.250:1016";
+    // var url = "http://10.136.70.250:1016";
 
     if (window.XMLHttpRequest)
     {

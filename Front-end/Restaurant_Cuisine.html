@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
     <link rel="stylesheet" href="css/style.css"> <!-- Gem style -->
     <script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="js/jquery-1.11.0.min.js"></script>
 
 </head>
 <body>
@@ -239,10 +240,12 @@
         //使用getJSON读取userinfo.json文件中的数据
         $.getJSON("config.json", function(index){
             category = JSON.stringify(index.category).slice(1, -1);
+            url = JSON.stringify(index.url).slice(1, -1);
             console.log(category)
             $.ajaxSettings.async = true;
         })
         console.log(category);
+        console.log(url);
         document.getElementById("category").innerHTML=category;
         load();
     }
@@ -252,7 +255,7 @@
 
 
         var xmlhttp;
-        var url = "http://10.136.70.250:1016";
+        // var url = "http://10.136.70.250:1016";
         if (window.XMLHttpRequest) {
             // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
             xmlhttp = new XMLHttpRequest();

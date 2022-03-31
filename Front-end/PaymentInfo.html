@@ -20,6 +20,7 @@
     <script src="js/bootstrap.bundle.js" ></script>
     <script src="js/bootstrap.esm.js" ></script>
     <script src="js/bootstrap.js" ></script>
+    <script src="js/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
@@ -105,6 +106,15 @@
 </div>
 <script type="text/javascript">
     window.onload = function(){
+        $.ajaxSettings.async = false;
+
+        //使用getJSON读取userinfo.json文件中的数据
+        $.getJSON("config.json", function(index){
+            url = JSON.stringify(index.url).slice(1, -1);
+            // console.log(JSON.stringify(index.url));
+            $.ajaxSettings.async = true;
+        })
+
         var username = document.cookie.split("|")[0].substring(6);
         var token = document.cookie.split("|")[1].substring(7);
         console.log(username);
@@ -114,6 +124,7 @@
             window.location.href = "./newHome_logged.html";
         }
 
+        console.log(url);
         load();
     }
 
@@ -131,7 +142,7 @@
         // var username = "root";
 
         //var url = "http://10.136.106.98:1016";
-        var url = "http://192.168.0.147:1016";
+        // var url = "http://192.168.0.147:1016";
         var username = document.cookie.split("|")[0].substring(6);
         var tk = document.cookie.split("|")[1].substring(6);
         console.log(username);
