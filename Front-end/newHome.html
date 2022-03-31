@@ -115,7 +115,7 @@
     <div class="table" style="margin-top: auto;">
         <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center" >
             <li id="american" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85"   src="img/american.png" alt="list item 1" onclick="showDetails('category')"/>
+                <div href="#"><img height="85"   src="img/american.png" alt="list item 1" onclick="showDetails('American')"/>
                     <h4>American</h4>
                     <div style="clear:left"></div>
                 </div>
@@ -341,7 +341,7 @@
 
     function checkOut(){
         var xmlhttp;
-        var url = "http://10.136.122.93:1016";
+        var url = "http://10.136.70.250:1016";
         var username = document.cookie.split("|")[0].substring(6);
         console.log(username);
         if (window.XMLHttpRequest) {

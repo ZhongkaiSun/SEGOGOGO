@@ -236,15 +236,8 @@
 
 
         var xmlhttp;
-        //var url = "http://10.136.106.98:1016";
-        var url = "http://10.136.122.93:1016";
-        //var username = document.cookie.split("|")[0].substring(6);
-        //var tk = document.cookie.split("|")[1].substring(6);
-        //console.log(username);
-        //console.log(tk);
-
-        //var pass = document.getElementById("CPass").value;
-        var typeofMeal = "Chicken";
+        var url = "http://10.136.70.250:1016";
+        var typeofMeal = "American";
         if (window.XMLHttpRequest) {
             // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
             xmlhttp = new XMLHttpRequest();
@@ -269,10 +262,6 @@
         xmlhttp.open("GET", url + "/restaurant/read?typeofMeal=" + typeofMeal, true);
         xmlhttp.send();
     }
-
-
-
-
 
 </script>
 </body>
