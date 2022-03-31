@@ -334,14 +334,23 @@
 
 
 <script>
-    // $(function(){
-    //     $("#body").load("cart.html");
-    //
-    // });
+    <!--    Get index from config.json-->
+    window.onload = function () {
+        $.ajaxSettings.async = false;
+
+        //使用getJSON读取userinfo.json文件中的数据
+        $.getJSON("config.json", function(index){
+            url = JSON.stringify(index.url).slice(1, -1);
+            // console.log(JSON.stringify(index.url));
+            $.ajaxSettings.async = true;
+        })
+        console.log(url);
+        load();
+    }
 
     function checkOut(){
         var xmlhttp;
-        var url = "http://10.136.70.250:1016";
+        // var url = "http://10.136.70.250:1016";
         var username = document.cookie.split("|")[0].substring(6);
         console.log(username);
         if (window.XMLHttpRequest) {
@@ -369,7 +378,7 @@
             "restaurantName":"Chick-Fil-A",
             "orderDate":"03/25/2022",
             "price":7,
-            "cuisineName":"Drinks"}));
+            "cuisineName":"Burger"}));
 
 
 

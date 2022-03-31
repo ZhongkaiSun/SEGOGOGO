@@ -61,6 +61,19 @@
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
+<!--    Get index from config.json-->
+    window.onload = function () {
+        $.ajaxSettings.async = false;
+
+        //使用getJSON读取userinfo.json文件中的数据
+        $.getJSON("config.json", function(index){
+            url = JSON.stringify(index.url).slice(1, -1);
+            // console.log(JSON.stringify(index.url));
+            $.ajaxSettings.async = true;
+        })
+        console.log(url);
+        load();
+    }
     // var username = "";
     function emailValidation(){
         var email = document.getElementById("Uname").value;
@@ -83,7 +96,7 @@
         // var url = "http://10.136.183.231:1016/customer/login";
         var uname = document.getElementById("Uname").value;
         var pwd = document.getElementById("Pass").value;
-        var url = "http://10.136.5.204:1016";
+        // var url = "http://10.136.5.204:1016";
 
         console.log(uname);
         console.log(pwd);

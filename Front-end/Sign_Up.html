@@ -69,6 +69,19 @@
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
+    window.onload = function () {
+        $.ajaxSettings.async = false;
+
+        //使用getJSON读取userinfo.json文件中的数据
+        $.getJSON("config.json", function(index){
+            url = JSON.stringify(index.url).slice(1, -1);
+            // console.log(JSON.stringify(index.url));
+            $.ajaxSettings.async = true;
+        })
+        console.log(url);
+        load();
+    }
+
     // var username = "";
     function passwordValidate() {
         var pwd1 = document.getElementById("CPass").value;
@@ -106,7 +119,7 @@
         var email = document.getElementById("Email").value;
         var pass = document.getElementById("CPass").value;
         //var url = "http://10.136.106.98:1016";
-        var url = "http://10.136.70.250:1016";
+        // var url = "http://10.136.70.250:1016";
         console.log(Uname);
         console.log(email);
         console.log(pass);
