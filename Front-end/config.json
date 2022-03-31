@@ -2,5 +2,6 @@
   "name": "Front-end",
   "version": "1.0.0",
   "url": "http://10.136.70.250:1016",
-  "category": "American"
+  "category": "American",
+  "restaurantName": "Popeyes"
 }

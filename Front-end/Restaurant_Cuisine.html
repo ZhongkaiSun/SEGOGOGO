@@ -73,10 +73,10 @@
 </nav>
 
 <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center" >
-    <li id="american" >
+    <li >
         <div style="text-align: center"  href="#" >
-            <img height="180"   src="img/american.png" alt="list item 1" onclick="load()"/>
-            <h2 style="position: center;font-size:30px;">American</h2>
+            <img height="180"   src="img/american.png" alt="list item 1" />
+            <h2 style="position: center;font-size:30px;" id="category">category</h2>
             <div style="clear:left"></div>
         </div>
     </li>
@@ -235,6 +235,7 @@
             $.ajaxSettings.async = true;
         })
         console.log(category);
+        document.getElementById("category").innerHTML=category;
         load();
     }
     function load() {
@@ -244,7 +245,6 @@
 
         var xmlhttp;
         var url = "http://10.136.70.250:1016";
-        var typeofMeal = "American";
         if (window.XMLHttpRequest) {
             // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
             xmlhttp = new XMLHttpRequest();
@@ -252,21 +252,19 @@
             // IE6, IE5 浏览器执行代码
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-
-
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4){
                 if (xmlhttp.status==200) {
-                console.log(this.responseText);
-                eval("var restaurantList="+xmlhttp.responseText);
-                console.log(restaurantList);
-                console.log(restaurantList.msg);
+                    console.log(this.responseText);
+                    eval("var restaurantList="+xmlhttp.responseText);
+                    console.log(restaurantList);
+                    console.log(restaurantList.msg);
                 }
             }
 
         }
 
-        xmlhttp.open("GET", url + "/restaurant/read?typeofMeal=" + typeofMeal, true);
+        xmlhttp.open("GET", url + "/restaurant/read?typeofMeal=" + category, true);
         xmlhttp.send();
     }
 
