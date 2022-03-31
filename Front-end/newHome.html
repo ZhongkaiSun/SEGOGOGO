@@ -115,7 +115,7 @@
     <div class="table" style="margin-top: auto;">
         <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center" >
             <li id="american" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85"   src="img/american.png" alt="list item 1" />
+                <div href="#"><img height="85"   src="img/american.png" alt="list item 1" onclick="showDetails('category')"/>
                     <h4>American</h4>
                     <div style="clear:left"></div>
                 </div>
@@ -324,6 +324,15 @@
 </div> <!-- cd-cart -->
 
 <link href="cart.html" rel="import" />
+<!-- jump to the restaurant of specific cuisine type -->
+<script type="text/javascript">
+    function showDetails(category)
+    {
+        window.location = '/Restaurant_Cuisine?category='+category;
+    }
+</script>
+
+
 <script>
     // $(function(){
     //     $("#body").load("cart.html");
