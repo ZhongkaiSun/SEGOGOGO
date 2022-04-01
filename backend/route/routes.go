@@ -17,9 +17,9 @@ func SetupRouter() *gin.Engine {
 	r = RatingRoute(r)
 	// route order
 	r = OrderRoute(r)
-	//route restaurant
+	// route restaurant
 	r = RestaurantRoute(r)
-
+	// route payment
 	r = PaymentRoute(r)
 	return r
 }

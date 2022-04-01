@@ -55,7 +55,7 @@ CREATE TABLE orders (
 	PRIMARY KEY(username, order_date, cuisine_name)
 );
 
-CREATE TABLE payment (
+CREATE TABLE payments (
 	username VARCHAR ( 50 ) PRIMARY KEY,
  	card_number VARCHAR ( 50 ),
  	exp_date VARCHAR ( 50 ),
