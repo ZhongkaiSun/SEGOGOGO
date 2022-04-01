@@ -30,6 +30,7 @@ func CreatePayment(c *gin.Context) {
 		return
 	}
 	username := requestPayment.Username
+	cardHolder := requestPayment.CardHolder
 	cardNumber := requestPayment.CardNumber
 	expDate := requestPayment.ExpDate
 	securityCode := requestPayment.SecurityCode
@@ -50,6 +51,7 @@ func CreatePayment(c *gin.Context) {
 
 	newPayment := model.Payment{
 		Username:     username,
+		CardHolder:   cardHolder,
 		CardNumber:   cardNumber,
 		ExpDate:      expDate,
 		SecurityCode: securityCode,
@@ -80,7 +82,7 @@ func ReadPayment(c *gin.Context) {
 	}
 	username := requestPayment.Username
 	log.Println(username)
-	if !isUserExsit(DB, username) || username == "" {
+	if !isCustomerExist(DB, username) || username == "" {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
 		return
 	}
