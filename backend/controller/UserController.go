@@ -55,7 +55,7 @@ func Login(c *gin.Context) {
 	if err != nil {
 		c.Header("Access-Control-Allow-Origin", "*")
 		c.JSON(422, gin.H{
-			"msg":   "Binding error",
+			"msg":   "Please enter username or password",
 			"error": err,
 			"data":  gin.H{},
 		})
@@ -70,7 +70,7 @@ func Login(c *gin.Context) {
 	targetCustomer := model.Customer{}
 	DB.Where("username = ?", username).First(&targetCustomer)
 	if targetCustomer.Password != password {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The password is wrong"})
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The username or the password is wrong"})
 		return
 	}
 
@@ -116,7 +116,7 @@ func Register(c *gin.Context) {
 		return
 	}
 
-	if len(phone) != 10 {
+	if len(phone) > 0 && len(phone) != 10 {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "len of phone must be 10"})
 		return
 	}
