@@ -102,6 +102,10 @@ We use **Go**, **Gin**, **Mysql,** and **Redis** for backend development, and he
 
 - **ReadRestaurant**: to get the restaurant list
 
+- **CreatePayment**: to save a new payment method
+  
+- **ReadPayment**: get customers' payment information
+
 
 
 ## Environment
