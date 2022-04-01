@@ -13,7 +13,7 @@ package model
 // )
 
 type Payment struct {
-	Username     string `gorm:"type:varchar(50);primary_key" json:"username" binding:"required"`
+	Username     string `gorm:"type:varchar(50);primary_key" json:"username" form:"username" binding:"required"`
 	CardNumber   string `gorm:"type:varchar(50)" json:"cardNumber"`
 	ExpDate      string `gorm:"type:varchar(50)" json:"expDate"`
 	SecurityCode string `gorm:"type:varchar(50)" json:"securityCode"`

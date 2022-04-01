@@ -69,6 +69,7 @@ func ReadPayment(c *gin.Context) {
 	DB := common.GetDB()
 	var requestPayment model.Payment
 	err := c.ShouldBindQuery(&requestPayment)
+	log.Println("username input" + requestPayment.Username)
 	if err != nil {
 		c.JSON(422, gin.H{
 			"msg":   "Binding error",
@@ -89,7 +90,7 @@ func ReadPayment(c *gin.Context) {
 	}
 
 	var newPayment model.Payment
-	DB.Where("username = ?", username).Find(&newPayment)
+	DB.Where("username = ?", username).First(&newPayment) //有多种支付方式时？
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": newPayment, "msg": "Successfully"})
 }
 
