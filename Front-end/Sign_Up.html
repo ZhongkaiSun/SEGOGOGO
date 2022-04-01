@@ -137,18 +137,19 @@
 
         xmlhttp.onreadystatechange=function()
         {
-            if ( xmlhttp.status==200)
-            {
-                // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-                console.log(xmlhttp.responseText);
-                // var message = xmlhttp.responseText;
-                eval("var jn_info="+xmlhttp.responseText);
-                console.log(jn_info.msg);
-                alert(jn_info.msg);
-                window.location.href="./newHome_logged.html";
-                // xmlhttp.open("GET",url + "newHome.html",true);
+            if ( xmlhttp.readyState ==4){
+                if(xmlhttp.status==200)
+                    {
+                    // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                    console.log(xmlhttp.responseText);
+                     // var message = xmlhttp.responseText;
+                    eval("var jn_info="+xmlhttp.responseText);
+                    console.log(jn_info.msg);
+                    alert(jn_info.msg);
+                    window.location.href="./newHome.html";
+                    // xmlhttp.open("GET",url + "newHome.html",true);
             }
-            else{
+                else{
                 // eval("var jn_info2="+xmlhttp.responseText);
                 // console.log(jn_info2.msg);
                 // alert(jn_info2.msg);
@@ -157,7 +158,8 @@
                 console.log(signup_msg.msg);
                 alert(signup_msg.msg);
                 window.location.href="./Sign_Up.html";
-            }
+            }}
+
 
 
         }
@@ -168,7 +170,7 @@
                 "password":pass,
                 "addressLine1":"",
                 "addressLine2":"",
-                "phone":"0000000000",
+                "phone":"",
                 "email":email}));
 
         // xmlhttp.open("POST","/try/ajax/demo_post.php",true);
