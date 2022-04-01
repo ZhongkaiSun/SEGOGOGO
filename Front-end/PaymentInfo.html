@@ -33,10 +33,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="newHome_logged.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="newHome_logged.html" id="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="History.html">History</a>
+                    <a class="nav-link" href="History.html" id="History">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,7 +62,7 @@
 
 
             <form class="d-flex" role="form" >
-                <a href="Login.html" class="btn btn-danger" role="button">Login</a>
+                <a href="Login.html" class="btn btn-danger" role="button" id="login">Login</a>
                 <!--                <button type="button" class="btn btn-danger" >Login</button>-->
             </form>
         </div>
@@ -80,24 +80,24 @@
                     <h2 class="text-right">Payment Settings</h2>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">User Name</label><input type="text" class="form-control" placeholder="name" value=""></div>
+                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">User Name</label><input type="text" class="form-control" placeholder="name" id="Uname"></div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Card Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div><br/><br/>
-                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Exp. Date</label><input type="text" class="form-control" placeholder="MM/YY" value=""></div>
-                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Security Code</label><input type="text" class="form-control" value="" placeholder="XXX"></div>
+                    <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Card Number</label><input type="text" class="form-control" placeholder="enter card number" id="cardNumber"></div><br/><br/>
+                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Exp. Date</label><input type="text" class="form-control" placeholder="MM/YY" id="expdate"></div>
+                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Security Code</label><input type="text" class="form-control" id="securityCode" placeholder="XXX"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                    <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">City</label><input type="text" class="form-control" placeholder="City" value=""></div>
+                    <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" id="address1"></div>
+                    <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" id="address2"></div>
+                    <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">City</label><input type="text" class="form-control" placeholder="City" id="city"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">State</label><input type="text" class="form-control" placeholder="State" value=""></div>
-                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">ZIP code</label><input type="text" class="form-control" value="" placeholder="ZIP code"></div>
+                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">State</label><input type="text" class="form-control" placeholder="State" id="state"></div>
+                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">ZIP code</label><input type="text" class="form-control" id="zipcode" placeholder="ZIP code"></div>
                 </div>
 
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Changes</button></div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" onclick="window.location='newHome_logged.html'">Back to home</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="save">Save Changes</button></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="backhome" onclick="window.location='newHome_logged.html'">Back to home</button></div>
 
             </div>
         </div>

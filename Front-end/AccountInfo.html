@@ -34,10 +34,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="newHome_logged.html">Home</a>
+          <a class="nav-link active" aria-current="page" href="newHome_logged.html" id="home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="History.html">History</a>
+          <a class="nav-link" href="History.html" id="History">History</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,7 +66,7 @@
       </div>
 
       <form class="d-flex" role="form" >
-        <a href="newHome.html" class="btn btn-danger" role="button">Log out</a>
+        <a href="newHome.html" class="btn btn-danger" role="button" id="logout">Log out</a>
         <!--                <button type="button" class="btn btn-danger" >Login</button>-->
       </form>
     </div>
@@ -99,8 +99,8 @@
         <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" >ZIPcode</label><input type="text" class="form-control" placeholder="ZIP code" id="zipcode"></div>
       </div>
 
-      <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" onclick="profile()">Save Changes</button></div>
-      <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" onclick="window.location='newHome.html'">Back to home</button></div>
+      <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="save" onclick="profile()">Save Changes</button></div>
+      <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="backhome" onclick="window.location='newHome.html'">Back to home</button></div>
     </div>
   </div>
 </div>
