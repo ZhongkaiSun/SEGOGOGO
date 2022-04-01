@@ -19,6 +19,8 @@ func SetupRouter() *gin.Engine {
 	r = OrderRoute(r)
 	//route restaurant
 	r = RestaurantRoute(r)
+
+	r = PaymentRoute(r)
 	return r
 }
 
@@ -49,16 +51,23 @@ func CuisineRoute(r *gin.Engine) *gin.Engine {
 
 func OrderRoute(r *gin.Engine) *gin.Engine {
 	orderRoutes := r.Group("/order")
-	orderRoutes.Any("create", controller.CreateOrder)
-	orderRoutes.GET("read", controller.ReadOrder)
+	orderRoutes.Any("/create", controller.CreateOrder)
+	orderRoutes.GET("/read", controller.ReadOrder)
 	return r
 }
 
 func RestaurantRoute(r *gin.Engine) *gin.Engine {
-	restaurantRoutes := r.Group("restaurant")
+	restaurantRoutes := r.Group("/restaurant")
 	// restaurantRoutes.POST("create",)
 	// restaurantRoutes.POST("delete",)
 	// restaurantRoutes.POST("update",)
-	restaurantRoutes.GET("read", controller.ReadRestaurant)
+	restaurantRoutes.GET("/read", controller.ReadRestaurant)
+	return r
+}
+
+func PaymentRoute(r *gin.Engine) *gin.Engine {
+	paymentRoutes := r.Group("/payment")
+	paymentRoutes.POST("/create", controller.CreatePayment)
+	paymentRoutes.GET("/read", controller.ReadPayment)
 	return r
 }
