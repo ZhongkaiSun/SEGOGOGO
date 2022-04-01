@@ -28,39 +28,39 @@ https://github.com/ZhongkaiSun/SEGOGOGO
 
 For our Gator Delivery project, we implemented several pages using **HTML, CSS, JavaScript**, and **Bootstrap 5** in the front-end part:
 
-- Home page: Base of our application, lead to another subpage. Includes functions like searching and paging.
+- Home page: Base of our application, lead to other subpages. Includes functions like searching, paging and checkout. 
 
 - History page: List previous orders and their details.
 
 - Login page: Users can log in to accounts with a username and password.
 
-- Sign-up page: Users can sign-up for an account with their name, email, and create their password.
+- Sign-up page: Users can sign up for an account with their name, email, and create their password. We also add email validation and password checking here.
 
 - Account information page: Users can review and change their personal information.
 
-- Payment information page: Users can store and change their card information.
+- Payment information page: Users can review and change their payment information. Add function to check login status using cookie.
 
 - Change password page: Users can change their password if they forget it.
 
-- Restaurant page: Show up the information  of the restaurants
+- Restaurant page: Show up the menu of restaurants.
 
-- Restaurant cusine page: Display the cosine of a restaurant.
+- Restaurant cuisine page: Display restaurants of certain kind of cuisine.
 
   
 
 The main workload is connected to the back-end, at stages 2-3.
 
--  Home page: Add the new shopping cart Botton, which can display the items that we want to order. Also, it has the checkout button to send the order messages to the server. Add the navigator of restaurant category to jump to the different types of restaurants like American, Asian, Coffee& Tea, etc.
+-  Home page: Add the new shopping cart bottom, which can display the items that we want to order. Also, it has the checkout button to send the order messages to the server. Add the navigator of restaurant category to jump to different types of restaurants, like American, Asian, Coffee& Tea, etc.
 
-- Login page: Using the ajax method sends the user's information to the server and receives the token message from the back-end. If it is successful, the cookie will store the token and show up an alert saying successful. Then go to the home page in logged-in status.
+- Login page: Using the ajax method to send user's information to the server and receive token message from the back-end. If it is successful, token will be stored in the cookie and show up an alert saying successful. Then go to the home page in logged-in status.
 
-- Sign-up page: After users click the button of submitting, it will send the information to the server.
+- Sign-up page: After users click the submit button, it will send the information to the server.
 
-- Account information page: It will get the information from the server thought token, and it shows up at the place of the holder so that the user can modify it. Also, it can save to the server.
+- Account information page: It will get the information from the server thought token, and it shows up at the place of the holder so that the user can modify it. Also, it can send information back to server to save it.
 
-- Restaurant page: Get the restaurant information from the server through the restaurant name.
+- Restaurant page: Get the restaurant basic information and menu from the server through the restaurant name.
 
-- Restaurant cusine page:  Get the cusine information from the server through the restaurant name.
+- Restaurant cuisine page: Send the cuisine information to the server and get restaurant list of certain kind of cuisine.
 
 - History page: Using the cookie's token to get and list previous orders and their details from the server.
 

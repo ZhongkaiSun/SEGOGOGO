@@ -1,6 +1,6 @@
 #### How To Run?
 
-First， git clone all the files of our repository.
+First, git clone all the files of our repository.
 
 **Back-End**
 
