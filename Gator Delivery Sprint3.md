@@ -85,6 +85,8 @@ We use **Go**, **Gin**, **Mysql,** and **Redis** for backend development, and he
 - **Login**: to log in 
 
 - **DeleteUser**: to delete an account
+  
+- **ReadUser**: to get user's information
 
 - **CreateCuisine**: to create new cuisines for a restaurant
 
