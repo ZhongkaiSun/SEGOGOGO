@@ -34,7 +34,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="PaymentInfo.html">Pay</a></li>
-                        <li><a class="dropdown-item" href="#">Discount</a></li>
+                        <li><a class="dropdown-item" href="AccountInfo.html">Discount</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
                     </ul>
@@ -352,7 +352,7 @@
             // console.log(JSON.stringify(index.url));
             $.ajaxSettings.async = true;
         })
-
+        console.log(document.cookie);
             if (tk.length > 10){
                 console.log(tk);
                 $("#Login").hide();
@@ -364,7 +364,6 @@
                 $("#Logout").hide();
             }
         console.log(url);
-        load();
     }
     //
     // $(document).ready(function(){

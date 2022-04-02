@@ -157,17 +157,16 @@
                     // user = uname ;
                     // document.cookie = user;
                     // console.log(user);
-                    setCookie(tk,uname,0)
+                    setCookie(tk,uname,pwd,0)
 
                     //get token from cookie
                     let ca = document.cookie.split('|');
-                    // var token1 = document.cookie.split(";")[0];
-                    // var user1 = document.cookie.split(";")[1];
                     console.log(ca[0]);
                     console.log(ca[1]);
                     console.log(ca[2]);
                     console.log(document.cookie);
-
+                    // var token1 = document.cookie.split(";")[0];
+                    // var user1 = document.cookie.split(";")[1];
 
 
                     //remove token from cookie?
@@ -192,14 +191,14 @@
     }
 
 
-    function setCookie(tk, cname, exdays) {
+    function setCookie(tk, cname, pwd, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         let expires = "expires="+ d.toUTCString();
-        document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|"  +  "expires=" + expires + "|";
+        document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|";
     }
     function delCookie(){
-        document.cookie = "cname=| token=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
+        document.cookie = "cname=| token=| pwd=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
     }
 
 

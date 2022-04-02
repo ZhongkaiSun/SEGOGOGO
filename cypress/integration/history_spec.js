@@ -37,7 +37,7 @@ describe('Order History Page Test', function() {
             .find('a[id="History"]')
             .click()
         cy.url().should('include', 'History')
-        cy.go('back')
+
 
         cy.get('input[type = "Search"]')
             .invoke('attr', 'placeholder')
@@ -46,13 +46,6 @@ describe('Order History Page Test', function() {
 
         cy.get('button[type = "submit"]')
             .should('have.text', 'Search')
-
-        cy.get('nav')
-            .find('a[id="login"]')
-            .click()
-        cy.url().should('include', 'Login')
-        cy.title().should('eq', 'Login')
-        cy.go('back')
 
     })
 
@@ -67,36 +60,14 @@ describe('Order History Page Test', function() {
         })
         cy.url().should('include', 'newHome')
         cy.title().should('eq', 'GatorDash')
+        cy.go('back')
     })
 
-    it('test alert info', function () {
-        cy.get('button[class="btn-close""]')
-            .click()
-
-    });
 
 
-    it('test dropdown list', function () {
-
-    });
 
     it('test order history table', function () {
         cy.get("tr")
-        cy.get('#table1> tbody > tr > td:nth-child(1)').each(($elm, index, $list)=> {
-            // text captured from column1
-            const t = $elm.text()
-            // matching criteria
-            if (t.includes('Selenium')) {
-                // next sibling captured
-                cy.get('#table1 > tbody > tr > td:nth-child(1)')
-                    .eq(index).next().then(function (d) {
-                    // text of following sibling
-                    const r = d.text()
-                    //assertion
-                    expect(r).to.contains('Commercial')
-                })
-            }
-        })
     })
 
 })

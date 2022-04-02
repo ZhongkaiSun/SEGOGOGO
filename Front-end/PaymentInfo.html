@@ -72,7 +72,7 @@
 <div class="container rounded bg-warning mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png"><span class="font-weight-bold" id="name">User name</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png" onclick="load()"><span class="font-weight-bold" id="name">User name</span><span> </span></div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -116,16 +116,16 @@
         })
 
         var username = document.cookie.split("|")[0].substring(6);
-        var token = document.cookie.split("|")[1].substring(7);
+        var token = document.cookie.split("|")[1].substring(6);
         console.log(username);
         console.log(token);
         if(token.length == 0){
             alert("Please login first")
-            window.location.href = "./newHome_logged.html";
+            window.location.href = "./newHome.html";
         }
 
         console.log(url);
-        load();
+        //load();
     }
 
     function load() {
@@ -135,18 +135,9 @@
         var token = document.cookie.split("|")[1].substring(6);
         console.log(username);
         console.log(token);
+        console.log("url="+url);
         var xmlhttp;
-        // var url = "http://10.136.183.231:1016/customer/login";
-        // var uname = document.getElementById("Uname").value;
-        // var pwd = document.getElementById("Pass").value;
-        // var username = "root";
 
-        //var url = "http://10.136.106.98:1016";
-        // var url = "http://192.168.0.147:1016";
-        var username = document.cookie.split("|")[0].substring(6);
-        var tk = document.cookie.split("|")[1].substring(6);
-        console.log(username);
-        console.log(tk);
         if (window.XMLHttpRequest) {
             // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
             xmlhttp = new XMLHttpRequest();
@@ -157,11 +148,10 @@
 
 
         xmlhttp.onreadystatechange = function () {
-            if(xmlhttp.readyState == 4){
-                if (xmlhttp.status==200) {
+                if (xmlhttp.status==200 && xmlhttp.readyState == 4) {
                     console.log(xmlhttp.responseText);
                     var personalInfo = JSON.parse( xmlhttp.responseText );
-                    console.log(personalInfo)
+                    console.log(personalInfo);
                     document.getElementById("name").innerText =personalInfo.data.username;
 
                     document.getElementById("cardHolder").value=personalInfo.data.cardHolder;
@@ -175,14 +165,13 @@
                     document.getElementById("zipcode").value=personalInfo.data.zipcode;
 
                 }
-                else if(xmlhttp.status == 300){
+                else if(xmlhttp.status == 300 && xmlhttp.readyState == 4){
                     console.log(xmlhttp.responseText);
-                    var personalInfo = JSON.parse( xmlhttp.responseText );
-                    console.log(personalInfo)
+                    var info = JSON.parse( xmlhttp.responseText);
+                    console.log(info);
                     document.getElementById("name").innerText = username;
 
                 }
-            }
 
         }
 
@@ -196,6 +185,7 @@
 <script type="text/javascript">
     function savePayment() {
         var xmlhttp;
+        var username = document.cookie.split("|")[0].substring(6);
         var cardHolder = document.getElementById("cardHolder").value;
         var cardNumber = document.getElementById("cardNumber").value;
         var expDate = document.getElementById("expdate").value;
@@ -206,7 +196,6 @@
         var state= document.getElementById("state").value;
         var zipcode= document.getElementById("zipcode").value;
 
-        // var url = "http://10.136.70.250:1016";
 
         if (window.XMLHttpRequest)
         {
@@ -229,20 +218,21 @@
                     eval("var jn_info="+xmlhttp.responseText);
                     console.log(jn_info.msg);
                     alert(jn_info.msg);
-                    window.location.href="./AccountInfo.html";
+                    window.location.href="./PaymentInfo.html";
                     // xmlhttp.open("GET",url + "newHome.html",true);
                 }
                 else{
                     var profile = JSON.parse( xmlhttp.responseText );
                     console.log(profile.msg);
                     alert(profile.msg);
-                    window.location.href="./AccountInfo.html";
+                    window.location.href="./PaymentInfo.html";
                 }
             }
         }
-        xmlhttp.open("POST", url +"/customer/register", true);
+        xmlhttp.open("POST", url +"/payment/create", true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.send(JSON.stringify({
+            "username":username,
             'cardHolder':cardHolder,
             "cardNumber":cardNumber,
             "expDate":expDate,
