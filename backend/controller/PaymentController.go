@@ -83,11 +83,7 @@ func ReadPayment(c *gin.Context) {
 	username := requestPayment.Username
 	log.Println(username)
 	if !isCustomerExist(DB, username) || username == "" {
-<<<<<<< HEAD
 		c.JSON(422, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
-=======
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
->>>>>>> 37ac0c5c8032126b2225f5f95b2715fbfd8900dc
 		return
 	}
 	if !isPaymentExsit(DB, username) {
