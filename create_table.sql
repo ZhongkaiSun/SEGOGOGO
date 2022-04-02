@@ -10,6 +10,8 @@ DROP TABLE IF EXISTS ratings;
 
 DROP TABLE IF EXISTS orders;
 
+DROP TABLE IF EXISTS payments;
+
 CREATE TABLE restaurants ( 
 	id VARCHAR ( 50 ) PRIMARY KEY, 
 	name VARCHAR ( 50 ), 
@@ -59,6 +61,7 @@ CREATE TABLE orders (
 
 CREATE TABLE payments (
 	username VARCHAR ( 50 ) PRIMARY KEY,
+	card_holder VARCHAR ( 50 ),
  	card_number VARCHAR ( 50 ),
  	exp_date VARCHAR ( 50 ),
  	security_code VARCHAR ( 50 ),

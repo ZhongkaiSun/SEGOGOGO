@@ -26,14 +26,14 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
     <div class="container-fluid">
         <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
-        <img width="100" height="60" src="gator_logo.png" onclick="window.location='newHome_logged.html'" >
+        <img width="100" height="60" src="gator_logo.png" onclick="window.location='newHome.html'" >
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="newHome_logged.html" id="home">Home</a>
+                    <a class="nav-link active" aria-current="page" href="newHome.html" id="home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="History.html" id="History">History</a>
@@ -72,7 +72,7 @@
 <div class="container rounded bg-warning mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png"><span class="font-weight-bold" id="name">User name</span><span class="text-black-50" id="E-mail">Email address</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png"><span class="font-weight-bold" id="name">User name</span><span> </span></div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -80,7 +80,7 @@
                     <h2 class="text-right">Payment Settings</h2>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">User Name</label><input type="text" class="form-control" placeholder="name" id="Uname"></div>
+                    <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Card Holder</label><input type="text" class="form-control" placeholder="card holder" id="cardHolder"></div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal">Card Number</label><input type="text" class="form-control" placeholder="enter card number" id="cardNumber"></div><br/><br/>
                     <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">Exp. Date</label><input type="text" class="form-control" placeholder="MM/YY" id="expdate"></div>
@@ -96,8 +96,8 @@
                     <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal">ZIP code</label><input type="text" class="form-control" id="zipcode" placeholder="ZIP code"></div>
                 </div>
 
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="save">Save Changes</button></div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="backhome" onclick="window.location='newHome_logged.html'">Back to home</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="save" onclick="savePayment()">Save Changes</button></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" id="backhome" onclick="window.location='newHome.html'">Back to home</button></div>
 
             </div>
         </div>
@@ -159,37 +159,102 @@
         xmlhttp.onreadystatechange = function () {
             if(xmlhttp.readyState == 4){
                 if (xmlhttp.status==200) {
-                    console.log(this.responseText);
-                    // var jn_order = eval(xmlhttp.responseText);
-                    // eval("var jn_order="+xmlhttp.responseText);
-                    //var jn_order = JSON.parse( xmlhttp.responseText );
+                    console.log(xmlhttp.responseText);
                     var personalInfo = JSON.parse( xmlhttp.responseText );
+                    console.log(personalInfo)
+                    document.getElementById("name").innerText =personalInfo.data.username;
 
-                    document.getElementById("name").innerHTML=personalInfo.data.username;
-                    document.getElementById("E-name").innerHTML=personalInfo.data.email;
+                    document.getElementById("cardHolder").value=personalInfo.data.cardHolder;
+                    document.getElementById("cardNumber").value=personalInfo.data.cardNumber;
+                    document.getElementById("expdate").value=personalInfo.data.expDate;
+                    document.getElementById("securityCode").value=personalInfo.data.securityCode;
+                    document.getElementById("address1").value=personalInfo.data.addressLine1;
+                    document.getElementById("address2").value=personalInfo.data.addressLine2;
+                    document.getElementById("city").value=personalInfo.data.city;
+                    document.getElementById("state").value=personalInfo.data.state;
+                    document.getElementById("zipcode").value=personalInfo.data.zipcode;
 
-
-                    document.getElementById("Uname").innerHTML=personalInfo.data.Uname;
-                    document.getElementById("cardNumber").innerHTML=personalInfo.data.cardNumber;
-                    document.getElementById("exp").innerHTML=personalInfo.data.exp;
-                    document.getElementById("security").innerHTML=personalInfo.data.security;
-                    document.getElementById("address1").innerHTML=personalInfo.data.address1;
-                    document.getElementById("address2").innerHTML=personalInfo.data.address2;
-                    document.getElementById("city").innerHTML=personalInfo.data.city;
-                    document.getElementById("state").innerHTML=personalInfo.data.state;
-                    document.getElementById("zipcode").innerHTML=personalInfo.data.zipcode;
+                }
+                else if(xmlhttp.status == 300){
+                    console.log(xmlhttp.responseText);
+                    var personalInfo = JSON.parse( xmlhttp.responseText );
+                    console.log(personalInfo)
+                    document.getElementById("name").innerText = username;
 
                 }
             }
 
         }
 
-        xmlhttp.open("GET", url + "/customer/personalInfo?username=" + username, true);
+        xmlhttp.open("GET", url + "/payment/read?username=" + username, true);
         xmlhttp.send();
 
     }
 
+</script>
 
+<script type="text/javascript">
+    function savePayment() {
+        var xmlhttp;
+        var cardHolder = document.getElementById("cardHolder").value;
+        var cardNumber = document.getElementById("cardNumber").value;
+        var expDate = document.getElementById("expdate").value;
+        var securityCode = document.getElementById("securityCode").value;
+        var addressLine1= document.getElementById("address1").value;
+        var addressLine2= document.getElementById("address2").value;
+        var city= document.getElementById("city").value;
+        var state= document.getElementById("state").value;
+        var zipcode= document.getElementById("zipcode").value;
+
+        // var url = "http://10.136.70.250:1016";
+
+        if (window.XMLHttpRequest)
+        {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange=function() {
+            if(xmlhttp.readyState == 4){
+                if ( xmlhttp.status==200)
+                {
+                    // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                    console.log(xmlhttp.responseText);
+                    // var message = xmlhttp.responseText;
+                    eval("var jn_info="+xmlhttp.responseText);
+                    console.log(jn_info.msg);
+                    alert(jn_info.msg);
+                    window.location.href="./AccountInfo.html";
+                    // xmlhttp.open("GET",url + "newHome.html",true);
+                }
+                else{
+                    var profile = JSON.parse( xmlhttp.responseText );
+                    console.log(profile.msg);
+                    alert(profile.msg);
+                    window.location.href="./AccountInfo.html";
+                }
+            }
+        }
+        xmlhttp.open("POST", url +"/customer/register", true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(JSON.stringify({
+            'cardHolder':cardHolder,
+            "cardNumber":cardNumber,
+            "expDate":expDate,
+            "securityCode":securityCode,
+            "addressLine1":addressLine1,
+            "addressLine2":addressLine2,
+            "city":city,
+            "state":state,
+            "zipcode":zipcode
+        }));
+
+    }
 
 
 

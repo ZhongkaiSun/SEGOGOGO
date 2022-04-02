@@ -16,14 +16,14 @@
 
     <div class="container-fluid">
         <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
-        <img width="100" height="60" src="gator_logo.png" href="#" >
+        <img width="100" height="60" src="gator_logo.png" onclick="window.location='newHome.html'" >
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="newHome.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="History.html">History</a>
@@ -56,7 +56,9 @@
 <!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
 <!--            </form>-->
 
-            <a href="Login.html" class="btn btn-danger" role="button">Login</a>
+            <a id = "Login" href="Login.html" class="btn btn-danger" role="button">Login</a>
+
+            <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
             <form class="d-flex" role="form" >
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -331,6 +333,10 @@
         window.location = 'Restaurant_Cuisine.html';
         console.log(category);
     }
+
+    function delCookie(){
+        document.cookie = "cname=| token=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
+    }
 </script>
 
 
@@ -338,6 +344,7 @@
     <!--    Get index from config.json-->
     window.onload = function () {
         $.ajaxSettings.async = false;
+        tk = document.cookie.split("|")[1].substring(6);
 
         //使用getJSON读取userinfo.json文件中的数据
         $.getJSON("config.json", function(index){
@@ -345,9 +352,37 @@
             // console.log(JSON.stringify(index.url));
             $.ajaxSettings.async = true;
         })
+
+            if (tk.length > 10){
+                console.log(tk);
+                $("#Login").hide();
+                $("#Logout").show();
+            }
+            else{
+                console.log(tk);
+                $("#Login").show();
+                $("#Logout").hide();
+            }
         console.log(url);
         load();
     }
+    //
+    // $(document).ready(function(){
+    //     if (tk.length > 10){
+    //         console.log(tk);
+    //         $("Login").hide();
+    //         $("Logout").show();
+    //     }
+    //     else{
+    //         console.log(tk);
+    //         $("Login").show();
+    //         $("Logout").hide();
+    //     }
+    //
+    //
+    //
+    // });
+
 
     function checkOut(){
         var xmlhttp;
