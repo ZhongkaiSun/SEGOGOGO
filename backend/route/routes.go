@@ -27,6 +27,7 @@ func SetupRouter() *gin.Engine {
 func CustomerRoute(r *gin.Engine) *gin.Engine {
 	customerRoutes := r.Group("/customer")
 	customerRoutes.POST("/register", controller.Register)
+	customerRoutes.POST("/update", controller.UpdateUser)
 	customerRoutes.GET("/login", controller.Login)
 	customerRoutes.GET("/delete", controller.DeleteUser)
 	customerRoutes.GET("/read/:token", controller.ReadUser)

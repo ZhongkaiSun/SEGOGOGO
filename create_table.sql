@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS customers;
 
 DROP TABLE IF EXISTS ratings;
 
+DROP TABLE IF EXISTS ratings;
+
 DROP TABLE IF EXISTS orders;
 
 CREATE TABLE restaurants ( 

@@ -134,6 +134,9 @@ func Register(c *gin.Context) {
 		AddressLine2: requestCustomer.AddressLine2,
 		Phone:        phone,
 		Email:        requestCustomer.Email,
+		City:         requestCustomer.City,
+		State:        requestCustomer.State,
+		Zipcode:      requestCustomer.Zipcode,
 	}
 	DB.Create(&newCustomer)
 
@@ -180,6 +183,59 @@ func ReadUser(c *gin.Context) {
 	DB.Where("username = ?", claims.Username).First(&user)
 	log.Println("zipcode: " + user.Zipcode)
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": user, "msg": "Successfully"})
+}
+
+func UpdateUser(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Header("Access-Control-Allow-Origin", "*")
+	DB := common.GetDB()
+	//var requestCustomer model.Customer
+	var requestCustomer model.Customer
+	err := c.ShouldBindJSON(&requestCustomer)
+	if err != nil {
+		c.JSON(422, gin.H{
+			"msg":   "Binding error",
+			"error": err,
+			"data":  gin.H{},
+		})
+		return
+	}
+
+	username := requestCustomer.Username
+	password := requestCustomer.Password
+	phone := requestCustomer.Phone
+
+	// Verification
+	if !isCustomerExist(DB, username) || username == "" {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The user doesn't exists"})
+		return
+	}
+
+	if len(phone) > 0 && len(phone) != 10 {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "len of phone must be 10"})
+		return
+	}
+
+	if len(password) < 6 {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "len of pwd must be longer than 6"})
+		return
+	}
+
+	// Create new Customer
+	newCustomer := model.Customer{
+		Username:     username,
+		Password:     password,
+		AddressLine1: requestCustomer.AddressLine1,
+		AddressLine2: requestCustomer.AddressLine2,
+		Phone:        phone,
+		Email:        requestCustomer.Email,
+		City:         requestCustomer.City,
+		State:        requestCustomer.State,
+		Zipcode:      requestCustomer.Zipcode,
+	}
+
+	DB.Model(&newCustomer).Where("username = ?", username).Updates(map[string]interface{}{"password": password, "address_line1": newCustomer.AddressLine1, "address_line2": newCustomer.AddressLine2, "phone": newCustomer.Phone, "email": newCustomer.Email, "city": newCustomer.City, "state": newCustomer.State, "zipcode": newCustomer.Zipcode})
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{}, "msg": "Successfully"})
 }
 
 func isCustomerExist(db *gorm.DB, username string) bool {
