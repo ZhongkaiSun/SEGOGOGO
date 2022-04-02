@@ -87,7 +87,7 @@ func ReadPayment(c *gin.Context) {
 		return
 	}
 	if !isPaymentExsit(DB, username) {
-		c.JSON(300, gin.H{"code": 300, "data": nil, "msg": "The payment doesn't exist"})
+		c.JSON(300, gin.H{"code": 300, "data": nil, "msg": "The payment doesn't exist!"})
 		return
 	}
 

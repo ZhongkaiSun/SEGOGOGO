@@ -192,6 +192,7 @@ func UpdateUser(c *gin.Context) {
 	//var requestCustomer model.Customer
 	var requestCustomer model.Customer
 	err := c.ShouldBindJSON(&requestCustomer)
+	log.Println(err)
 	if err != nil {
 		c.JSON(422, gin.H{
 			"msg":   "Binding error",
@@ -216,8 +217,11 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
-	if len(password) < 6 {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "len of pwd must be longer than 6"})
+	targetCustomer := model.Customer{}
+	DB.Where("username = ?", username).First(&targetCustomer)
+	log.Println(password)
+	if targetCustomer.Password != password {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "wrong password"})
 		return
 	}
 
