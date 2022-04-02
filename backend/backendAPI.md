@@ -115,7 +115,7 @@ Parameters:
 - **200**: No error
 - **422**: Internal Server Error
 
-### 4. Read DeleCustomerte API
+### 4. Read Customerte API
 
 ```java
 GET    http://localhost:1016/customer/read
@@ -537,6 +537,90 @@ GET    http://localhost:1016/restaurant/read
             "rating": 4.2
         }
     ],
+    "msg": "Successfully"
+}
+
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **422**: Internal Server Error
+
+## Payment API
+
+### 1. Payment Read API
+```java
+GET    http://localhost:1016/payment/read
+```
+Read a user's existed payment information
+
+#### *Example Request*
+```java
+GET    http://localhost:1016/payment/read?username=ZhongkaiSun
+```
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": {
+        "username": "ZhongkaiSun",
+        "cardNumber": "123456789XXXX",
+        "expDate": "05/26",
+        "securityCode": "001",
+        "addressLine1": "4000 SW 24th St",
+        "addressLine2": "Apt 2-309",
+        "city": "Gainesville",
+        "state": "Florida",
+        "zipcode": "32600"
+    },
+    "msg": "Successfully"
+}
+
+```
+
+#### *Status Codes*
+
+- **200**: No error
+- **300**: The payment doesn't exist
+- **422**: Internal Server Error
+
+### 2. Payment Create API
+```java
+POST    http://localhost:1016/payment/create
+```
+Read a restaurant or get the restaurant list
+
+#### *Example Request*
+```java
+POST    http://localhost:1016/payment/create
+```
+
+Request Body:
+```java
+{
+    "username":"Raindrop",
+    "cardHolder": "Yudi Zheng",
+    "cardNumber":"8888888XXXX",
+    "expDate":"06/26",
+    "securityCode":"002",
+    "addressLine1":"3700SW 27th",
+    "addressLine2":"apt110",
+    "city":"Gainesville",
+    "state":"Florida",
+    "zipcode":"32608"
+}
+```
+
+#### *Example Response*
+
+```java
+
+{
+    "code": 200,
+    "data": null,
     "msg": "Successfully"
 }
 
