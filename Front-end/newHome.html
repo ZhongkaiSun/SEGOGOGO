@@ -23,18 +23,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="newHome.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="newHome.html" id="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="History.html">History</a>
+                    <a class="nav-link" href="History.html" id="History">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         About
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="PaymentInfo.html">Payment Information</a></li>
                         <li><a class="dropdown-item" href="AccountInfo.html">Account Information</a></li>
+                        <li><a class="dropdown-item" href="PaymentInfo.html">Payment Information</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
                     </ul>
@@ -56,13 +56,13 @@
 <!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
 <!--            </form>-->
 
-            <a id = "Login" href="Login.html" class="btn btn-danger" role="button">Login</a>
+            <a id = "Login" href="Login.html" class="btn btn-danger" role="button" >Login</a>
 
             <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
             <form class="d-flex" role="form" >
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+                <button class="btn btn-outline-success" type="submit" id="search">Search</button>
 
 
             </form>
