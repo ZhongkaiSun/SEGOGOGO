@@ -25,7 +25,6 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
-
     <div class="container-fluid">
         <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
         <img width="100" height="60" src="gator_logo.png" onclick="window.location='newHome.html'" >
@@ -55,33 +54,21 @@
                     <a class="nav-link disabled">Spotlights</a>
                 </li>
             </ul>
-            <!--            <form class="d-flex" role="search">-->
-            <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
-
-            <!--            </form>-->
-
-
-
-            <!--            <form class="d-flex" role="form" >-->
-            <!--                <a href="Login.html" class="btn btn-danger" role="button">Login</a>-->
-            <!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
-            <!--            </form>-->
-
-            <a id = "Login" href="Login.html" class="btn btn-danger" role="button" >Login</a>
-
-            <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
-
-            <form class="d-flex" role="form" >
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
-                <button class="btn btn-outline-success" type="submit" id="search">Search</button>
-
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
 
             </form>
+
+
+            <div class="col-md-1">
+                <div class="d-flex" ><img class="rounded-circle mt-2" width="50px" onclick="window.location='AccountInfo.html'" src="Engineering%20Gator.png" ></div>
+            </div>
+
             <form class="d-flex" role="form" >
-                <a href="Login.html" class="btn btn-warning" role="button"> Cartsssss</a>
+                <a href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log out</a>
+                <!--                <button type="button" class="btn btn-danger" >Login</button>-->
             </form>
-            <div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
         </div>
     </div>
 </nav>

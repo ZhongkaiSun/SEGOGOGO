@@ -182,6 +182,17 @@
         document.getElementById("category").innerHTML=category;
         document.getElementById("title").innerHTML=category;
         load();
+        tk = document.cookie.split("|")[1].substring(6);
+        if (tk.length > 10){
+            console.log(tk);
+            $("#Login").hide();
+            $("#Logout").show();
+        }
+        else {
+            console.log(tk);
+            $("#Login").show();
+            $("#Logout").hide();
+        }
     }
     function load() {
 
