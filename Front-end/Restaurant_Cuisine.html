@@ -97,7 +97,7 @@
                 <div class="card-body">
                     <h5 class="card-title" id="restaurantName0" style="font-size: 30px;">restaurant</h5>
                     <p class="card-text"></p>
-                    <a href="Restaurant.html" class="btn btn-primary">Order Now</a>
+                    <a href="Restaurant.html" class="btn btn-primary" >Order Now</a>
                     <p id="rate0">rate</p>
                 </div>
             </div>
@@ -172,12 +172,12 @@
 
         //使用getJSON读取userinfo.json文件中的数据
         $.getJSON("config.json", function(index){
-            category = JSON.stringify(index.category).slice(1, -1);
+            category = localStorage.string;
+            // category = JSON.stringify(index.category).slice(1, -1);
             url = JSON.stringify(index.url).slice(1, -1);
             console.log(category)
             $.ajaxSettings.async = true;
         })
-        console.log(category);
         console.log(url);
         document.getElementById("category").innerHTML=category;
         document.getElementById("title").innerHTML=category;
@@ -194,6 +194,9 @@
             $("#Logout").hide();
         }
     }
+
+
+
     function load() {
 
         //get token from cookie
