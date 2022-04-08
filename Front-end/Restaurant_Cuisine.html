@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" href="css/bootstrap.css" >
     <title id="title">GatorDash</title>
@@ -60,13 +60,11 @@
 
             <a id = "Login" href="Login.html" class="btn btn-danger" role="button" >Login</a>
 
-            <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
+            <a id = "Logout" href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
             <form class="d-flex" role="form" >
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
-                <button class="btn btn-outline-success" type="submit" id="search">Search</button>
-
-
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant" >
+                <a class="btn btn-outline-success" type="submit" id="search" onclick="showRestaurant()" >Search</a>
             </form>
             <form class="d-flex" role="form" >
                 <a href="Login.html" class="btn btn-warning" role="button"> Cartsssss</a>
@@ -93,10 +91,10 @@
 <table style="border-collapse:separate; display: flex; justify-content: center">
     <tr>
         <td>
-            <div class="card" style="width: 14rem; margin: 50px 50px 50px 50px;" >
+            <div class="card" style="width: 16rem; margin: 50px 50px 50px 50px;" >
                 <img src="img/popeyes.png" class="card-img-top" alt="..." height="240" id="img1">
                 <div class="card-body">
-                    <h5 class="card-title" id="restaurantName0" style="font-size: 30px;">restaurant</h5>
+                    <h5 class="card-title" id="restaurantName0" style="font-size: 25px;">restaurant</h5>
                     <p class="card-text"></p>
                     <a class="btn btn-primary" onclick="showDetails('0')" >Order Now</a>
                     <br><br>
@@ -109,10 +107,10 @@
         </td>
 
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
+            <div class="card" style="width: 16rem;margin: 50px 50px 50px 50px;" >
                 <img src="img/checker.jpeg" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
-                    <h5 class="card-title" id="restaurantName1" style="font-size: 30px;">restaurant</h5>
+                    <h5 class="card-title" id="restaurantName1" style="font-size: 25px;">restaurant</h5>
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary" onclick="showDetails('1')">Order Now</a>
                     <br><br>
@@ -254,6 +252,15 @@
         console.log(restaurantName);
     }
 
+
+</script>
+<script>
+    function showRestaurant()
+    {
+        //store the parameter
+        localStorage.string = document.getElementById("searchRestaurant").value;
+        window.location.href = 'Restaurant.html';
+    }
 </script>
 </body>
 </html>
