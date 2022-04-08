@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css" >
 
     <link rel="stylesheet" type="text/css" href="css/AccountInfo.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap.bundle.js" ></script>
     <script src="js/bootstrap.esm.js" ></script>
     <script src="js/bootstrap.js" ></script>
@@ -72,7 +72,7 @@
 <div class="container rounded bg-warning mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png" onclick="load()"><span class="font-weight-bold" id="name">User name</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png" ><span class="font-weight-bold" id="name" style="font-size:20px;">User name</span><span> </span></div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -125,7 +125,7 @@
         }
 
         console.log(url);
-        //load();
+        load();
     }
 
     function load() {
@@ -138,6 +138,8 @@
         console.log("url="+url);
         var xmlhttp;
 
+        document.getElementById("name").innerText = username;
+
         if (window.XMLHttpRequest) {
             // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
             xmlhttp = new XMLHttpRequest();
@@ -145,33 +147,37 @@
             // IE6, IE5 浏览器执行代码
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        console.log(xmlhttp.readyState);
+
 
 
         xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.status==200 && xmlhttp.readyState == 4) {
+            console.log(xmlhttp.readyState);
+            if(xmlhttp.readyState == 4){
+                if (xmlhttp.status==200) {
+                    console.log(xmlhttp.status)
                     console.log(xmlhttp.responseText);
-                    var personalInfo = JSON.parse( xmlhttp.responseText );
-                    console.log(personalInfo);
-                    document.getElementById("name").innerText =personalInfo.data.username;
+                    var payInfo = JSON.parse(xmlhttp.responseText);
+                    console.log(payInfo);
 
-                    document.getElementById("cardHolder").value=personalInfo.data.cardHolder;
-                    document.getElementById("cardNumber").value=personalInfo.data.cardNumber;
-                    document.getElementById("expdate").value=personalInfo.data.expDate;
-                    document.getElementById("securityCode").value=personalInfo.data.securityCode;
-                    document.getElementById("address1").value=personalInfo.data.addressLine1;
-                    document.getElementById("address2").value=personalInfo.data.addressLine2;
-                    document.getElementById("city").value=personalInfo.data.city;
-                    document.getElementById("state").value=personalInfo.data.state;
-                    document.getElementById("zipcode").value=personalInfo.data.zipcode;
+                    document.getElementById("cardHolder").value = payInfo.data.cardHolder;
+                    document.getElementById("cardNumber").value = payInfo.data.cardNumber;
+                    document.getElementById("expdate").value = payInfo.data.expDate;
+                    document.getElementById("securityCode").value = payInfo.data.securityCode;
+                    document.getElementById("address1").value = payInfo.data.addressLine1;
+                    document.getElementById("address2").value = payInfo.data.addressLine2;
+                    document.getElementById("city").value = payInfo.data.city;
+                    document.getElementById("state").value = payInfo.data.state;
+                    document.getElementById("zipcode").value = payInfo.data.zipcode;
 
                 }
-                else if(xmlhttp.status == 300 && xmlhttp.readyState == 4){
+                else if(xmlhttp.status == 300){
                     console.log(xmlhttp.responseText);
-                    var info = JSON.parse( xmlhttp.responseText);
+                    info = JSON.parse(xmlhttp.responseText);
                     console.log(info);
-                    document.getElementById("name").innerText = username;
-
+                    console.log(xmlhttp.status)
                 }
+            }
 
         }
 
@@ -219,7 +225,6 @@
                     console.log(jn_info.msg);
                     alert(jn_info.msg);
                     window.location.href="./PaymentInfo.html";
-                    // xmlhttp.open("GET",url + "newHome.html",true);
                 }
                 else{
                     var profile = JSON.parse( xmlhttp.responseText );
@@ -244,6 +249,15 @@
             "zipcode":zipcode
         }));
 
+    }
+    function setCookie(tk, cname, pwd, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|";
+    }
+    function delCookie(){
+        document.cookie = "cname=| token=| pwd=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
     }
 
 
