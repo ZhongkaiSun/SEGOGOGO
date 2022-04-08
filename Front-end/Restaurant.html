@@ -73,9 +73,9 @@
     </div>
 </nav>
 <h1> </h1>
-
+<br><br>
 <!--restaurant name-->
-<h1 class="pl-4" style="font-family: Arial; margin-left: 50px">Popeyes </h1>
+<h1 class="pl-4" style="font-family: Arial; margin-left: 50px" id="restaurantName">restaurantName</h1>
 
 
 <div class="col-12 mt-4">
@@ -132,7 +132,50 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <div class="text-center"> <img src="img/redbeanrice.jpeg" width="200" height = "175"> </div>
+                    <div class="product-details"> <span class="font-weight-bold d-block" id="price3">price</span> <span id="cuisineName3">cuisine</span>
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart </button>
+                        </div>
+                        <div class="weight"> <small id="calories3">calories</small> </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <br><br>
+        <div class="row g-2">
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <div class="text-center"> <img src="img/chickenNuggets.jpeg" width="200" height = "175"> </div>
+                    <div class="product-details"> <span class="font-weight-bold d-block" id="price4">price</span> <span id="cuisineName4">cuisine</span>
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart </button>
+                        </div>
+                        <div class="weight"> <small id="calories4">calories</small> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <div class="text-center"> <img src="img/mixed.jpeg" width="200" height = "175"> </div>
+                    <div class="product-details"> <span class="font-weight-bold d-block" id="price5">price</span> <span id="cuisineName5">cuisine</span>
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart </button>
+                        </div>
+                        <div class="weight"> <small id="calories5">calories</small> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
     </div>
 </div>
 </div>
@@ -186,7 +229,9 @@
     function load() {
         var xmlhttp;
         // var url = "http://10.136.70.250:1016";
-        var restaurantName = "Popeyes";
+        restaurantName = localStorage.string;
+        console.log(restaurantName);
+        document.getElementById("restaurantName").innerText=restaurantName;
         if (window.XMLHttpRequest) {
             // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
             xmlhttp = new XMLHttpRequest();
@@ -205,8 +250,8 @@
                     for(let i = 0 ; i < foodList.data.length ; i ++ ){
                         console.log(foodList.data[0].name);
                         document.getElementById("cuisineName" + i.toString() ).innerText=foodList.data[i].name;
-                        document.getElementById("price" + i.toString() ).innerText=foodList.data[i].price;
-                        document.getElementById("calories" + i.toString() ).innerText='Calories='+foodList.data[i].calories;
+                        document.getElementById("price" + i.toString() ).innerText="$ " + foodList.data[i].price;
+                        document.getElementById("calories" + i.toString() ).innerText='Calories = '+foodList.data[i].calories;
                     }
                 }
             }
