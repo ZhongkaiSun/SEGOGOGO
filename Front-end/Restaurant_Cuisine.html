@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css"> <!-- Gem style -->
     <script src="js/modernizr.js"></script> <!-- Modernizr -->
     <script src="js/jquery-1.11.0.min.js"></script>
+    
 
 </head>
 <body>
@@ -99,6 +100,7 @@
                     <p class="card-text"></p>
                     <a href="Restaurant.html" class="btn btn-primary" >Order Now</a>
                     <p id="rate0">rate</p>
+
                 </div>
             </div>
         </td>
@@ -111,6 +113,7 @@
                     <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">Order Now</a>
                     <p id="rate1">rate</p>
+
                 </div>
             </div>
         </td>
@@ -221,7 +224,7 @@
                     for(let i = 0 ; i < restaurantList.data.length ; i ++ ){
                         console.log(restaurantList.data[0].name);
                         document.getElementById("restaurantName" + i.toString() ).innerText=restaurantList.data[i].name;
-                        document.getElementById("rate" + i.toString() ).innerText='rate='+ restaurantList.data[i].rating + '/5.0';
+                        document.getElementById("rate" + i.toString() ).innerText='Rating = '+ restaurantList.data[i].rating + '/5.0';
                         //document.getElementById("calories" + i.toString() ).innerText='Calories='+restaurantList.data[i].calories;
                     }
                 }
