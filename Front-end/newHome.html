@@ -279,26 +279,31 @@
 <div id="cd-shadow-layer"></div>
 
 <div id="cd-cart">
-    <h2>Cart</h2>
+    <h1>Cart</h1>
 
 
     <ul class="cd-cart-items">
 
 
 
+        <div id = "item0" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty"></span>  <h2>Please login first !</h2>
+            <div class="cd-price"></div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
 
-            <div class="alert alert-light alert-dismissible fade show" role="alert">
-                <span class="cd-qty">1x</span> breakfast
+            <div id = "item1" class="alert alert-light alert-dismissible fade show" role="alert">
+                <span  class="cd-qty">1x</span> <a id = "item1_name" >item1</a>
                 <div class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('1')"></button>
             </div>
-            <div class="alert alert-light alert-dismissible fade show" role="alert">
-                <span class="cd-qty">1x</span> Combo
+            <div id = "item2" class="alert alert-light alert-dismissible fade show" role="alert">
+                <span class="cd-qty">1x</span><a id = "item2_name" >item2</a>
                 <div class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"onclick="remove('2')"></button>
             </div>
-            <div class="alert alert-light alert-dismissible fade show" role="alert">
-                <span class="cd-qty">1x</span> Sandwiches
+            <div id = "item3" class="alert alert-light alert-dismissible fade show" role="alert">
+                <span class="cd-qty">1x</span> <a id = "item3_name" >item3</a>
                 <div class="cd-price">$7.00</div>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -310,7 +315,7 @@
 <!--            <div class="cd-price">$9.99</div>-->
 <!--            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>-->
             <div class="cd-cart-total">
-                <p>Total <span>$21.00</span></p>
+                <p>Total <span id= "total" >$0.00</span></p>
             </div>
         </li>
     </ul> <!-- cd-cart-items -->
@@ -336,8 +341,27 @@
         console.log(category);
     }
 
+    // function delCookie(){
+    //     document.cookie = "cname=; token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    //
+    // }
     function delCookie(){
-        document.cookie = "cname=| token=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
+        // for(let i = 0 ; i < 7 ; i++){
+        //     document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        // }
+        // document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+        if(keys) {
+            for(var i = keys.length; i--;)
+                document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+        }
+
+    }
+
+    function remove( n){
+        document.cookie="cuisine"+n.toString()+"=null";
+        console.log(document.cookie);
+        // document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|" + "cuisine1=" + cuisine1+ "|" + "cuisine2=" + cuisine2+ "|" + "cuisine3=" + cuisine3;
     }
 </script>
 
@@ -345,8 +369,19 @@
 <script>
     <!--    Get index from config.json-->
     window.onload = function () {
+        console.log(document.cookie);
         $.ajaxSettings.async = false;
-        tk = document.cookie.split("|")[1].substring(6);
+         // tk = document.cookie.split("; ")[1].substring(6);
+         // console.log(tk);
+        let ca = document.cookie.split('| ');
+        console.log(ca[0]);
+        console.log(ca[1]);
+        console.log(ca[2]);
+        console.log(ca[3]);
+        console.log(ca[4]);
+        console.log(ca[5]);
+        console.log(ca[6]);
+
 
         //使用getJSON读取userinfo.json文件中的数据
         $.getJSON("config.json", function(index){
@@ -354,18 +389,51 @@
             // console.log(JSON.stringify(index.url));
             $.ajaxSettings.async = true;
         })
-        console.log(document.cookie);
-            if (tk.length > 10){
-                console.log(tk);
+
+         // a=getCookie("tk");
+         // c_start=document.cookie.indexOf("tk=");
+
+            if (ca[1] !== null){
+                tk = document.cookie.split("| ")[1].substring(6);
+                $("#item0").hide();
                 $("#Login").hide();
                 $("#Logout").show();
+                if(ca[3].endsWith("null")){
+                    $("#item1").hide();
+                }else {
+                    $("#item1").show();
+                    document.getElementById( "item1_name").innerText=ca[3].substr(9);
+                }
+
+                if(ca[4].endsWith("null")){
+                    $("#item2").hide();
+                }
+                else {
+                    $("#item2").show();
+                    document.getElementById( "item2_name").innerText=ca[4].substr(9);
+                }
+
+                if(ca[5].endsWith("null")){
+                    $("#item3").hide();
+                }
+                else {
+                    $("#item3").show();
+                    document.getElementById( "item3_name").innerText=ca[5].substr(9);
+                }
+
+
             }
             else{
-                console.log(tk);
+
                 $("#Login").show();
                 $("#Logout").hide();
+                $("#item1").hide();
+                $("#item2").hide();
+                $("#item3").hide();
+                $("#item0").show();
             }
         console.log(url);
+
     }
     //
     // $(document).ready(function(){
