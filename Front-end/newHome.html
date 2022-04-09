@@ -294,18 +294,18 @@
 
             <div id = "item1" class="alert alert-light alert-dismissible fade show" role="alert">
                 <span  class="cd-qty">1x</span> <a id = "item1_name" >item1</a>
-                <div class="cd-price">$7.00</div>
+                <div id = "p1"class="cd-price">$7.00</div>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('1')"></button>
             </div>
             <div id = "item2" class="alert alert-light alert-dismissible fade show" role="alert">
                 <span class="cd-qty">1x</span><a id = "item2_name" >item2</a>
-                <div class="cd-price">$7.00</div>
+                <div id = "p2"class="cd-price">$7.00</div>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"onclick="remove('2')"></button>
             </div>
             <div id = "item3" class="alert alert-light alert-dismissible fade show" role="alert">
                 <span class="cd-qty">1x</span> <a id = "item3_name" >item3</a>
-                <div class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div id = "p3" class="cd-price">$7.00</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('3')"></button>
             </div>
 
 
@@ -363,25 +363,46 @@
         console.log(document.cookie);
         // document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|" + "cuisine1=" + cuisine1+ "|" + "cuisine2=" + cuisine2+ "|" + "cuisine3=" + cuisine3;
     }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
 </script>
 
 
 <script>
     <!--    Get index from config.json-->
     window.onload = function () {
-        console.log(document.cookie);
+
         $.ajaxSettings.async = false;
          // tk = document.cookie.split("; ")[1].substring(6);
          // console.log(tk);
-        let ca = document.cookie.split('| ');
-        console.log(ca[0]);
-        console.log(ca[1]);
-        console.log(ca[2]);
-        console.log(ca[3]);
-        console.log(ca[4]);
-        console.log(ca[5]);
-        console.log(ca[6]);
-
+        let ca = document.cookie.split('|');
+        console.log(ca[0]);//cname
+        console.log(ca[1]);//tk
+        console.log(ca[2]);//password
+        console.log(ca[3]); // expired time
+        let la = document.cookie.split('; ');
+        console.log(la[0]);
+        console.log(la[1]);// cuisine 1
+        console.log(la[2]);// cuisine 2
+        console.log(la[3]);// cuisine 3
+        console.log(la[4]);// price 1
+        console.log(la[5]);// price 2
+        console.log(la[6]);// price 3
+        console.log(document.cookie);
 
         //使用getJSON读取userinfo.json文件中的数据
         $.getJSON("config.json", function(index){
@@ -393,34 +414,41 @@
          // a=getCookie("tk");
          // c_start=document.cookie.indexOf("tk=");
 
-            if (ca[1] !== null){
-                tk = document.cookie.split("| ")[1].substring(6);
+            if (document.cookie.length > 20){
+                tk = document.cookie.split("|")[1].substring(6);
                 $("#item0").hide();
                 $("#Login").hide();
                 $("#Logout").show();
-                if(ca[3].endsWith("null")){
+                if(getCookie("cuisine1").endsWith("null")){
                     $("#item1").hide();
                 }else {
                     $("#item1").show();
-                    document.getElementById( "item1_name").innerText=ca[3].substr(9);
+                    document.getElementById( "item1_name").innerText=getCookie("cuisine1");
+
+                    document.getElementById( "p1").innerText=("$" + getCookie("price1"));
+
                 }
 
-                if(ca[4].endsWith("null")){
+                if(getCookie("cuisine2").endsWith("null")){
                     $("#item2").hide();
                 }
                 else {
                     $("#item2").show();
-                    document.getElementById( "item2_name").innerText=ca[4].substr(9);
+                    document.getElementById( "item2_name").innerText=getCookie("cuisine2");
+                    document.getElementById( "p2").innerText=("$" + getCookie("price2"));
                 }
 
-                if(ca[5].endsWith("null")){
+                if(getCookie("cuisine3").endsWith("null")){
                     $("#item3").hide();
                 }
                 else {
                     $("#item3").show();
-                    document.getElementById( "item3_name").innerText=ca[5].substr(9);
+                    document.getElementById( "item3_name").innerText=getCookie("cuisine3");
+                    document.getElementById( "p3").innerText=("$" + getCookie("price3"));
                 }
 
+                var totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3"));
+                document.getElementById( "total").innerText=("$" + totalprice.toString());
 
             }
             else{

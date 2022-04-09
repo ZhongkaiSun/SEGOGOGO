@@ -194,7 +194,7 @@
 
     function setCookie(tk, cname, pwd, exdays) {
         let cuisine1 = "Burger";
-        let cuisine2 = null;
+        let cuisine2 = "Drink";
         let cuisine3 = null;
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -204,9 +204,13 @@
         // document.cookie =  "token="+ tk + "; ";
         // document.cookie =  "pwd=" + pwd + "; ";
         document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|";
-        // document.cookie =  "cuisine1=" + cuisine1+ "; ";
-        // document.cookie =  "cuisine2=" + cuisine2+ "; ";
-        // document.cookie =  "cuisine3=" + cuisine3+ "; ";
+        document.cookie =  "cuisine1=" + cuisine1+ "; ";
+
+        document.cookie =  "cuisine2=" + cuisine2+ "; ";
+        document.cookie =  "cuisine3=" + cuisine3+ "; ";
+        document.cookie =  "price1=" + "7.00"+ "; ";
+        document.cookie =  "price2=" + "4.00"+ "; ";
+        document.cookie =  "price3=" + "0.00"+ "; ";
         // document.cookie =  "expires=" + expires + "; ";
         console.log( document.cookie)
 
