@@ -131,6 +131,7 @@
     function load() {
 
         //get token from cookie
+        //username = 'root';
         var username = document.cookie.split("|")[0].substring(6);
         var token = document.cookie.split("|")[1].substring(6);
         console.log(username);
@@ -147,15 +148,12 @@
             // IE6, IE5 浏览器执行代码
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        console.log(xmlhttp.readyState);
 
 
 
         xmlhttp.onreadystatechange = function () {
-            console.log(xmlhttp.readyState);
             if(xmlhttp.readyState == 4){
                 if (xmlhttp.status==200) {
-                    console.log(xmlhttp.status)
                     console.log(xmlhttp.responseText);
                     var payInfo = JSON.parse(xmlhttp.responseText);
                     console.log(payInfo);
@@ -170,12 +168,6 @@
                     document.getElementById("state").value = payInfo.data.state;
                     document.getElementById("zipcode").value = payInfo.data.zipcode;
 
-                }
-                else if(xmlhttp.status == 300){
-                    console.log(xmlhttp.responseText);
-                    info = JSON.parse(xmlhttp.responseText);
-                    console.log(info);
-                    console.log(xmlhttp.status)
                 }
             }
 
@@ -192,6 +184,7 @@
     function savePayment() {
         var xmlhttp;
         var username = document.cookie.split("|")[0].substring(6);
+        //var username = 'root';
         var cardHolder = document.getElementById("cardHolder").value;
         var cardNumber = document.getElementById("cardNumber").value;
         var expDate = document.getElementById("expdate").value;
