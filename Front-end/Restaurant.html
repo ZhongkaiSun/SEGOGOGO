@@ -70,8 +70,8 @@
             <a id = "Logout" href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+                <button class="btn btn-outline-success" type="submit" onclick="show()" >Search</button>
 
             </form>
 
@@ -96,7 +96,7 @@
 <h1> </h1>
 <br><br>
 <!--restaurant name-->
-<h1 class="pl-4" style="font-family: Arial; margin-left: 50px" id="restaurantName">restaurantName</h1>
+<h1 class="pl-4" style="font-family: Arial!important; font-size: 40px;  margin-left: 50px" id="restaurantName">restaurantName</h1>
 
 
 <div class="col-12 mt-4">
@@ -239,22 +239,30 @@
         </div>
 
         <div id = "item1" class="alert alert-light alert-dismissible fade show" role="alert">
-            <span  class="cd-qty">1x</span> <a id = "item1_name" >item1</a>
-            <div id = "p1"class="cd-price">$7.00</div>
-            <button type="button" class="btn-close right=20px position-absolute" data-bs-dismiss="alert" aria-label="Close"  margin-left="auto";
-                    margin-right = 0; onclick="remove('1')"></button>
+            <div style="margin-left: 30px">
+                <span  class="cd-qty">1 x</span> <a id = "item1_name" >item1</a>
+                <div id = "p1"class="cd-price">$7.00</div>
+            </div>
+            <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="remove('1')"></button>
         </div>
         <div id = "item2" class="alert alert-light alert-dismissible fade show" role="alert">
-            <span class="cd-qty">1x</span><a id = "item2_name" >item2</a>
-            <div id = "p2"class="cd-price">$7.00</div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"  margin-left="auto";
-                    margin-right = 0; onclick="remove('2')"></button>
+            <div style="margin-left: 30px">
+                <span class="cd-qty">1 x</span><a id = "item2_name" >item2</a>
+                <div id = "p2"class="cd-price">$7.00</div>
+            </div>
+
+            <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"  margin-left="auto";
+                     onclick="remove('2')"></button>
         </div>
         <div id = "item3" class="alert alert-light alert-dismissible fade show" role="alert">
-            <span class="cd-qty">1x</span> <a id = "item3_name" >item3</a>
-            <div id = "p3" class="cd-price">$7.00</div>
+            <div style="margin-left: 30px">
+                <span class="cd-qty">1 x</span> <a id = "item3_name" >item3</a>
+                <div id = "p3" class="cd-price">$7.00</div>
+            </div>
+
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"  margin-left="auto";
-                    margin-right = 0; onclick="remove('3')"></button>
+                     onclick="remove('3')"></button>
         </div>
 
 
@@ -565,6 +573,14 @@
 
     }
 
+</script>
+<script>
+    function showRestaurant()
+    {
+        //store the parameter
+        localStorage.string = document.getElementById("searchRestaurant").value;
+        window.location.href = 'Restaurant.html';
+    }
 </script>
 </body>
 </html>

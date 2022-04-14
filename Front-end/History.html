@@ -85,10 +85,8 @@
       <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
       <form class="d-flex" role="form" >
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-
-
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant" >
+        <a class="btn btn-outline-success" type="submit" id="search" onclick="show()" >Search</a>
       </form>
 <!--      <form class="d-flex" role="form" >-->
 <!--        <a href="Login.html" class="btn btn-warning" role="button"> Cartsssss</a>-->
@@ -212,7 +210,12 @@
     }
 
   }
-
+  function show()
+  {
+    //store the parameter
+    localStorage.string = document.getElementById("searchRestaurant").value;
+    window.location.href = 'Restaurant.html';
+  }
   function delCookie(){
     // for(let i = 0 ; i < 7 ; i++){
     //     document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
