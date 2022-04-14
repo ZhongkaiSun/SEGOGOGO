@@ -81,7 +81,8 @@
       <!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
       <!--            </form>-->
 
-      <a href="Login.html" class="btn btn-danger" role="button">Login</a>
+      <a id="Login" href="Login.html" class="btn btn-danger" role="button">Login</a>
+      <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
       <form class="d-flex" role="form" >
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -96,14 +97,13 @@
     </div>
   </div>
 </nav>
-<div class="alert alert-warning d-flex align-items-center" role="alert">
-  <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close"></button>
-  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-  <div>
-    Please   <strong> Login </strong> first to see your history !
-
-  </div>
-</div>
+<!--<div id ="Warning" class="alert alert-warning d-flex align-items-center" role="alert" >-->
+<!--  <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close"></button>-->
+<!--  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>-->
+<!--  <div >-->
+<!--    Please   <strong> Login </strong> first to see your history !-->
+<!--  </div>-->
+<!--</div>-->
 <!-- Show up the previous order by cuisines's data-->
 <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width:auto;float: right">
   <option selected>Select Page</option>
@@ -193,7 +193,37 @@
         $.ajaxSettings.async = true;
       })
     console.log(url);
-    load();
+    if (document.cookie.length > 20){
+
+      $("#alert").hide();
+      $("#Login").hide();
+      $("#Logout").show();
+
+      load();
+    }
+    else{
+
+      $("#Login").show();
+      $("#Logout").hide();
+
+      $("#alert").show();
+      alert("Please login first!");
+
+    }
+
+  }
+
+  function delCookie(){
+    // for(let i = 0 ; i < 7 ; i++){
+    //     document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    // }
+    // document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+    if(keys) {
+      for(var i = keys.length; i--;)
+        document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+    }
+
   }
 
   function load() {

@@ -326,7 +326,7 @@
 
     <a href="#0" class="checkout-btn" onclick="checkOut()">Checkout</a>
 
-    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+<!--    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>-->
     <sergey-import src="" />
 </div> <!-- cd-cart -->
 
@@ -360,6 +360,8 @@
 
     function remove( n){
         document.cookie="cuisine"+n.toString()+"=null";
+        totalprice =  totalprice - parseFloat(getCookie("price" + n));
+        document.getElementById( "total").innerText=("$" + totalprice.toString());
         console.log(document.cookie);
         // document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|" + "cuisine1=" + cuisine1+ "|" + "cuisine2=" + cuisine2+ "|" + "cuisine3=" + cuisine3;
     }
@@ -447,12 +449,12 @@
                     document.getElementById( "p3").innerText=("$" + getCookie("price3"));
                 }
 
-                var totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3"));
+                 totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3"));
                 document.getElementById( "total").innerText=("$" + totalprice.toString());
 
             }
             else{
-
+                totalprice = 0 ;
                 $("#Login").show();
                 $("#Logout").hide();
                 $("#item1").hide();
@@ -463,22 +465,7 @@
         console.log(url);
 
     }
-    //
-    // $(document).ready(function(){
-    //     if (tk.length > 10){
-    //         console.log(tk);
-    //         $("Login").hide();
-    //         $("Logout").show();
-    //     }
-    //     else{
-    //         console.log(tk);
-    //         $("Login").show();
-    //         $("Logout").hide();
-    //     }
-    //
-    //
-    //
-    // });
+
 
 
     function checkOut(){
@@ -503,15 +490,62 @@
                 alert(jn_info.msg);
             }
         }
+        // get all the cuisines
+        if(!getCookie("cuisine1").endsWith("null")){
+            food1 = getCookie("cuisine1")+"x1 ";
+        }
+        else{
+            food1 = "";
+        }
+
+        if(!getCookie("cuisine2").endsWith("null")){
+            food2 = food1.concat(getCookie("cuisine2")+"x1 ") ;
+        }
+        else {
+            food2 = food1;
+        }
+
+        if(!getCookie("cuisine3").endsWith("null")){
+            food3 = food2.concat(getCookie("cuisine3")+"x1 ") ;
+        }
+        else {
+            food3 = food2;
+        }
+        // get the Date
+        // 获取当前日期
+        var date = new Date();
+
+        var nowMonth = date.getMonth() + 1;
+
+        var strDate = date.getDate();
+
+        var seperator = "/";
+        if (nowMonth >= 1 && nowMonth <= 9) {
+            nowMonth = "0" + nowMonth;
+        }
+
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+
+        var nowDate =   nowMonth + seperator + strDate + seperator + date.getFullYear();
+
+
 
         xmlhttp.open("POST",url +"/order/create");
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xmlhttp.send(JSON.stringify({
-            "userName": username,
-            "restaurantName":"Chick-Fil-A",
-            "orderDate":"03/25/2022",
-            "price":7,
-            "cuisineName":"Burger"}));
+        if(totalprice == 0){
+            alert("Please add something into your cart! Or login first.")
+        }
+        else {
+            xmlhttp.send(JSON.stringify({
+                "userName": username,
+                "restaurantName":"Popeyes",
+                "orderDate": nowDate,
+                "price":totalprice,
+                "cuisineName":food3 }));
+        }
+
 
 
 
