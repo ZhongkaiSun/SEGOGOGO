@@ -70,7 +70,7 @@
             <a id = "Logout" href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant">
                 <button class="btn btn-outline-success" type="submit" onclick="show()" >Search</button>
 
             </form>
@@ -575,7 +575,7 @@
 
 </script>
 <script>
-    function showRestaurant()
+    function show()
     {
         //store the parameter
         localStorage.string = document.getElementById("searchRestaurant").value;
