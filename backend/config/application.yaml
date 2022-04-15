@@ -6,5 +6,5 @@ Mysql:
   port: 3306
   database: doordash
   username: root
-  password: 123456
+  password: Study2021
   charset: utf8

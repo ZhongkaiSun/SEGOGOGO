@@ -58,7 +58,7 @@ insert into cuisines values ("Cafe Misto", "Starbucks", 4.05, 530, "picture/Star
 
 insert into cuisines values ("Lami", "Mai Kai Kava Llc", 6.00, 300, "picture/Mai_Kai_Kava_Llc/Lami.jpeg");
 insert into cuisines values ("Mai Tai", "Mai Kai Kava Llc", 5.50, 340, "picture/Mai_Kai_Kava_Llc/Mai_Tai.jpeg");
-insert into cuisines values ("Kauai Coffee", "Mai Kai Kava Llc", 3.25, 330 "picture/Mai_Kai_Kava_Llc/Kauai_Coffee.jpeg");
+insert into cuisines values ("Kauai Coffee", "Mai Kai Kava Llc", 3.25, 330, "picture/Mai_Kai_Kava_Llc/Kauai_Coffee.jpeg");
 insert into cuisines values ("Kavalanche", "Mai Kai Kava Llc", 8.50, 350, "picture/Mai_Kai_Kava_Llc/Kavalanche.jpeg");
 insert into cuisines values ("Loose Leaf Tea - 1oz", "Mai Kai Kava Llc", 5.00, 360, "picture/Mai_Kai_Kava_Llc/Loose_Leaf_Tea.jpeg");
 insert into cuisines values ("Micronized Kava", "Mai Kai Kava Llc", 20.00, 390, "picture/Mai_Kai_Kava_Llc/Micronized_Kava.jpeg");
