@@ -77,7 +77,7 @@
 <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center" >
     <li >
         <div style="text-align: center"  href="#" >
-            <img height="180"   src="img/american.png" alt="list item 1" id="catImg"/>
+            <img height="180"    alt="list item 1" id="catImg"/>
             <h2 class="font-weight-bold d-block" style="position: center; font-size:30px; font-family: 'Verdana'"; id="category">category</h2>
             <div style="clear:left"></div>
         </div>
@@ -92,7 +92,7 @@
     <tr>
         <td>
             <div class="card" style="width: 16rem; margin: 50px 50px 50px 50px;" >
-                <img src="img/popeyes.png" class="card-img-top" alt="..." height="240" id="img1">
+                <img  class="card-img-top" alt="..." height="240" id="img0">
                 <div class="card-body">
                     <h5 class="card-title" id="restaurantName0" style="font-size: 25px;">restaurant</h5>
                     <p class="card-text"></p>
@@ -108,7 +108,7 @@
 
         <td>
             <div class="card" style="width: 16rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/checker.jpeg" class="card-img-top" alt="..." height="240">
+                <img  class="card-img-top" alt="..." height="240" id="img1">
                 <div class="card-body">
                     <h5 class="card-title" id="restaurantName1" style="font-size: 25px;">restaurant</h5>
                     <p class="card-text"></p>
@@ -371,6 +371,7 @@
                         document.getElementById("restaurantName" + i.toString() ).innerText=restaurantList.data[i].name;
                         document.getElementById("rate" + i.toString() ).innerText='Rating = '+ restaurantList.data[i].rating + '/5.0';
                         document.getElementById("deliveryFee" + i.toString() ).innerText='Delivery Fee = $'+restaurantList.data[i].deliveryFee;
+                        document.getElementById("img" + i.toString()).setAttribute('src', 'Cuisine/'+restaurantList.data[i].name+'.png')
                         // set pic
                         // document.getElementById("img1").setAttribute('src', 'img/panda.png')
                     }
