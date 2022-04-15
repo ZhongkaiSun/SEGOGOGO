@@ -3,6 +3,7 @@ package controller
 import (
 	"backend/common"
 	"backend/model"
+	"fmt"
 	_ "fmt"
 	"log"
 	"net/http"
@@ -11,7 +12,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-func CreatePayment(c *gin.Context) {
+func CreateUpdatePayment(c *gin.Context) {
 	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
 	c.Header("Access-Control-Allow-Origin", "*")
 	if c.Request.Method == "OPTIONS" {
@@ -39,13 +40,15 @@ func CreatePayment(c *gin.Context) {
 	city := requestPayment.City
 	state := requestPayment.State
 	zipcode := requestPayment.Zipcode
-
+	fmt.Println("username is: " + username)
 	if !isCustomerExist(DB, username) {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "User doesn't exist, please bind a valid username"})
 		return
 	}
 	if isPaymentExsit(DB, username) {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "data": nil, "msg": "The payment already exists"})
+		updatePayment := model.Payment{}
+		DB.Model(&updatePayment).Where("username = ?", username).Updates(map[string]interface{}{"card_holder": cardHolder, "card_number": cardNumber, "exp_date": expDate, "security_code": securityCode, "address_line1": addressLine1, "address_line2": addressLine2, "city": city, "state": state, "zipcode": zipcode})
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"code": 200, "data": nil, "msg": "The payment updates successfully"})
 		return
 	}
 
@@ -87,7 +90,7 @@ func ReadPayment(c *gin.Context) {
 		return
 	}
 	if !isPaymentExsit(DB, username) {
-		c.JSON(300, gin.H{"code": 300, "data": nil, "msg": "The payment doesn't exist"})
+		c.JSON(422, gin.H{"code": 422, "data": nil, "msg": "The payment doesn't exist!"})
 		return
 	}
 

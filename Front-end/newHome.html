@@ -23,18 +23,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="newHome.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="newHome.html" id="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="History.html">History</a>
+                    <a class="nav-link" href="History.html" id="History">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         About
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="PaymentInfo.html">Pay</a></li>
-                        <li><a class="dropdown-item" href="#">Discount</a></li>
+                        <li><a class="dropdown-item" href="AccountInfo.html">Account Information</a></li>
+                        <li><a class="dropdown-item" href="PaymentInfo.html">Payment Information</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
                     </ul>
@@ -56,15 +56,13 @@
 <!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
 <!--            </form>-->
 
-            <a id = "Login" href="Login.html" class="btn btn-danger" role="button">Login</a>
+            <a id = "Login" href="Login.html" class="btn btn-danger" role="button" >Login</a>
 
             <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
             <form class="d-flex" role="form" >
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-
-
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant" >
+                <a class="btn btn-outline-success" type="submit" id="search" onclick="show()" >Search</a>
             </form>
             <form class="d-flex" role="form" >
                 <a href="Login.html" class="btn btn-warning" role="button"> Cartsssss</a>
@@ -123,44 +121,44 @@
                 </div>
             </li>
             <li id="asian" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/Asian.png" alt="list item 2" />
+                <div href="#"><img height="85" src="img/Asian.png" alt="list item 2" onclick="showDetails('Asian')"/>
                     <h4>Asian</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
             <li id="coffeeandtea" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/coffeeandtea.png" alt="list item 3" />
+                <div href="#"><img height="85" src="img/Coffee & Tea.png" alt="list item 3" onclick="showDetails('Coffee & Tea')"/>
                     <h4>Coffee & Tea</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
             <li id="healthy" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/healthy.png" alt="list item 4" />
+                <div href="#"><img height="85" src="img/healthy.png" alt="list item 4" onclick="showDetails('Healthy')"/>
                     <h4>Healthy</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
             <li id="mexican" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/mexican.png" alt="list item 5" />
+                <div href="#"><img height="85" src="img/mexican.png" alt="list item 5" onclick="showDetails('Mexican')"/>
                     <h4>Mexican</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
             <li id="pizza" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/pizza.png" alt="list item 6" />
+                <div href="#"><img height="85" src="img/pizza.png" alt="list item 6" onclick="showDetails('Pizza')"/>
                     <h4>Pizza</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
             <li id="sushi" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/Sushi.png" alt="list item 7" />
-                    <h4>Fast Food</h4>
+                <div href="#"><img height="85" src="img/Fastfood.png" alt="list item 7" onclick="showDetails('Fastfood')"/>
+                    <h4>Fast food</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
             <li id="dessert" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/dessert.png" alt="list item 8" />
-                    <h4>dessert</h4>
+                <div href="#"><img height="85" src="img/dessert.png" alt="list item 8" onclick="showDetails('Dessert')"/>
+                    <h4>Dessert</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
@@ -177,7 +175,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Popeyes</h5>
                     <p class="card-text"></p>
-                    <a href="Restaurant.html" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('Popeyes')" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
         </td>
@@ -187,7 +185,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Chick-Fil-A</h5>
                     <p class="card-text"></p>
-                    <a href="Restaurant.html" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('Chich-Fil-A')" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
         </td>
@@ -198,7 +196,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Taco Bell</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('TacoBell')" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
         </td>
@@ -209,7 +207,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Chipotle's</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('Chipotle')" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
         </td>
@@ -223,7 +221,7 @@
                 <div class="card-body">
                     <h5 class="card-title">McDonald's</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('McDonald')" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
         </td>
@@ -234,7 +232,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Panda Express</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('Panda Express')" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
         </td>
@@ -245,7 +243,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Windy's</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('Windys')" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
         </td>
@@ -256,7 +254,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Pizza Hut</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('Pizza Hut')" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
         </td>
@@ -279,28 +277,33 @@
 <div id="cd-shadow-layer"></div>
 
 <div id="cd-cart">
-    <h2>Cart</h2>
+    <h1>Cart</h1>
 
 
     <ul class="cd-cart-items">
 
 
 
+        <div id = "item0" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty"></span>  <h2>Please login first !</h2>
+            <div class="cd-price"></div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
 
-            <div class="alert alert-light alert-dismissible fade show" role="alert">
-                <span class="cd-qty">1x</span> breakfast
-                <div class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div id = "item1" class="alert alert-light alert-dismissible fade show" role="alert">
+                <span  class="cd-qty">1x</span> <a id = "item1_name" >item1</a>
+                <div id = "p1"class="cd-price">$7.00</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('1')"></button>
             </div>
-            <div class="alert alert-light alert-dismissible fade show" role="alert">
-                <span class="cd-qty">1x</span> Combo
-                <div class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div id = "item2" class="alert alert-light alert-dismissible fade show" role="alert">
+                <span class="cd-qty">1x</span><a id = "item2_name" >item2</a>
+                <div id = "p2"class="cd-price">$7.00</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"onclick="remove('2')"></button>
             </div>
-            <div class="alert alert-light alert-dismissible fade show" role="alert">
-                <span class="cd-qty">1x</span> Sandwiches
-                <div class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div id = "item3" class="alert alert-light alert-dismissible fade show" role="alert">
+                <span class="cd-qty">1x</span> <a id = "item3_name" >item3</a>
+                <div id = "p3" class="cd-price">$7.00</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('3')"></button>
             </div>
 
 
@@ -310,7 +313,7 @@
 <!--            <div class="cd-price">$9.99</div>-->
 <!--            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>-->
             <div class="cd-cart-total">
-                <p>Total <span>$21.00</span></p>
+                <p>Total <span id= "total" >$0.00</span></p>
             </div>
         </li>
     </ul> <!-- cd-cart-items -->
@@ -321,7 +324,7 @@
 
     <a href="#0" class="checkout-btn" onclick="checkOut()">Checkout</a>
 
-    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+<!--    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>-->
     <sergey-import src="" />
 </div> <!-- cd-cart -->
 
@@ -330,12 +333,61 @@
 <script type="text/javascript">
     function showDetails(category)
     {
-        window.location = 'Restaurant_Cuisine.html';
+        //store the parameter
+        localStorage.string = category;
+        window.location.href = 'Restaurant_Cuisine.html';
         console.log(category);
     }
 
+    function toRestaurant(category)
+    {
+        //store the parameter
+        localStorage.string = category;
+        window.location.href = 'Restaurant.html';
+        console.log(category);
+    }
+
+    // function delCookie(){
+    //     document.cookie = "cname=; token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    //
+    // }
     function delCookie(){
-        document.cookie = "cname=| token=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
+        // for(let i = 0 ; i < 7 ; i++){
+        //     document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        // }
+        // document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+        if(keys) {
+            for(var i = keys.length; i--;)
+                document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+        }
+
+    }
+
+    function remove( n){
+        document.cookie="cuisine"+n.toString()+"=null";
+        document.cookie="price"+n.toString()+"=0";
+        totalprice =  totalprice - parseFloat(getCookie("price" + n));
+        document.getElementById( "total").innerText=("$" + totalprice.toString());
+        console.log(document.cookie);
+        window.location.replace("Restaurant.html")
+        // document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|" + "cuisine1=" + cuisine1+ "|" + "cuisine2=" + cuisine2+ "|" + "cuisine3=" + cuisine3;
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
     }
 </script>
 
@@ -343,9 +395,25 @@
 <script>
     <!--    Get index from config.json-->
     window.onload = function () {
-        $.ajaxSettings.async = false;
-        tk = document.cookie.split("|")[1].substring(6);
 
+        $.ajaxSettings.async = false;
+         // tk = document.cookie.split("; ")[1].substring(6);
+         // console.log(tk);
+        let ca = document.cookie.split('|');
+        console.log(ca[0]);//cname
+        console.log(ca[1]);//tk
+        console.log(ca[2]);//password
+        console.log(ca[3]); // expired time
+        let la = document.cookie.split('; ');
+        console.log(la[0]);
+        console.log(la[1]);// cuisine 1
+        console.log(la[2]);// cuisine 2
+        console.log(la[3]);// cuisine 3
+        console.log(la[4]);// price 1
+        console.log(la[5]);// price 2
+        console.log(la[6]);// price 3
+        console.log(document.cookie);
+        console.log(localStorage);
         //使用getJSON读取userinfo.json文件中的数据
         $.getJSON("config.json", function(index){
             url = JSON.stringify(index.url).slice(1, -1);
@@ -353,36 +421,65 @@
             $.ajaxSettings.async = true;
         })
 
-            if (tk.length > 10){
-                console.log(tk);
+         // a=getCookie("tk");
+         // c_start=document.cookie.indexOf("tk=");
+
+            if (document.cookie.length > 20){
+                tk = document.cookie.split("|")[1].substring(6);
+                $("#item0").hide();
                 $("#Login").hide();
                 $("#Logout").show();
+                if(getCookie("cuisine1").endsWith("null")){
+                    $("#item1").hide();
+                }else {
+                    $("#item1").show();
+                    document.getElementById( "item1_name").innerText=getCookie("cuisine1");
+
+                    document.getElementById( "p1").innerText=("$" + getCookie("price1"));
+
+                }
+
+                if(getCookie("cuisine2").endsWith("null")){
+                    $("#item2").hide();
+                }
+                else {
+                    $("#item2").show();
+                    document.getElementById( "item2_name").innerText=getCookie("cuisine2");
+                    document.getElementById( "p2").innerText=("$" + getCookie("price2"));
+                }
+
+                if(getCookie("cuisine3").endsWith("null")){
+                    $("#item3").hide();
+                }
+                else {
+                    $("#item3").show();
+                    document.getElementById( "item3_name").innerText=getCookie("cuisine3");
+                    document.getElementById( "p3").innerText=("$" + getCookie("price3"));
+                }
+
+                 totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3"));
+                document.getElementById( "total").innerText=("$" + totalprice.toString());
+
             }
             else{
-                console.log(tk);
+                totalprice = 0 ;
                 $("#Login").show();
                 $("#Logout").hide();
+                $("#item1").hide();
+                $("#item2").hide();
+                $("#item3").hide();
+                $("#item0").show();
             }
         console.log(url);
-        load();
-    }
-    //
-    // $(document).ready(function(){
-    //     if (tk.length > 10){
-    //         console.log(tk);
-    //         $("Login").hide();
-    //         $("Logout").show();
-    //     }
-    //     else{
-    //         console.log(tk);
-    //         $("Login").show();
-    //         $("Logout").hide();
-    //     }
-    //
-    //
-    //
-    // });
 
+    }
+
+    function show()
+    {
+        //store the parameter
+        localStorage.string = document.getElementById("searchRestaurant").value;
+        window.location.href = 'Restaurant.html';
+    }
 
     function checkOut(){
         var xmlhttp;
@@ -406,15 +503,62 @@
                 alert(jn_info.msg);
             }
         }
+        // get all the cuisines
+        if(!getCookie("cuisine1").endsWith("null")){
+            food1 = getCookie("cuisine1")+"x1 ";
+        }
+        else{
+            food1 = "";
+        }
+
+        if(!getCookie("cuisine2").endsWith("null")){
+            food2 = food1.concat(getCookie("cuisine2")+"x1 ") ;
+        }
+        else {
+            food2 = food1;
+        }
+
+        if(!getCookie("cuisine3").endsWith("null")){
+            food3 = food2.concat(getCookie("cuisine3")+"x1 ") ;
+        }
+        else {
+            food3 = food2;
+        }
+        // get the Date
+        // 获取当前日期
+        var date = new Date();
+
+        var nowMonth = date.getMonth() + 1;
+
+        var strDate = date.getDate();
+
+        var seperator = "/";
+        if (nowMonth >= 1 && nowMonth <= 9) {
+            nowMonth = "0" + nowMonth;
+        }
+
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+
+        var nowDate =   nowMonth + seperator + strDate + seperator + date.getFullYear();
+
+
 
         xmlhttp.open("POST",url +"/order/create");
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xmlhttp.send(JSON.stringify({
-            "userName": username,
-            "restaurantName":"Chick-Fil-A",
-            "orderDate":"03/25/2022",
-            "price":7,
-            "cuisineName":"Burger"}));
+        if(totalprice == 0){
+            alert("Please add something into your cart! Or login first.")
+        }
+        else {
+            xmlhttp.send(JSON.stringify({
+                "userName": username,
+                "restaurantName":"Popeyes",
+                "orderDate": nowDate,
+                "price":totalprice,
+                "cuisineName":food3 }));
+        }
+
 
 
 
@@ -422,7 +566,6 @@
 
 
 </script>
-
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/main.js"></script> <!-- Gem jQuery -->
 

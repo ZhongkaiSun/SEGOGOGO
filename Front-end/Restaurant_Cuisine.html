@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" href="css/bootstrap.css" >
-    <title>GatorDash</title>
+    <title id="title">GatorDash</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css"> <!-- Gem style -->
     <script src="js/modernizr.js"></script> <!-- Modernizr -->
     <script src="js/jquery-1.11.0.min.js"></script>
+
 
 </head>
 <body>
@@ -24,18 +25,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="newHome.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="newHome.html" id="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="History.html">History</a>
+                    <a class="nav-link" href="History.html" id="History">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         About
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="PaymentInfo.html">Pay</a></li>
-                        <li><a class="dropdown-item" href="#">Discount</a></li>
+                        <li><a class="dropdown-item" href="AccountInfo.html">Account Information</a></li>
+                        <li><a class="dropdown-item" href="PaymentInfo.html">Payment Information</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
                     </ul>
@@ -57,13 +58,13 @@
             <!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
             <!--            </form>-->
 
-            <a href="Login.html" class="btn btn-danger" role="button">Login</a>
+            <a id = "Login" href="Login.html" class="btn btn-danger" role="button" >Login</a>
+
+            <a id = "Logout" href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
             <form class="d-flex" role="form" >
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-
-
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant" >
+                <a class="btn btn-outline-success" type="submit" id="search" onclick="showRestaurant()" >Search</a>
             </form>
             <form class="d-flex" role="form" >
                 <a href="Login.html" class="btn btn-warning" role="button"> Cartsssss</a>
@@ -72,12 +73,12 @@
         </div>
     </div>
 </nav>
-
+<br>
 <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center" >
     <li >
         <div style="text-align: center"  href="#" >
-            <img height="180"   src="img/american.png" alt="list item 1" />
-            <h2 style="position: center;font-size:30px;" id="category">category</h2>
+            <img height="180"   src="img/american.png" alt="list item 1" id="catImg"/>
+            <h2 class="font-weight-bold d-block" style="position: center; font-size:30px; font-family: 'Verdana'"; id="category">category</h2>
             <div style="clear:left"></div>
         </div>
     </li>
@@ -90,98 +91,33 @@
 <table style="border-collapse:separate; display: flex; justify-content: center">
     <tr>
         <td>
-            <div class="card" style="width: 14rem; margin: 50px 50px 50px 50px;" >
-                <img src="img/Chick.png" class="card-img-top" alt="..." height="240">
+            <div class="card" style="width: 16rem; margin: 50px 50px 50px 50px;" >
+                <img src="img/popeyes.png" class="card-img-top" alt="..." height="240" id="img1">
                 <div class="card-body">
-                    <h5 class="card-title" id="restaurantName0" style="font-size: 30px;">restaurant</h5>
+                    <h5 class="card-title" id="restaurantName0" style="font-size: 25px;">restaurant</h5>
                     <p class="card-text"></p>
-                    <a href="Restaurant.html" class="btn btn-primary">Order Now</a>
-                    <p id="rate0">rate</p>
+                    <a class="btn btn-primary" onclick="showDetails('0')" >Order Now</a>
+                    <br><br>
+                    <a id="rate0" style="font-family: 'Verdana'">rate</a>
+                    <br>
+                    <a id="deliveryFee0" style="font-family: 'Verdana'">Delivery Fee</a>
+
                 </div>
             </div>
         </td>
 
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/taco_bell.jpeg" class="card-img-top" alt="..." height="240">
+            <div class="card" style="width: 16rem;margin: 50px 50px 50px 50px;" >
+                <img src="img/checker.jpeg" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
-                    <h5 class="card-title" id="restaurantName1" style="font-size: 30px;">restaurant</h5>
+                    <h5 class="card-title" id="restaurantName1" style="font-size: 25px;">restaurant</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                    <p id="rate1">rate</p>
-                </div>
-            </div>
-        </td>
+                    <a href="#" class="btn btn-primary" onclick="showDetails('1')">Order Now</a>
+                    <br><br>
+                    <a id="rate1"  style="font-family: 'Verdana'">rate</a>
+                    <br>
+                    <a id="deliveryFee1"  style="font-family: 'Verdana'">Delivery Fee</a>
 
-        <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/chipotle.png" class="card-img-top" alt="..."  height="240">
-                <div class="card-body">
-                    <h5 class="card-title" id="restaurantName2" style="font-size: 30px;"></h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                    <p id="rate2">rate</p>
-                </div>
-            </div>
-        </td>
-
-        <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/chipotle.png" class="card-img-top" alt="..."  height="240">
-                <div class="card-body">
-                    <h5 class="card-title" id="restaurantName3"  style="font-size: 30px;">Chipotle's</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                    <p id="rate3">rate</p>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/McDonald.jpeg" class="card-img-top" alt="..."  height="240">
-                <div class="card-body">
-                    <h5 class="card-title" id="restaurantName4" style="font-size: 30px;">McDonald's</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                    <p id="rate4">rate</p>
-                </div>
-            </div>
-        </td>
-
-        <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/panda.png" class="card-img-top" alt="..."  height="240">
-                <div class="card-body">
-                    <h5 class="card-title" id="restaurantName5" style="font-size: 30px;">Panda Express</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                    <p id="rate5">rate</p>
-                </div>
-            </div>
-        </td>
-
-        <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/windys.png" class="card-img-top" alt="..." height="240">
-                <div class="card-body">
-                    <h5 class="card-title" id="restaurantName6" style="font-size: 30px;">Windy's</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                    <p id="rate6">rate</p>
-                </div>
-            </div>
-        </td>
-
-        <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/windys.png" class="card-img-top" alt="..." height="240">
-                <div class="card-body">
-                    <h5 class="card-title" id="restaurantName7" style="font-size: 30px;">Windy's</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                    <p id="rate7">rate</p>
                 </div>
             </div>
         </td>
@@ -201,54 +137,166 @@
 
 
 <div id="cd-shadow-layer"></div>
+ <!-- cd-cart -->
+
+
+
 <div id="cd-cart">
-    <h2>Cart</h2>
+    <h1>Cart</h1>
+
+
     <ul class="cd-cart-items">
-        <li>
-            <span class="cd-qty">1x</span> Product Name
-            <div class="cd-price">$9.99</div>
-            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-        </li>
+
+
+
+        <div id = "item0" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty"></span>  <h2>Please login first !</h2>
+            <div class="cd-price"></div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div id = "item1" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span  class="cd-qty">1x</span> <a id = "item1_name" >item1</a>
+            <div id = "p1"class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('1')"></button>
+        </div>
+        <div id = "item2" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span><a id = "item2_name" >item2</a>
+            <div id = "p2"class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"onclick="remove('2')"></button>
+        </div>
+        <div id = "item3" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id = "item3_name" >item3</a>
+            <div id = "p3" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('3')"></button>
+        </div>
+
+
 
         <li>
-            <span class="cd-qty">2x</span> Product Name
-            <div class="cd-price">$19.98</div>
-            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-        </li>
-
-        <li>
-            <span class="cd-qty">1x</span> Product Name
-            <div class="cd-price">$9.99</div>
-            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+            <!--            <span class="cd-qty">1x</span> Product Name-->
+            <!--            <div class="cd-price">$9.99</div>-->
+            <!--            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>-->
+            <div class="cd-cart-total">
+                <p>Total <span id= "total" >$0.00</span></p>
+            </div>
         </li>
     </ul> <!-- cd-cart-items -->
 
-    <div class="cd-cart-total">
-        <p>Total <span>$39.96</span></p>
-    </div> <!-- cd-cart-total -->
+    <!--    <div class="cd-cart-total">-->
+    <!--        <p>Total <span>$39.96</span></p>-->
+    <!--    </div> &lt;!&ndash; cd-cart-total &ndash;&gt;-->
 
-    <a href="#0" class="checkout-btn">Checkout</a>
+    <a href="#0" class="checkout-btn" onclick="checkOut()">Checkout</a>
 
-    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+    <!--    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>-->
+    <sergey-import src="" />
 </div> <!-- cd-cart -->
+
+
+<link href="cart.html" rel="import" />
+
+
+
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/main.js"></script> <!-- Gem jQuery -->
 <script type="text/javascript">
     window.onload = function () {
         $.ajaxSettings.async = false;
 
+        let ca = document.cookie.split('|');
+        console.log(ca[0]);//cname
+        console.log(ca[1]);//tk
+        console.log(ca[2]);//password
+        console.log(ca[3]); // expired time
+        let la = document.cookie.split('; ');
+        console.log(la[0]);
+        console.log(la[1]);// cuisine 1
+        console.log(la[2]);// cuisine 2
+        console.log(la[3]);// cuisine 3
+        console.log(la[4]);// price 1
+        console.log(la[5]);// price 2
+        console.log(la[6]);// price 3
+        console.log(document.cookie);
+
         //使用getJSON读取userinfo.json文件中的数据
         $.getJSON("config.json", function(index){
-            category = JSON.stringify(index.category).slice(1, -1);
+            category = localStorage.string;
+            // category = JSON.stringify(index.category).slice(1, -1);
             url = JSON.stringify(index.url).slice(1, -1);
             console.log(category)
             $.ajaxSettings.async = true;
         })
-        console.log(category);
         console.log(url);
         document.getElementById("category").innerHTML=category;
+        document.getElementById("title").innerHTML=category;
+        document.getElementById("catImg").setAttribute('src', 'img/'+category+'.png')
+
         load();
+
+        if (document.cookie.length > 20){
+            tk = document.cookie.split("|")[1].substring(6);
+            $("#item0").hide();
+            $("#Login").hide();
+            $("#Logout").show();
+            if(getCookie("cuisine1").endsWith("null")){
+                $("#item1").hide();
+            }else {
+                $("#item1").show();
+                document.getElementById( "item1_name").innerText=getCookie("cuisine1");
+
+                document.getElementById( "p1").innerText=("$" + getCookie("price1"));
+
+            }
+
+            if(getCookie("cuisine2").endsWith("null")){
+                $("#item2").hide();
+            }
+            else {
+                $("#item2").show();
+                document.getElementById( "item2_name").innerText=getCookie("cuisine2");
+                document.getElementById( "p2").innerText=("$" + getCookie("price2"));
+            }
+
+            if(getCookie("cuisine3").endsWith("null")){
+                $("#item3").hide();
+            }
+            else {
+                $("#item3").show();
+                document.getElementById( "item3_name").innerText=getCookie("cuisine3");
+                document.getElementById( "p3").innerText=("$" + getCookie("price3"));
+            }
+
+            totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3"));
+            document.getElementById( "total").innerText=("$" + totalprice.toString());
+
+        }
+        else{
+            totalprice = 0 ;
+            $("#Login").show();
+            $("#Logout").hide();
+            $("#item1").hide();
+            $("#item2").hide();
+            $("#item3").hide();
+            $("#item0").show();
+        }
+        // tk = document.cookie.split("|")[1].substring(6);
+        // if (tk.length > 10){
+        //     console.log(tk);
+        //     $("#Login").hide();
+        //     $("#Logout").show();
+        // }
+        // else {
+        //     console.log(tk);
+        //     $("#Login").show();
+        //     $("#Logout").hide();
+        // }
+
+
     }
+
+
+
     function load() {
 
         //get token from cookie
@@ -273,8 +321,10 @@
                     for(let i = 0 ; i < restaurantList.data.length ; i ++ ){
                         console.log(restaurantList.data[0].name);
                         document.getElementById("restaurantName" + i.toString() ).innerText=restaurantList.data[i].name;
-                        document.getElementById("rate" + i.toString() ).innerText='rate='+ restaurantList.data[i].rating + '/5.0';
-                        //document.getElementById("calories" + i.toString() ).innerText='Calories='+restaurantList.data[i].calories;
+                        document.getElementById("rate" + i.toString() ).innerText='Rating = '+ restaurantList.data[i].rating + '/5.0';
+                        document.getElementById("deliveryFee" + i.toString() ).innerText='Delivery Fee = $'+restaurantList.data[i].deliveryFee;
+                        // set pic
+                        // document.getElementById("img1").setAttribute('src', 'img/panda.png')
                     }
                 }
             }
@@ -285,6 +335,146 @@
         xmlhttp.send();
     }
 
+    function showDetails(restaurantName)
+    {
+        //store the parameter
+        localStorage.string = document.getElementById('restaurantName'+restaurantName).innerText;
+        window.location.href = 'Restaurant.html';
+        console.log(restaurantName);
+    }
+
+    function delCookie(){
+        // for(let i = 0 ; i < 7 ; i++){
+        //     document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        // }
+        // document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+        if(keys) {
+            for(var i = keys.length; i--;)
+                document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+        }
+
+    }
+
+    function remove( n){
+        document.cookie="cuisine"+n.toString()+"=null";
+        document.cookie="price"+n.toString()+"=0";
+        totalprice =  totalprice - parseFloat(getCookie("price" + n));
+        document.getElementById( "total").innerText=("$" + totalprice.toString());
+        console.log(document.cookie);
+        window.location.replace("Restaurant.html")
+        // document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|" + "cuisine1=" + cuisine1+ "|" + "cuisine2=" + cuisine2+ "|" + "cuisine3=" + cuisine3;
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function checkOut(){
+        var xmlhttp;
+        // var url = "http://10.136.70.250:1016";
+        var username = document.cookie.split("|")[0].substring(6);
+        console.log(username);
+        if (window.XMLHttpRequest) {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+
+                eval("var jn_info=" + xmlhttp.responseText);
+                console.log(jn_info.msg);
+                alert(jn_info.msg);
+            }
+        }
+        // get all the cuisines
+        if(!getCookie("cuisine1").endsWith("null")){
+            food1 = getCookie("cuisine1")+"x1 ";
+        }
+        else{
+            food1 = "";
+        }
+
+        if(!getCookie("cuisine2").endsWith("null")){
+            food2 = food1.concat(getCookie("cuisine2")+"x1 ") ;
+        }
+        else {
+            food2 = food1;
+        }
+
+        if(!getCookie("cuisine3").endsWith("null")){
+            food3 = food2.concat(getCookie("cuisine3")+"x1 ") ;
+        }
+        else {
+            food3 = food2;
+        }
+        // get the Date
+        // 获取当前日期
+        var date = new Date();
+
+        var nowMonth = date.getMonth() + 1;
+
+        var strDate = date.getDate();
+
+        var seperator = "/";
+        if (nowMonth >= 1 && nowMonth <= 9) {
+            nowMonth = "0" + nowMonth;
+        }
+
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+
+        var nowDate =   nowMonth + seperator + strDate + seperator + date.getFullYear();
+
+
+
+        xmlhttp.open("POST",url +"/order/create");
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        if(totalprice == 0){
+            alert("Please add something into your cart! Or login first.")
+        }
+        else {
+            xmlhttp.send(JSON.stringify({
+                "userName": username,
+                "restaurantName":"Popeyes",
+                "orderDate": nowDate,
+                "price":totalprice,
+                "cuisineName":food3 }));
+        }
+
+
+
+
+    }
+
+
 </script>
+<script>
+    function showRestaurant()
+    {
+        //store the parameter
+        localStorage.string = document.getElementById("searchRestaurant").value;
+        window.location.href = 'Restaurant.html';
+    }
+</script>
+
 </body>
 </html>

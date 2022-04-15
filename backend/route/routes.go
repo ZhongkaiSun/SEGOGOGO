@@ -68,7 +68,7 @@ func RestaurantRoute(r *gin.Engine) *gin.Engine {
 
 func PaymentRoute(r *gin.Engine) *gin.Engine {
 	paymentRoutes := r.Group("/payment")
-	paymentRoutes.POST("/create", controller.CreatePayment)
+	paymentRoutes.POST("/create", controller.CreateUpdatePayment)
 	paymentRoutes.GET("/read", controller.ReadPayment)
 	return r
 }

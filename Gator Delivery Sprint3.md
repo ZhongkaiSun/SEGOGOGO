@@ -22,7 +22,8 @@ Hongru Liu (hongru.liu@ufl.edu, 5369-7439)
 
 https://github.com/ZhongkaiSun/SEGOGOGO
 
-
+## Project Demo(Screenshots)
+https://github.com/ZhongkaiSun/SEGOGOGO/blob/master/Project%20Demo(Screenshots).pdf
 
 ## Accomplishment in Front-end
 

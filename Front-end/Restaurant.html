@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GatorDash</title>
+    <title>Restaurant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <!-- 引入 Bootstrap -->
@@ -15,13 +15,23 @@
     <link rel="stylesheet" href="css/bootstrap-utilities.css" >
     <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css" >
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>-->
+
+
 
     <link rel="stylesheet" type="text/css" href="css/restaurant.css">
     <script src="js/bootstrap.bundle.js" ></script>
     <script src="js/bootstrap.esm.js" ></script>
     <script src="js/bootstrap.js" ></script>
-    <script src="js/jquery-1.11.0.min.js"></script>
+
     <script type="text/javascript" src="js/restaurant.js"></script>
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Gem style -->
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
@@ -34,18 +44,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="newHome.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="newHome.html" id="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="History.html">History</a>
+                    <a class="nav-link" href="History.html" id="History">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         About
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Pay</a></li>
-                        <li><a class="dropdown-item" href="#">Discount</a></li>
+                        <li><a class="dropdown-item" href="AccountInfo.html">Account Information</a></li>
+                        <li><a class="dropdown-item" href="PaymentInfo.html">Payment Information</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
                     </ul>
@@ -54,9 +64,14 @@
                     <a class="nav-link disabled">Spotlights</a>
                 </li>
             </ul>
+
+            <a id = "Login" href="Login.html" class="btn btn-danger" role="button" >Login</a>
+
+            <a id = "Logout" href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
+
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+                <button class="btn btn-outline-success" type="submit" onclick="show()" >Search</button>
 
             </form>
 
@@ -65,17 +80,23 @@
                 <div class="d-flex" ><img class="rounded-circle mt-2" width="50px" onclick="window.location='AccountInfo.html'" src="Engineering%20Gator.png" ></div>
             </div>
 
+<!--            <form class="d-flex" role="form" >-->
+<!--                <a href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log out</a>-->
+<!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
+<!--            </form>-->
+
             <form class="d-flex" role="form" >
-                <a href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log out</a>
-                <!--                <button type="button" class="btn btn-danger" >Login</button>-->
+                <a href="Login.html" class="btn btn-warning" role="button"> Cartsss</a>
             </form>
+            <div id="cd-cart-trigger"><a class="cd-img-replace" href="">Cart</a></div>
+
         </div>
     </div>
 </nav>
 <h1> </h1>
-
+<br><br>
 <!--restaurant name-->
-<h1 class="pl-4" style="font-family: Arial; margin-left: 50px">Popeyes </h1>
+<h1 class="pl-4" style="font-family: Arial!important; font-size: 40px;  margin-left: 50px" id="restaurantName">restaurantName</h1>
 
 
 <div class="col-12 mt-4">
@@ -100,7 +121,7 @@
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                            </svg></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart </button>
+                            </svg></div> <button class="btn btn-success cart-button btn-block" onclick="add(0)"><span class="dot">1</span>Add to cart </button>
                         </div>
                         <div class="weight"> <small id="calories0">calories</small> </div>
                     </div>
@@ -113,7 +134,7 @@
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                            </svg></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart </button>
+                            </svg></div> <button class="btn btn-success cart-button btn-block" onclick="add(1)"><span class="dot">1</span>Add to cart </button>
                         </div>
                         <div class="weight"> <small id="calories1">calories</small> </div>
                     </div>
@@ -126,13 +147,56 @@
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                            </svg></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart </button>
+                            </svg></div> <button class="btn btn-success cart-button btn-block" onclick="add(2)"><span class="dot">1</span>Add to cart </button>
                         </div>
                         <div class="weight"> <small id="calories2">calories</small> </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <div class="text-center"> <img src="img/redbeanrice.jpeg" width="200" height = "175"> </div>
+                    <div class="product-details"> <span class="font-weight-bold d-block" id="price3">price</span> <span id="cuisineName3">cuisine</span>
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg></div> <button class="btn btn-success cart-button btn-block" onclick="add(3)"><span class="dot">1</span>Add to cart </button>
+                        </div>
+                        <div class="weight"> <small id="calories3">calories</small> </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <br><br>
+        <div class="row g-2">
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <div class="text-center"> <img src="img/chickenNuggets.jpeg" width="200" height = "175"> </div>
+                    <div class="product-details"> <span class="font-weight-bold d-block" id="price4">price</span> <span id="cuisineName4">cuisine</span>
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg></div> <button class="btn btn-success cart-button btn-block" onclick="add(4)"><span class="dot">1</span>Add to cart </button>
+                        </div>
+                        <div class="weight"> <small id="calories4">calories</small> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <div class="text-center"> <img src="img/mixed.jpeg" width="200" height = "175"> </div>
+                    <div class="product-details"> <span class="font-weight-bold d-block" id="price5">price</span> <span id="cuisineName5">cuisine</span>
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg></div> <button class="btn btn-success cart-button btn-block" onclick="add(5)"><span class="dot">1</span>Add to cart </button>
+                        </div>
+                        <div class="weight"> <small id="calories5">calories</small> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
     </div>
 </div>
 </div>
@@ -150,7 +214,81 @@
 
 
 
+<div id="cd-shadow-layer"></div>
+<!-- cd-cart -->
 
+
+
+<div id="cd-cart">
+    <h1>Cart</h1>
+
+
+    <ul class="cd-cart-items">
+
+
+
+        <div id = "item0" class="alert alert-light alert-dismissible fade show " role="alert">
+            <span class="cd-qty"></span>  <h2> Please login first </h2>
+            <div class="cd-price"></div>
+        <div class = "pull-right">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"  ></button>
+        </div>
+
+
+
+        </div>
+
+        <div id = "item1" class="alert alert-light alert-dismissible fade show" role="alert">
+            <div style="margin-left: 30px">
+                <span  class="cd-qty">1 x</span> <a id = "item1_name" >item1</a>
+                <div id = "p1"class="cd-price">$7.00</div>
+            </div>
+            <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="remove('1')"></button>
+        </div>
+        <div id = "item2" class="alert alert-light alert-dismissible fade show" role="alert">
+            <div style="margin-left: 30px">
+                <span class="cd-qty">1 x</span><a id = "item2_name" >item2</a>
+                <div id = "p2"class="cd-price">$7.00</div>
+            </div>
+
+            <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"  margin-left="auto";
+                     onclick="remove('2')"></button>
+        </div>
+        <div id = "item3" class="alert alert-light alert-dismissible fade show" role="alert">
+            <div style="margin-left: 30px">
+                <span class="cd-qty">1 x</span> <a id = "item3_name" >item3</a>
+                <div id = "p3" class="cd-price">$7.00</div>
+            </div>
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"  margin-left="auto";
+                     onclick="remove('3')"></button>
+        </div>
+
+
+
+        <li>
+            <!--            <span class="cd-qty">1x</span> Product Name-->
+            <!--            <div class="cd-price">$9.99</div>-->
+            <!--            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>-->
+            <div class="cd-cart-total">
+                <p>Total <span id= "total" >$0.00</span></p>
+            </div>
+        </li>
+    </ul> <!-- cd-cart-items -->
+
+    <!--    <div class="cd-cart-total">-->
+    <!--        <p>Total <span>$39.96</span></p>-->
+    <!--    </div> &lt;!&ndash; cd-cart-total &ndash;&gt;-->
+
+    <a href="#0" class="checkout-btn" onclick="checkOut()">Checkout</a>
+
+    <!--    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>-->
+    <sergey-import src="" />
+</div> <!-- cd-cart -->
+
+
+<link href="cart.html" rel="import" />
 
 
 <!--<div class="row">-->
@@ -165,13 +303,29 @@
 <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- 包括所有已编译的插件 -->
-<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/main.js"></script> <!-- Gem jQuery -->
+
 <script type="text/javascript">
     // window.onload = function(){
     //     load();
     // }
     window.onload = function () {
         $.ajaxSettings.async = false;
+        let ca = document.cookie.split('|');
+        console.log(ca[0]);//cname
+        console.log(ca[1]);//tk
+        console.log(ca[2]);//password
+        console.log(ca[3]); // expired time
+        let la = document.cookie.split('; ');
+        console.log(la[0]);
+        console.log(la[1]);// cuisine 1
+        console.log(la[2]);// cuisine 2
+        console.log(la[3]);// cuisine 3
+        console.log(la[4]);// price 1
+        console.log(la[5]);// price 2
+        console.log(la[6]);// price 3
+        console.log(document.cookie);
 
         //使用getJSON读取userinfo.json文件中的数据
         $.getJSON("config.json", function(index){
@@ -180,13 +334,63 @@
             $.ajaxSettings.async = true;
         })
         console.log(url);
+
         load();
+
+        if (document.cookie.length > 20){
+            tk = document.cookie.split("|")[1].substring(6);
+            $("#item0").hide();
+            $("#Login").hide();
+            $("#Logout").show();
+            if(getCookie("cuisine1").endsWith("null")){
+                $("#item1").hide();
+            }else {
+                $("#item1").show();
+                document.getElementById( "item1_name").innerText=getCookie("cuisine1");
+
+                document.getElementById( "p1").innerText=("$" + getCookie("price1"));
+
+            }
+
+            if(getCookie("cuisine2").endsWith("null")){
+                $("#item2").hide();
+            }
+            else {
+                $("#item2").show();
+                document.getElementById( "item2_name").innerText=getCookie("cuisine2");
+                document.getElementById( "p2").innerText=("$" + getCookie("price2"));
+            }
+
+            if(getCookie("cuisine3").endsWith("null")){
+                $("#item3").hide();
+            }
+            else {
+                $("#item3").show();
+                document.getElementById( "item3_name").innerText=getCookie("cuisine3");
+                document.getElementById( "p3").innerText=("$" + getCookie("price3"));
+            }
+
+            totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3"));
+            document.getElementById( "total").innerText=("$" + totalprice.toString());
+
+        }
+        else{
+            totalprice = 0 ;
+            $("#Login").show();
+            $("#Logout").hide();
+            $("#item1").hide();
+            $("#item2").hide();
+            $("#item3").hide();
+            $("#item0").show();
+        }
     }
 
     function load() {
         var xmlhttp;
         // var url = "http://10.136.70.250:1016";
-        var restaurantName = "Popeyes";
+        restaurantName = localStorage.string;
+        console.log(restaurantName);
+        document.getElementById("restaurantName").innerText=restaurantName;
         if (window.XMLHttpRequest) {
             // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
             xmlhttp = new XMLHttpRequest();
@@ -201,12 +405,14 @@
                     console.log(this.responseText);
                     eval("var foodList="+xmlhttp.responseText);
                     console.log(foodList);
+                    cuisinelist = foodList;
+                    console.log(cuisinelist.data);
                     console.log(foodList.msg);
                     for(let i = 0 ; i < foodList.data.length ; i ++ ){
                         console.log(foodList.data[0].name);
                         document.getElementById("cuisineName" + i.toString() ).innerText=foodList.data[i].name;
-                        document.getElementById("price" + i.toString() ).innerText=foodList.data[i].price;
-                        document.getElementById("calories" + i.toString() ).innerText='Calories='+foodList.data[i].calories;
+                        document.getElementById("price" + i.toString() ).innerText="$ " + foodList.data[i].price;
+                        document.getElementById("calories" + i.toString() ).innerText='Calories = '+foodList.data[i].calories;
                     }
                 }
             }
@@ -214,6 +420,166 @@
         }
         xmlhttp.open("GET", url + "/cuisine/read?restaurantName=" + restaurantName, true);
         xmlhttp.send();
+    }
+
+    function delCookie(){
+        // for(let i = 0 ; i < 7 ; i++){
+        //     document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        // }
+        // document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+        if(keys) {
+            for(var i = keys.length; i--;)
+                document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+        }
+
+    }
+
+    function remove( n){
+        document.cookie="cuisine"+n.toString()+"=null";
+        document.cookie="price"+n.toString()+"=0";
+        totalprice =  totalprice - parseFloat(getCookie("price" + n));
+        document.getElementById( "total").innerText=("$" + totalprice.toString());
+        console.log(document.cookie);
+        window.location.replace("Restaurant.html")
+        // document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|" + "cuisine1=" + cuisine1+ "|" + "cuisine2=" + cuisine2+ "|" + "cuisine3=" + cuisine3;
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function checkOut(){
+        var xmlhttp;
+        // var url = "http://10.136.70.250:1016";
+        var username = document.cookie.split("|")[0].substring(6);
+        console.log(username);
+        if (window.XMLHttpRequest) {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+
+                eval("var jn_info=" + xmlhttp.responseText);
+                console.log(jn_info.msg);
+                alert(jn_info.msg);
+            }
+        }
+        // get all the cuisines
+        if(!getCookie("cuisine1").endsWith("null")){
+            food1 = getCookie("cuisine1")+"x1 ";
+        }
+        else{
+            food1 = "";
+        }
+
+        if(!getCookie("cuisine2").endsWith("null")){
+            food2 = food1.concat(getCookie("cuisine2")+"x1 ") ;
+        }
+        else {
+            food2 = food1;
+        }
+
+        if(!getCookie("cuisine3").endsWith("null")){
+            food3 = food2.concat(getCookie("cuisine3")+"x1 ") ;
+        }
+        else {
+            food3 = food2;
+        }
+        // get the Date
+        // 获取当前日期
+        var date = new Date();
+
+        var nowMonth = date.getMonth() + 1;
+
+        var strDate = date.getDate();
+
+        var seperator = "/";
+        if (nowMonth >= 1 && nowMonth <= 9) {
+            nowMonth = "0" + nowMonth;
+        }
+
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+
+        var nowDate =   nowMonth + seperator + strDate + seperator + date.getFullYear();
+
+
+
+        xmlhttp.open("POST",url +"/order/create");
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        if(totalprice == 0){
+            alert("Please add something into your cart! Or login first.")
+        }
+        else {
+            xmlhttp.send(JSON.stringify({
+                "userName": username,
+                "restaurantName":"Popeyes",
+                "orderDate": nowDate,
+                "price":totalprice,
+                "cuisineName":food3 }));
+        }
+
+
+
+
+    }
+
+    function add(num){
+        console.log(cuisinelist.data)
+        if (num < cuisinelist.data.length){
+            if(getCookie("cuisine1").endsWith("null")){
+                document.cookie =  "cuisine1=" + cuisinelist.data[num].name + "; ";
+                document.cookie =  "price1=" + cuisinelist.data[num].price + "; ";
+                window.location.replace("Restaurant.html")
+            }
+            else if ( getCookie("cuisine2").endsWith("null")){
+                document.cookie =  "cuisine2=" + cuisinelist.data[num].name + "; ";
+                document.cookie =  "price2=" + cuisinelist.data[num].price + "; ";
+                window.location.replace("Restaurant.html")
+            }
+            else if ( getCookie("cuisine3").endsWith("null")){
+                document.cookie =  "cuisine3=" + cuisinelist.data[num].name + "; ";
+                document.cookie =  "price3=" + cuisinelist.data[num].price + "; ";
+                window.location.replace("Restaurant.html")
+            }
+            else {
+                alert("Your cart is full, please remove a item !")
+            }
+
+        }
+        else {
+            alert("Cuisine list is error!")
+        }
+
+    }
+
+</script>
+<script>
+    function showRestaurant()
+    {
+        //store the parameter
+        localStorage.string = document.getElementById("searchRestaurant").value;
+        window.location.href = 'Restaurant.html';
     }
 </script>
 </body>

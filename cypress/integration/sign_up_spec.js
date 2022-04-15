@@ -41,11 +41,11 @@ describe('Sign Up Page Test', function(){
         cy.get('#RPass') .invoke('attr', 'placeholder')
             .should('contain', 'Re-enter Your Password')
         cy.get('#RPass').type("2")
-        cy.get('#notice').contains("Passwords do not match")
+        cy.get('#notice2').contains("Passwords do not match")
 
         cy.get('#CPass').clear().type("123456")
         cy.get('#RPass').clear().type("123456")
-        cy.get('#notice').contains("Passwords match")
+        cy.get('#notice2').contains("Passwords match")
     })
     it('test the checkbox', function(){
         cy.get('#check').check("I agree to all the terms of service.")

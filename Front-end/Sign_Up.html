@@ -79,7 +79,7 @@
             $.ajaxSettings.async = true;
         })
         console.log(url);
-        load();
+
     }
 
     // var username = "";
@@ -134,7 +134,7 @@
             // IE6, IE5 浏览器执行代码
             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
-
+        delCookie();
         xmlhttp.onreadystatechange=function()
         {
             if ( xmlhttp.readyState ==4){
@@ -144,8 +144,18 @@
                     console.log(xmlhttp.responseText);
                      // var message = xmlhttp.responseText;
                     eval("var jn_info="+xmlhttp.responseText);
+                    console.log(jn_info);
                     console.log(jn_info.msg);
                     alert(jn_info.msg);
+
+                    var tk = jn_info.data.token;
+                    setCookie(tk,Uname,pass,0);
+                    let ca = document.cookie.split('|');
+                    console.log(ca[0]);
+                    console.log(ca[1]);
+                    console.log(ca[2]);
+
+
                     window.location.href="./newHome.html";
                     // xmlhttp.open("GET",url + "newHome.html",true);
             }
@@ -178,7 +188,15 @@
 
     }
 
-
+    function setCookie(tk, Uname, pass, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = "cname=" + Uname+ "|"  + "token="+ tk +  "|" +"pwd=" + pass + "|" + "expires=" + expires + "|";
+    }
+    function delCookie(){
+        document.cookie = "cname=| token=| pwd=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
+    }
 
 </script>
 

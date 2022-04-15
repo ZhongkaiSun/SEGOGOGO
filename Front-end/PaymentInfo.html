@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css" >
 
     <link rel="stylesheet" type="text/css" href="css/AccountInfo.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap.bundle.js" ></script>
     <script src="js/bootstrap.esm.js" ></script>
     <script src="js/bootstrap.js" ></script>
@@ -43,8 +43,8 @@
                         About
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="PaymentInfo.html">Pay</a></li>
-                        <li><a class="dropdown-item" href="#">Discount</a></li>
+                        <li><a class="dropdown-item" href="AccountInfo.html">Account Information</a></li>
+                        <li><a class="dropdown-item" href="PaymentInfo.html">Payment Information</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
                     </ul>
@@ -53,16 +53,15 @@
                     <a class="nav-link disabled">Spotlights</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-
+            <form class="d-flex" role="form" >
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant" >
+                <a class="btn btn-outline-success" type="submit" id="search" onclick="show()" >Search</a>
             </form>
 
 
 
             <form class="d-flex" role="form" >
-                <a href="Login.html" class="btn btn-danger" role="button" id="login">Login</a>
+                <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
                 <!--                <button type="button" class="btn btn-danger" >Login</button>-->
             </form>
         </div>
@@ -72,7 +71,7 @@
 <div class="container rounded bg-warning mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png"><span class="font-weight-bold" id="name">User name</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="Engineering%20Gator.png" ><span class="font-weight-bold" id="name" style="font-size:20px;">User name</span><span> </span></div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -116,37 +115,37 @@
         })
 
         var username = document.cookie.split("|")[0].substring(6);
-        var token = document.cookie.split("|")[1].substring(7);
+        var token = document.cookie.split("|")[1].substring(6);
         console.log(username);
         console.log(token);
         if(token.length == 0){
             alert("Please login first")
-            window.location.href = "./newHome_logged.html";
+            window.location.href = "./newHome.html";
         }
 
         console.log(url);
         load();
     }
 
+    function show()
+    {
+        //store the parameter
+        localStorage.string = document.getElementById("searchRestaurant").value;
+        window.location.href = 'Restaurant.html';
+    }
     function load() {
 
         //get token from cookie
+        //username = 'root';
         var username = document.cookie.split("|")[0].substring(6);
         var token = document.cookie.split("|")[1].substring(6);
         console.log(username);
         console.log(token);
+        console.log("url="+url);
         var xmlhttp;
-        // var url = "http://10.136.183.231:1016/customer/login";
-        // var uname = document.getElementById("Uname").value;
-        // var pwd = document.getElementById("Pass").value;
-        // var username = "root";
 
-        //var url = "http://10.136.106.98:1016";
-        // var url = "http://192.168.0.147:1016";
-        var username = document.cookie.split("|")[0].substring(6);
-        var tk = document.cookie.split("|")[1].substring(6);
-        console.log(username);
-        console.log(tk);
+        document.getElementById("name").innerText = username;
+
         if (window.XMLHttpRequest) {
             // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
             xmlhttp = new XMLHttpRequest();
@@ -156,30 +155,23 @@
         }
 
 
+
         xmlhttp.onreadystatechange = function () {
             if(xmlhttp.readyState == 4){
                 if (xmlhttp.status==200) {
                     console.log(xmlhttp.responseText);
-                    var personalInfo = JSON.parse( xmlhttp.responseText );
-                    console.log(personalInfo)
-                    document.getElementById("name").innerText =personalInfo.data.username;
+                    var payInfo = JSON.parse(xmlhttp.responseText);
+                    console.log(payInfo);
 
-                    document.getElementById("cardHolder").value=personalInfo.data.cardHolder;
-                    document.getElementById("cardNumber").value=personalInfo.data.cardNumber;
-                    document.getElementById("expdate").value=personalInfo.data.expDate;
-                    document.getElementById("securityCode").value=personalInfo.data.securityCode;
-                    document.getElementById("address1").value=personalInfo.data.addressLine1;
-                    document.getElementById("address2").value=personalInfo.data.addressLine2;
-                    document.getElementById("city").value=personalInfo.data.city;
-                    document.getElementById("state").value=personalInfo.data.state;
-                    document.getElementById("zipcode").value=personalInfo.data.zipcode;
-
-                }
-                else if(xmlhttp.status == 300){
-                    console.log(xmlhttp.responseText);
-                    var personalInfo = JSON.parse( xmlhttp.responseText );
-                    console.log(personalInfo)
-                    document.getElementById("name").innerText = username;
+                    document.getElementById("cardHolder").value = payInfo.data.cardHolder;
+                    document.getElementById("cardNumber").value = payInfo.data.cardNumber;
+                    document.getElementById("expdate").value = payInfo.data.expDate;
+                    document.getElementById("securityCode").value = payInfo.data.securityCode;
+                    document.getElementById("address1").value = payInfo.data.addressLine1;
+                    document.getElementById("address2").value = payInfo.data.addressLine2;
+                    document.getElementById("city").value = payInfo.data.city;
+                    document.getElementById("state").value = payInfo.data.state;
+                    document.getElementById("zipcode").value = payInfo.data.zipcode;
 
                 }
             }
@@ -196,6 +188,8 @@
 <script type="text/javascript">
     function savePayment() {
         var xmlhttp;
+        var username = document.cookie.split("|")[0].substring(6);
+        //var username = 'root';
         var cardHolder = document.getElementById("cardHolder").value;
         var cardNumber = document.getElementById("cardNumber").value;
         var expDate = document.getElementById("expdate").value;
@@ -206,7 +200,6 @@
         var state= document.getElementById("state").value;
         var zipcode= document.getElementById("zipcode").value;
 
-        // var url = "http://10.136.70.250:1016";
 
         if (window.XMLHttpRequest)
         {
@@ -229,20 +222,20 @@
                     eval("var jn_info="+xmlhttp.responseText);
                     console.log(jn_info.msg);
                     alert(jn_info.msg);
-                    window.location.href="./AccountInfo.html";
-                    // xmlhttp.open("GET",url + "newHome.html",true);
+                    window.location.href="./PaymentInfo.html";
                 }
                 else{
                     var profile = JSON.parse( xmlhttp.responseText );
                     console.log(profile.msg);
                     alert(profile.msg);
-                    window.location.href="./AccountInfo.html";
+                    window.location.href="./PaymentInfo.html";
                 }
             }
         }
-        xmlhttp.open("POST", url +"/customer/register", true);
+        xmlhttp.open("POST", url +"/payment/create", true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.send(JSON.stringify({
+            "username":username,
             'cardHolder':cardHolder,
             "cardNumber":cardNumber,
             "expDate":expDate,
@@ -254,6 +247,15 @@
             "zipcode":zipcode
         }));
 
+    }
+    function setCookie(tk, cname, pwd, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|";
+    }
+    function delCookie(){
+        document.cookie = "cname=| token=| pwd=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
     }
 
 

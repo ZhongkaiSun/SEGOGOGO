@@ -17,7 +17,7 @@
 
 
   <link rel="stylesheet" type="text/css" href="css/AccountInfo.css">
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/bootstrap.bundle.js" ></script>
   <script src="js/bootstrap.esm.js" ></script>
   <script src="js/bootstrap.js" ></script>
@@ -44,8 +44,8 @@
             About
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Pay</a></li>
-            <li><a class="dropdown-item" href="#">Discount</a></li>
+            <li><a class="dropdown-item" href="AccountInfo.html">Account Information</a></li>
+            <li><a class="dropdown-item" href="PaymentInfo.html">Payment Information</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
           </ul>
@@ -54,10 +54,9 @@
           <a class="nav-link disabled">Spotlights</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-
+      <form class="d-flex" role="form" >
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant" >
+        <a class="btn btn-outline-success" type="submit" id="search" onclick="show()" >Search</a>
       </form>
 
 
@@ -83,7 +82,7 @@
         <h2 class="text-right">Profile Settings</h2>
       </div>
       <div class="row mt-2">
-        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" >Name</label><input type="text" class="form-control" placeholder="user name" id="Uname" ></div>
+        <div class="col-md-6"><label class="labels" style="font-size:20px; font-weight:normal" >Name</label><input readonly type="text" class="form-control" placeholder="user name" id="Uname" ></div>
       </div>
       <div class="row mt-3">
         <div class="col-md-12"><label class="labels" style="font-size:20px; font-weight:normal" >Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" id="mobileNumber"></div><br/><br/>
@@ -123,18 +122,24 @@
     console.log(url);
     load();
   }
-
+  function show()
+  {
+    //store the parameter
+    localStorage.string = document.getElementById("searchRestaurant").value;
+    window.location.href = 'Restaurant.html';
+  }
   function load() {
 
     //get token from cookie
     var username = document.cookie.split("|")[0].substring(6);
     var token = document.cookie.split("|")[1].substring(6);
+    var pwd = document.cookie.split("|")[2].substring(4);
     console.log(username);
     console.log(token);
+    console.log(pwd);
     console.log(document.cookie);
     var xmlhttp;
 
-    // var url = "http://10.136.70.250:1016";
     if (window.XMLHttpRequest) {
       // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
       xmlhttp = new XMLHttpRequest();
@@ -172,13 +177,17 @@
   function profile() {
     var xmlhttp;
     var Uname = document.getElementById("Uname").value;
+    var pwd = document.cookie.split("|")[2].substring(4);
     var phone = document.getElementById("mobileNumber").value;
-    var email = document.getElementById("Email").value;
+    var email = document.getElementById("email").value;
     var addressLine1= document.getElementById("address1").value;
     var addressLine2= document.getElementById("address2").value;
     var city= document.getElementById("city").value;
     var state= document.getElementById("state").value;
     var zipcode= document.getElementById("zipcode").value;
+
+
+    console.log(pwd);
 
     // var url = "http://10.136.70.250:1016";
 
@@ -214,10 +223,11 @@
         }
       }
     }
-    xmlhttp.open("POST", url +"/customer/register", true);
+    xmlhttp.open("POST", url +"/customer/update", true);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send(JSON.stringify({
-      'username':Uname,
+      "username":Uname,
+      "password":pwd,
       "phone":phone,
       "email":email,
       "addressLine1":addressLine1,
@@ -227,6 +237,15 @@
       "zipcode":zipcode
       }));
 
+  }
+  function setCookie(tk, cname, pwd, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|";
+  }
+  function delCookie(){
+    document.cookie = "cname=| token=| pwd=| expires=Thu, 01 Jan 1970 00:00:00 UTC|";
   }
 
 
