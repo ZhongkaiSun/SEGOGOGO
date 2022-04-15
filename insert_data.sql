@@ -138,6 +138,7 @@ insert into cuisines values ("Hot Chocolate", "Rock n roll", 4.50, NULL);
 
 insert into customers VALUES ("ZhongkaiSun", "123456", "4000 SW 24th St", "Apt 2-309", "3521111111", "pipikai@gmail.com","Gainesville", "Florida", "32600");
 insert into customers VALUES ("Raindrop", "888888", "3700SW 27th", "Apt 110", "3528888888", "Raindrop@gmail.com","Gainesville", "Florida", "32601");
+insert into customers VALUES ("root", "123456", "", "", "", "", "", "", "");
 
 insert into orders VALUES("ZhongkaiSun","Popeyes","02/02/2022","20.00","Nuggets, Burger, Cola");
 insert into payments VALUES("ZhongkaiSun", "Zhongkai Sun", "123456789XXXX", "05/26", "001", "4000 SW 24th St", "Apt 2-309","Gainesville", "Florida", "32600");
