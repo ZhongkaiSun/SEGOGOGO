@@ -23,7 +23,7 @@ func TestCreatePayment(t *testing.T) {
 
 	var tests = []model.Payment{
 		model.Payment{
-			Username:     "YudiZheng",
+			Username:     "Raindrop",
 			CardHolder:   "YudiZheng",
 			CardNumber:   "2234567890XXXXXX",
 			ExpDate:      "09/25",
@@ -33,11 +33,11 @@ func TestCreatePayment(t *testing.T) {
 			City:         "",
 			State:        "",
 			Zipcode:      "",
-		}, //sucess
+		}, // sucess
 		model.Payment{
-			Username:     "YudiZheng",
+			Username:     "Raindrop",
 			CardHolder:   "YudiZheng",
-			CardNumber:   "2234567890XXXXXX",
+			CardNumber:   "3333333333333333",
 			ExpDate:      "09/25",
 			SecurityCode: "456",
 			AddressLine1: "",
@@ -45,7 +45,7 @@ func TestCreatePayment(t *testing.T) {
 			City:         "",
 			State:        "",
 			Zipcode:      "",
-		}, //Payment already exist
+		}, // update payment
 		model.Payment{
 			Username:     "YudiZheng1",
 			CardHolder:   "YudiZheng",
@@ -62,10 +62,10 @@ func TestCreatePayment(t *testing.T) {
 	for idx, test := range tests {
 		w := httptest.NewRecorder()
 		b, _ := json.Marshal(test)
-		req, _ := http.NewRequest("POST", "http://localhost:1016/order/create", bytes.NewBuffer(b))
+		req, _ := http.NewRequest("POST", "http://localhost:1016/payment/create", bytes.NewBuffer(b))
 		req.Header.Set("Content-Type", "application/json; charset=UTF-8")
 		r.ServeHTTP(w, req)
-		if idx == 0 {
+		if idx == 0 || idx == 1 {
 			assert.Equal(t, 200, w.Code)
 		} else {
 			assert.Equal(t, 422, w.Code)

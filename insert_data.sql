@@ -2,8 +2,8 @@ insert into restaurants values ("F0001", "Popeyes", "0001 Main St, Gainesville, 
 insert into restaurants values ("F0002", "Checkers", "0002 W University Ave, Gainesville, FL 32607, USA", 2.99, NULL, "American", 4.2);
 insert into restaurants values ("F0003", "TeaBestTea", "0003 W University Ave, Gainesville, FL 32607, USA", 3.99, NULL, "Asian", 4.2);
 insert into restaurants values ("F0004", "Yummy", "0004 W University Ave, Gainesville, FL 32607, USA", 4.99, NULL, "Asian", 4.2);
-insert into restaurants values ("F0005", "Starbucks", "0005 W University Ave, Gainesville, FL 32607, USA", 5.99, NULL, "Coffee&Tea", 4.2);
-insert into restaurants values ("F0006", "Mai Kai Kava Llc", "0006 W University Ave, Gainesville, FL 32607, USA", 6.99, NULL, "Coffee&Tea", 4.2);
+insert into restaurants values ("F0005", "Starbucks", "0005 W University Ave, Gainesville, FL 32607, USA", 5.99, NULL, "Coffee & Tea", 4.2);
+insert into restaurants values ("F0006", "Mai Kai Kava Llc", "0006 W University Ave, Gainesville, FL 32607, USA", 6.99, NULL, "Coffee & Tea", 4.2);
 insert into restaurants values ("F0007", "Subway", "0007 W University Ave, Gainesville, FL 32607, USA", 7.99, NULL, "Healthy", 4.2);
 insert into restaurants values ("F0008", "Just Salad", "0008 W University Ave, Gainesville, FL 32607, USA", 8.99, NULL, "Healthy", 4.2);
 insert into restaurants values ("F0009", "Chipotle", "0009 W University Ave, Gainesville, FL 32607, USA", 9.99, NULL, "Mexican", 4.2);
