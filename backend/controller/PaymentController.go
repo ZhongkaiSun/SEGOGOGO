@@ -93,7 +93,7 @@ func ReadPayment(c *gin.Context) {
 		c.JSON(422, gin.H{"code": 422, "data": nil, "msg": "The payment doesn't exist!"})
 		return
 	}
-
+	log.Println("successfully")
 	var newPayment model.Payment
 	DB.Where("username = ?", username).First(&newPayment) //有多种支付方式时？
 	c.JSON(http.StatusOK, gin.H{"code": 200, "data": newPayment, "msg": "Successfully"})
