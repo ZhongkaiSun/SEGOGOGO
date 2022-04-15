@@ -27,6 +27,7 @@ CREATE TABLE cuisines (
 	restaurant_name VARCHAR ( 50 ), 
 	price FLOAT, 
 	calories INT,
+	img_path VARCHAR ( 100 ), 
 	PRIMARY KEY (name, restaurant_name)
 );
 
