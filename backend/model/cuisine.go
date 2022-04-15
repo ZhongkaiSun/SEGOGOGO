@@ -13,4 +13,5 @@ type Cuisine struct {
 	RestaurantName string  `gorm:"type:varchar(50);primary_key" json:"restaurantName" form:"restaurantName"`
 	Price          float64 `gorm:"type:float" json:"price"`
 	Calories       int     `gorm:"type:int" json:"calories"`
+	ImgPath        string  `gorm:"type:varchar(100)" json:"imgPath"`
 }
