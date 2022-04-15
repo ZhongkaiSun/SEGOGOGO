@@ -2,8 +2,8 @@ insert into restaurants values ("F0001", "Popeyes", "0001 Main St, Gainesville, 
 insert into restaurants values ("F0002", "Checkers", "0002 W University Ave, Gainesville, FL 32607, USA", 2.99, NULL, "American", 4.2);
 insert into restaurants values ("F0003", "TeaBestTea", "0003 W University Ave, Gainesville, FL 32607, USA", 3.99, NULL, "Asian", 4.2);
 insert into restaurants values ("F0004", "Yummy", "0004 W University Ave, Gainesville, FL 32607, USA", 4.99, NULL, "Asian", 4.2);
-insert into restaurants values ("F0005", "Starbucks", "0005 W University Ave, Gainesville, FL 32607, USA", 5.99, NULL, "Coffee & Tea", 4.2);
-insert into restaurants values ("F0006", "Mai Kai Kava Llc", "0006 W University Ave, Gainesville, FL 32607, USA", 6.99, NULL, "Coffee & Tea", 4.2);
+insert into restaurants values ("F0005", "Starbucks", "0005 W University Ave, Gainesville, FL 32607, USA", 5.99, NULL, "Coffee", 4.2);
+insert into restaurants values ("F0006", "Mai Kai Kava Llc", "0006 W University Ave, Gainesville, FL 32607, USA", 6.99, NULL, "Coffee", 4.2);
 insert into restaurants values ("F0007", "Subway", "0007 W University Ave, Gainesville, FL 32607, USA", 7.99, NULL, "Healthy", 4.2);
 insert into restaurants values ("F0008", "Just Salad", "0008 W University Ave, Gainesville, FL 32607, USA", 8.99, NULL, "Healthy", 4.2);
 insert into restaurants values ("F0009", "Chipotle", "0009 W University Ave, Gainesville, FL 32607, USA", 9.99, NULL, "Mexican", 4.2);
@@ -114,7 +114,7 @@ insert into cuisines values ("8 Piece Chicken", "KFC", 20.99, NULL);
 
 insert into cuisines values ("Crispy Chicken Sandwich", "McDonald's", 4.70, 470);
 insert into cuisines values ("Big Mac Meal", "McDonald's", 9.23, NULL);
-insert into cuisines values ("Double Quarter Pounder with Cheese Meal", 10.55, NULL);
+insert into cuisines values ("Double Quarter Pounder with Cheese Meal", "McDonald's", 10.55, NULL);
 insert into cuisines values ("20 Piece McNuggets", "McDonald's", 12.19, 830);
 insert into cuisines values ("10 Piece McNuggets Meal", "McDonald's", 10.43, NULL);
 insert into cuisines values ("French Fries", "McDonald's", 2.49, 220);
@@ -136,16 +136,8 @@ insert into cuisines values ("Hot Chocolate", "Rock n roll", 4.50, NULL);
 
 
 
-<<<<<<< HEAD
-insert into customers VALUES ("ZhongkaiSun", "123456", "4000 SW 24th St", "Apt 2-309", "3523280576", "pipikai1204@gmail.com","Gainesville", "Florida", "32600");
-insert into customers VALUES ("Raindrop", "888888", "3700SW 27th", "Apt 110", "3528888888", "Raindrop@gmail.com","Gainesville", "Florida", "32608");
-
-insert into orders VALUES("ZhongkaiSun","Popeyes","02/02/2022","20.00","Nuggets, Burger, Cola")
-insert into payment VALUES("ZhongkaiSun", "123456789XXXX", "05/26", "001", "4000 SW 24th St", "Apt 2-309","Gainesville", "Florida", "32600");
-=======
 insert into customers VALUES ("ZhongkaiSun", "123456", "4000 SW 24th St", "Apt 2-309", "3521111111", "pipikai@gmail.com","Gainesville", "Florida", "32600");
 insert into customers VALUES ("Raindrop", "888888", "3700SW 27th", "Apt 110", "3528888888", "Raindrop@gmail.com","Gainesville", "Florida", "32601");
 
-insert into orders VALUES("ZhongkaiSun","Popeyes","02/02/2022","20.00","Nuggets, Burger, Cola")
+insert into orders VALUES("ZhongkaiSun","Popeyes","02/02/2022","20.00","Nuggets, Burger, Cola");
 insert into payments VALUES("ZhongkaiSun", "Zhongkai Sun", "123456789XXXX", "05/26", "001", "4000 SW 24th St", "Apt 2-309","Gainesville", "Florida", "32600");
->>>>>>> 37ac0c5c8032126b2225f5f95b2715fbfd8900dc
