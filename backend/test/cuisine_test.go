@@ -27,18 +27,21 @@ func TestCreateCuisine(t *testing.T) {
 			RestaurantName: "Popeyes",
 			Price:          22.79,
 			Calories:       0,
+			ImgPath:        "",
 		}, //sucess
 		model.Cuisine{
 			Name:           "Mixed Chicken",
 			RestaurantName: "Popeyes2",
 			Price:          22.79,
 			Calories:       0,
+			ImgPath:        "",
 		}, // Restaurant does not exist
 		model.Cuisine{
 			Name:           "Mixed Chicken3",
 			RestaurantName: "Popeyes",
 			Price:          22.79,
 			Calories:       0,
+			ImgPath:        "",
 		}, // cuisine already exist
 	}
 	for idx, test := range tests {
@@ -68,18 +71,21 @@ func TestDeleteCuisine(t *testing.T) {
 			RestaurantName: "Popeyes",
 			Price:          22.79,
 			Calories:       0,
+			ImgPath:        "",
 		}, //sucess
 		model.Cuisine{
 			Name:           "Mixed Chicken",
 			RestaurantName: "Popeyes2",
 			Price:          22.79,
 			Calories:       0,
+			ImgPath:        "",
 		}, // Restaurant does not exist
 		model.Cuisine{
 			Name:           "Mixed Chicken3",
 			RestaurantName: "Popeyes",
 			Price:          22.79,
 			Calories:       0,
+			ImgPath:        "",
 		}, // cuisine does not exist
 	}
 	for idx, test := range tests {
