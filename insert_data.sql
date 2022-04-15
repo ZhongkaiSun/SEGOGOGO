@@ -21,47 +21,47 @@ insert into restaurants values ("F0016", "Rock n roll", "0016 W University Ave, 
 
 
 
-insert into cuisines values ("8PC Nuggets A La Carte", "Popeyes", 4.79, 400);
-insert into cuisines values ("Chicken Combo (3 Pcs)", "Popeyes", 14.39, 410);
-insert into cuisines values ("Chicken Dinner (2 Pcs)", "Popeyes", 5.99, 420);
-insert into cuisines values ("Cajun Fries", "Popeyes", 4.19, 430);
-insert into cuisines values ("Homestyle Mac & Cheese", "Popeyes", 4.19, 440);
-insert into cuisines values ("Spicy Chicken Sandwich", "Popeyes", 5.39, 450);
+insert into cuisines values ("8PC Nuggets A La Carte", "Popeyes", 4.79, 400, "picture/Popeyes/Nuggets_A_La_Carte.jpeg");
+insert into cuisines values ("Chicken Combo (3 Pcs)", "Popeyes", 14.39, 410, "picture/Popeyes/Chicken_Combo.jpeg");
+insert into cuisines values ("Chicken Dinner (2 Pcs)", "Popeyes", 5.99, 420,"picture/Popeyes/Chicken_Dinner.jpeg");
+insert into cuisines values ("Cajun Fries", "Popeyes", 4.19, 430, "picture/Popeyes/Cajun_Fries.jpeg");
+insert into cuisines values ("Homestyle Mac & Cheese", "Popeyes", 4.19, 440, "picture/Popeyes/Homestyle_Mac_Cheese.jpeg");
+insert into cuisines values ("Spicy Chicken Sandwich", "Popeyes", 5.39, 450, "picture/Popeyes/Spicy_Chicken_Sandwich.jpeg");
 
-insert into cuisines values ("Famous Seasoned Fries", "Checkers", 5.29, 300);
-insert into cuisines values ("Chicken Bites & Fries Box", "Checkers", 4.19, 310);
-insert into cuisines values ("Big Buford", "Checkers", 6.99, 320);
-insert into cuisines values ("Spicy Chicken Double", "Checkers", 4.79, 330);
-insert into cuisines values ("Deep Sea Double", "Checkers", 10.79, 670);
-insert into cuisines values ("Chili Dog", "Checkers", 6.49, 500);
+insert into cuisines values ("Famous Seasoned Fries", "Checkers", 5.29, 300, "picture/Checkers/Famous_Seasoned_Fries.jpeg");
+insert into cuisines values ("Chicken Bites & Fries Box", "Checkers", 4.19, 310, "picture/Checkers/Chicken_Bites_Fries_Box.jpeg");
+insert into cuisines values ("Big Buford", "Checkers", 6.99, 320, "picture/Checkers/Big_Buford.jpeg");
+insert into cuisines values ("Spicy Chicken Double", "Checkers", 4.79, 330,"picture/Checkers/Spicy_Chicken_Double.jpeg");
+insert into cuisines values ("Deep Sea Double", "Checkers", 10.79, 670, "picture/Checkers/Deep_Sea_Double.jpeg");
+insert into cuisines values ("Chili Dog", "Checkers", 6.49, 500, "picture/Checkers/Chili Dog.jpeg");
 
-insert into cuisines values ("Shoyu Ramen", "TeaBestTea", 12.25, 520);
-insert into cuisines values ("Bestea Salmon", "TeaBestTea", 16.50, 520);
-insert into cuisines values ("Tonkotzu Ramen", "TeaBestTea", 15.25, 600);
-insert into cuisines values ("Popcorn Chicken", "TeaBestTea", 7.95, 500);
-insert into cuisines values ("Sappoero Miso Ramen", "TeaBestTea", 5.85, 490);
-insert into cuisines values ("Milk Tea", "TeaBestTea", 5.19, 700);
+insert into cuisines values ("Shoyu Ramen", "TeaBestTea", 12.25, 520,"picture/TeaBestTea/Shoyu_Ramen.jpeg");
+insert into cuisines values ("Bestea Salmon", "TeaBestTea", 16.50, 520,"picture/TeaBestTea/Bestea_Salmon.jpeg");
+insert into cuisines values ("Tonkotzu Ramen", "TeaBestTea", 15.25, 600, "picture/TeaBestTea/Tonkotzu_Ramen.jpeg");
+insert into cuisines values ("Popcorn Chicken", "TeaBestTea", 7.95, 500, "picture/TeaBestTea/Popcorn_Chicken.jpeg");
+insert into cuisines values ("Sappoero Miso Ramen", "TeaBestTea", 5.85, 490, "picture/TeaBestTea/Sappoero_Miso_Ramen.jpeg");
+insert into cuisines values ("Milk Tea", "TeaBestTea", 5.19, 700, "picture/TeaBestTea/Milk_Tea.jpeg");
 
-insert into cuisines values ("Beef Chow Fun", "Yummy", 9.95, 300);
-insert into cuisines values ("Black Pepper Beef", "Yummy", 9.95, 320);
-insert into cuisines values ("Salt & Pepper Seafood Combo", "Yummy", 14.19, 310);
-insert into cuisines values ("Hong Kong Style Roasted Duck(Whole)", "Yummy", 24.19, 400);
-insert into cuisines values ("Seafood Tofu Soup", "Yummy", 14.99, 530);
-insert into cuisines values ("Honey Walnut Shrimp", "Yummy", 20.99, 550);
+insert into cuisines values ("Beef Chow Fun", "Yummy", 9.95, 300, "picture/Yummy/Beef_Chow_Fun.jpeg");
+insert into cuisines values ("Black Pepper Beef", "Yummy", 9.95, 320, "picture/Yummy/Black_Pepper_Beef.jpeg");
+insert into cuisines values ("Salt & Pepper Seafood Combo", "Yummy", 14.19, 310, "picture/Yummy/Salt_Pepper_Seafood_Combo.jpeg");
+insert into cuisines values ("Hong Kong Style Roasted Duck(Whole)", "Yummy", 24.19, 400, "picture/Yummy/Hong_Kong_Style_Roasted_Duck.jpeg");
+insert into cuisines values ("Seafood Tofu Soup", "Yummy", 14.99, 530, "picture/Yummy/Seafood_Tofu_Soup.png");
+insert into cuisines values ("Honey Walnut Shrimp", "Yummy", 20.99, 550, "picture/Yummy/Honey_Walnut_Shrimp.jpeg");
 
-insert into cuisines values ("Iced Caramel Macchiato", "Starbucks", 5.95, 230);
-insert into cuisines values ("Caramel Frappuccino", "Starbucks", 6.45, 440);
-insert into cuisines values ("Iced White Chocolate Mocha", "Starbucks", 5.59, 500);
-insert into cuisines values ("White Chocolate Mocha", "Starbucks", 5.45, 330);
-insert into cuisines values ("Caffe Americano", "Starbucks", 4.45, 440);
-insert into cuisines values ("Cafe Misto", "Starbucks", 4.05, 530);
+insert into cuisines values ("Iced Caramel Macchiato", "Starbucks", 5.95, 230, "picture/Starbucks/Iced_Caramel_Macchiato.jpeg");
+insert into cuisines values ("Caramel Frappuccino", "Starbucks", 6.45, 440, "picture/Starbucks/Caramel_Frappuccino.jpeg");
+insert into cuisines values ("Iced White Chocolate Mocha", "Starbucks", 5.59, 500, "picture/Starbucks/Iced_White_Chocolate_Mocha .jpeg");
+insert into cuisines values ("White Chocolate Mocha", "Starbucks", 5.45, 330, "picture/Starbucks/White_Chocolate_Mocha.jpeg");
+insert into cuisines values ("Caffe Americano", "Starbucks", 4.45, 440, "picture/Starbucks/Caffe_Americano.jpeg");
+insert into cuisines values ("Cafe Misto", "Starbucks", 4.05, 530, "picture/Starbucks/Cafe_Misto.jpeg");
 
-insert into cuisines values ("Lami", "Mai Kai Kava Llc", 6.00, 300);
-insert into cuisines values ("Mai Tai", "Mai Kai Kava Llc", 5.50, 340);
-insert into cuisines values ("Kauai Coffee", "Mai Kai Kava Llc", 3.25, 330);
-insert into cuisines values ("Kavalanche", "Mai Kai Kava Llc", 8.50, 350);
-insert into cuisines values ("Loose Leaf Tea - 1oz", "Mai Kai Kava Llc", 5.00, 360);
-insert into cuisines values ("Micronized Kava", "Mai Kai Kava Llc", 20.00, 390);
+insert into cuisines values ("Lami", "Mai Kai Kava Llc", 6.00, 300, "picture/Mai_Kai_Kava_Llc/Lami.jpeg");
+insert into cuisines values ("Mai Tai", "Mai Kai Kava Llc", 5.50, 340, "picture/Mai_Kai_Kava_Llc/Mai_Tai.jpeg");
+insert into cuisines values ("Kauai Coffee", "Mai Kai Kava Llc", 3.25, 330 "picture/Mai_Kai_Kava_Llc/Kauai_Coffee.jpeg");
+insert into cuisines values ("Kavalanche", "Mai Kai Kava Llc", 8.50, 350, "picture/Mai_Kai_Kava_Llc/Kavalanche.jpeg");
+insert into cuisines values ("Loose Leaf Tea - 1oz", "Mai Kai Kava Llc", 5.00, 360, "picture/Mai_Kai_Kava_Llc/Loose_Leaf_Tea.jpeg");
+insert into cuisines values ("Micronized Kava", "Mai Kai Kava Llc", 20.00, 390, "picture/Mai_Kai_Kava_Llc/Micronized_Kava.jpeg");
 
 insert into cuisines values ("Tuna", "Subway", 8.90, 310);
 insert into cuisines values ("Spicy Italian", "Subway", 8.19, 310);
