@@ -1,7 +1,7 @@
 # GatorDash
 ## Project Brief
 
-GatorDash is a DoorDash-like online food ordering and food delivery platform for people who living in Gainesville based on Go, Javascript and Mysql. This project will create a web application with basic Doordash functions including: Login, Signup, Show Restaurants and cuisines, Adding cuisines to the cart, Check out and rating.This is being developed for the Software Engineering course (CEN5035) at the University of Florida, Spring 2020.
+GatorDash is a DoorDash-like online food ordering and food delivery platform for people who living in Gainesville based on Go, Javascript and Mysql. This project will create a web application with basic Doordash functions including: Login, Signup, Show Restaurants and cuisines, Adding cuisines to the cart, Check out and rating.This is being developed for the Software Engineering course (CEN5035) at the University of Florida, Spring 2022.
 
 ## Author Info
 
