@@ -116,7 +116,7 @@
         <div class="row g-1">
             <div class="col-md-3">
                 <div class="card p-3">
-                    <div class="text-center"> <img src="img/chickenNuggets.jpeg" width="200" height = "175"> </div>
+                    <div class="text-center"> <img  width="200" height = "100" id="img0"> </div>
                     <div class="product-details"> <span class="font-weight-bold d-block" id="price0">price</span> <span id="cuisineName0">cuisine</span>
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
@@ -129,7 +129,7 @@
             </div>
             <div class="col-md-3">
                 <div class="card p-3">
-                    <div class="text-center"> <img src="img/mixed.jpeg" width="200" height = "175"> </div>
+                    <div class="text-center"> <img  width="200" height = "100" id="img1"> </div>
                     <div class="product-details"> <span class="font-weight-bold d-block" id="price1">price</span> <span id="cuisineName1">cuisine</span>
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
@@ -142,7 +142,7 @@
             </div>
             <div class="col-md-3">
                 <div class="card p-3">
-                    <div class="text-center"> <img src="img/redbeanrice.jpeg" width="200" height = "175"> </div>
+                    <div class="text-center"> <img  width="200" height = "100" id="img2"> </div>
                     <div class="product-details"> <span class="font-weight-bold d-block" id="price2">price</span> <span id="cuisineName2">cuisine</span>
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
@@ -155,7 +155,7 @@
             </div>
             <div class="col-md-3">
                 <div class="card p-3">
-                    <div class="text-center"> <img src="img/redbeanrice.jpeg" width="200" height = "175"> </div>
+                    <div class="text-center"> <img  width="200" height = "100" id="img3"> </div>
                     <div class="product-details"> <span class="font-weight-bold d-block" id="price3">price</span> <span id="cuisineName3">cuisine</span>
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
@@ -171,7 +171,7 @@
         <div class="row g-2">
             <div class="col-md-3">
                 <div class="card p-3">
-                    <div class="text-center"> <img src="img/chickenNuggets.jpeg" width="200" height = "175"> </div>
+                    <div class="text-center"> <img  width="200" height = "100" id="img4"> </div>
                     <div class="product-details"> <span class="font-weight-bold d-block" id="price4">price</span> <span id="cuisineName4">cuisine</span>
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
@@ -184,7 +184,7 @@
             </div>
             <div class="col-md-3">
                 <div class="card p-3">
-                    <div class="text-center"> <img src="img/mixed.jpeg" width="200" height = "175"> </div>
+                    <div class="text-center"> <img  width="200" height = "100" id="img5"> </div>
                     <div class="product-details"> <span class="font-weight-bold d-block" id="price5">price</span> <span id="cuisineName5">cuisine</span>
                         <div class="buttons d-flex flex-row">
                             <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
@@ -467,6 +467,7 @@
                         document.getElementById("cuisineName" + i.toString() ).innerText=foodList.data[i].name;
                         document.getElementById("price" + i.toString() ).innerText="$ " + foodList.data[i].price;
                         document.getElementById("calories" + i.toString() ).innerText='Calories = '+foodList.data[i].calories;
+                        document.getElementById("img"+ i.toString()).setAttribute('src', foodList.data[i].imgPath);
                     }
                 }
             }

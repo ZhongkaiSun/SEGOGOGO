@@ -77,7 +77,7 @@
 <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center" >
     <li >
         <div style="text-align: center"  href="#" >
-            <img height="180"   src="img/american.png" alt="list item 1" id="catImg"/>
+            <img height="180"    alt="list item 1" id="catImg"/>
             <h2 class="font-weight-bold d-block" style="position: center; font-size:30px; font-family: 'Verdana'"; id="category">category</h2>
             <div style="clear:left"></div>
         </div>
@@ -92,7 +92,7 @@
     <tr>
         <td>
             <div class="card" style="width: 16rem; margin: 50px 50px 50px 50px;" >
-                <img src="img/popeyes.png" class="card-img-top" alt="..." height="240" id="img1">
+                <img  class="card-img-top" alt="..." height="240" id="img0">
                 <div class="card-body">
                     <h5 class="card-title" id="restaurantName0" style="font-size: 25px;">restaurant</h5>
                     <p class="card-text"></p>
@@ -108,7 +108,7 @@
 
         <td>
             <div class="card" style="width: 16rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/checker.jpeg" class="card-img-top" alt="..." height="240">
+                <img  class="card-img-top" alt="..." height="240" id="img1">
                 <div class="card-body">
                     <h5 class="card-title" id="restaurantName1" style="font-size: 25px;">restaurant</h5>
                     <p class="card-text"></p>
@@ -169,6 +169,24 @@
             <span class="cd-qty">1x</span> <a id = "item3_name" >item3</a>
             <div id = "p3" class="cd-price">$7.00</div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('3')"></button>
+        </div>
+
+        <div id = "item4" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id = "item4_name" >item4</a>
+            <div id = "p4" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('4')"></button>
+        </div>
+
+        <div id = "item5" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id = "item5_name" >item5</a>
+            <div id = "p5" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('5')"></button>
+        </div>
+
+        <div id = "item6" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id = "item6_name" >item6</a>
+            <div id = "p6" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('6')"></button>
         </div>
 
 
@@ -267,7 +285,34 @@
                 document.getElementById( "p3").innerText=("$" + getCookie("price3"));
             }
 
-            totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3"));
+            if(getCookie("cuisine4").endsWith("null")){
+                $("#item4").hide();
+            }
+            else {
+                $("#item4").show();
+                document.getElementById( "item4_name").innerText=getCookie("cuisine4");
+                document.getElementById( "p4").innerText=("$" + getCookie("price4"));
+            }
+
+            if(getCookie("cuisine5").endsWith("null")){
+                $("#item5").hide();
+            }
+            else {
+                $("#item5").show();
+                document.getElementById( "item5_name").innerText=getCookie("cuisine5");
+                document.getElementById( "p5").innerText=("$" + getCookie("price5"));
+            }
+
+            if(getCookie("cuisine6").endsWith("null")){
+                $("#item6").hide();
+            }
+            else {
+                $("#item6").show();
+                document.getElementById( "item6_name").innerText=getCookie("cuisine6");
+                document.getElementById( "p6").innerText=("$" + getCookie("price6"));
+            }
+
+            totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3")) + parseFloat(getCookie("price4")) + parseFloat(getCookie("price5")) + parseFloat(getCookie("price6"));
             document.getElementById( "total").innerText=("$" + totalprice.toString());
 
         }
@@ -278,6 +323,9 @@
             $("#item1").hide();
             $("#item2").hide();
             $("#item3").hide();
+            $("#item4").hide();
+            $("#item5").hide();
+            $("#item6").hide();
             $("#item0").show();
         }
         // tk = document.cookie.split("|")[1].substring(6);
@@ -323,6 +371,7 @@
                         document.getElementById("restaurantName" + i.toString() ).innerText=restaurantList.data[i].name;
                         document.getElementById("rate" + i.toString() ).innerText='Rating = '+ restaurantList.data[i].rating + '/5.0';
                         document.getElementById("deliveryFee" + i.toString() ).innerText='Delivery Fee = $'+restaurantList.data[i].deliveryFee;
+                        document.getElementById("img" + i.toString()).setAttribute('src', 'Cuisine/'+restaurantList.data[i].name+'.png')
                         // set pic
                         // document.getElementById("img1").setAttribute('src', 'img/panda.png')
                     }
@@ -425,6 +474,27 @@
         else {
             food3 = food2;
         }
+
+        if(!getCookie("cuisine4").endsWith("null")){
+            food4 = food3.concat(getCookie("cuisine4")+"x1 ") ;
+        }
+        else {
+            food4 = food3;
+        }
+
+        if(!getCookie("cuisine5").endsWith("null")){
+            food5 = food4.concat(getCookie("cuisine5")+"x1 ") ;
+        }
+        else {
+            food5 = food4;
+        }
+
+        if(!getCookie("cuisine6").endsWith("null")){
+            food6 = food5.concat(getCookie("cuisine6")+"x1 ") ;
+        }
+        else {
+            food6 = food5;
+        }
         // get the Date
         // 获取当前日期
         var date = new Date();
@@ -457,7 +527,7 @@
                 "restaurantName":"Popeyes",
                 "orderDate": nowDate,
                 "price":totalprice,
-                "cuisineName":food3 }));
+                "cuisineName":food5 }));
         }
 
 

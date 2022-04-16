@@ -196,12 +196,12 @@
 
 
     function setCookie(tk, cname, pwd, exdays) {
-        let cuisine1 = "1";
-        let cuisine2 = "2";
-        let cuisine3 = "3";
-        let cuisine4 = "4";
-        let cuisine5 = "5";
-        let cuisine6 = "6";
+        let cuisine1 = null;
+        let cuisine2 = null;
+        let cuisine3 = null;
+        let cuisine4 = null;
+        let cuisine5 = null;
+        let cuisine6 = null;
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         let expires = d.toUTCString();
@@ -216,12 +216,12 @@
         document.cookie =  "cuisine4=" + cuisine4+ "; ";
         document.cookie =  "cuisine5=" + cuisine5+ "; ";
         document.cookie =  "cuisine6=" + cuisine6+ "; ";
-        document.cookie =  "price1=" + "1.00"+ "; ";
-        document.cookie =  "price2=" + "1.00"+ "; ";
-        document.cookie =  "price3=" + "1.00"+ "; ";
-        document.cookie =  "price4=" + "1.00"+ "; ";
-        document.cookie =  "price5=" + "1.00"+ "; ";
-        document.cookie =  "price6=" + "1.00"+ "; ";
+        document.cookie =  "price1=" + "0.00"+ "; ";
+        document.cookie =  "price2=" + "0.00"+ "; ";
+        document.cookie =  "price3=" + "0.00"+ "; ";
+        document.cookie =  "price4=" + "0.00"+ "; ";
+        document.cookie =  "price5=" + "0.00"+ "; ";
+        document.cookie =  "price6=" + "0.00"+ "; ";
         // document.cookie =  "expires=" + expires + "; ";
         console.log( document.cookie)
 

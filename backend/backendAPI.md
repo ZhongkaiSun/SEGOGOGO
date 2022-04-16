@@ -143,9 +143,9 @@ Parameters:
         "addressLine2": "Apt 5-501",
         "phone": "7839291765",
         "email": "kdlaif@gmail.com",
-        "city": "",
-        "state": "",
-        "zipcode": ""
+        "city": "Gainesvill",
+        "state": "FL",
+        "zipcode": "32600"
     },
     "msg": "Successfully"
 }
@@ -307,19 +307,19 @@ Request Body:
 
 
 ```java
-GET    localhost:1016/cuisine/read?restaurantName=Popeyes
+GET    localhost:1016/cuisine/read?restaurantName=
 ```
 Read a cuisine from a restaurant
 
 #### *Example Request*
 ```java
-GET    http://localhost:1016/cuisine/create
+GET   ocalhost:1016/cuisine/read?restaurantName=Popeyes
 ```
 
 #### *Example Response*
 
 ```java
-
+     
 {
     "code": 200,
     "data": [
@@ -327,31 +327,43 @@ GET    http://localhost:1016/cuisine/create
             "name": "8PC Nuggets A La Carte",
             "restaurantName": "Popeyes",
             "price": 4.79,
-            "calories": 0
+            "calories": 400,
+            "imgPath": "picture/Popeyes/Nuggets_A_La_Carte.jpeg"
         },
         {
-            "name": "apple pie",
-            "restaurantName": "Popeyes",
-            "price": 2,
-            "calories": 3
-        },
-        {
-            "name": "banana pie",
-            "restaurantName": "Popeyes",
-            "price": 2,
-            "calories": 3
-        },
-        {
-            "name": "Mixed Chicken",
-            "restaurantName": "Popeyes",
-            "price": 22.79,
-            "calories": 0
-        },
-        {
-            "name": "Red Beans and Rice",
+            "name": "Cajun Fries",
             "restaurantName": "Popeyes",
             "price": 4.19,
-            "calories": 0
+            "calories": 430,
+            "imgPath": "picture/Popeyes/Cajun_Fries.jpeg"
+        },
+        {
+            "name": "Chicken Combo (3 Pcs)",
+            "restaurantName": "Popeyes",
+            "price": 14.39,
+            "calories": 410,
+            "imgPath": "picture/Popeyes/Chicken_Combo.jpeg"
+        },
+        {
+            "name": "Chicken Dinner (2 Pcs)",
+            "restaurantName": "Popeyes",
+            "price": 5.99,
+            "calories": 420,
+            "imgPath": "picture/Popeyes/Chicken_Dinner.jpeg"
+        },
+        {
+            "name": "Homestyle Mac & Cheese",
+            "restaurantName": "Popeyes",
+            "price": 4.19,
+            "calories": 440,
+            "imgPath": "picture/Popeyes/Homestyle_Mac_Cheese.jpeg"
+        },
+        {
+            "name": "Spicy Chicken Sandwich",
+            "restaurantName": "Popeyes",
+            "price": 5.39,
+            "calories": 450,
+            "imgPath": "picture/Popeyes/Spicy_Chicken_Sandwich.jpeg"
         }
     ],
     "msg": "Successfully"
