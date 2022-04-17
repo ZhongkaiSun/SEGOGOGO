@@ -13,7 +13,7 @@ B: download our code files, and enter "go run main.go" in your IDE
 
 **Front-End**
 
-Enter your IP address in the third line before ":1060".
+Open Config.json under Frontend fold, and enter your IP address in the third line before ":1060".
 
 Open the newHome.html on **Chrome**.
 
