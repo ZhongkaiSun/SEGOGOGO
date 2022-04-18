@@ -23,9 +23,9 @@ func TestCreateOrder(t *testing.T) {
 
 	var tests = []model.Order{
 		model.Order{
-			Username:       "YudiZheng",
+			Username:       "Raindrop",
 			RestaurantName: "Popeyes",
-			OrderDate:      "03/02/2022",
+			OrderDate:      "03/02/2032",
 			Price:          14.0,
 			CuisineName:    "Nuggets12",
 		}, //sucess

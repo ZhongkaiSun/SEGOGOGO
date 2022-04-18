@@ -38,7 +38,7 @@ func TestCreateRating(t *testing.T) {
 		}, // customer does not exist
 		model.Rating{
 			Username:       "ZhongkaiSun",
-			RestaurantName: "KFC",
+			RestaurantName: "KFC1",
 			Star:           5,
 			Comment:        "I would like to come again",
 			RatingDate:     "2021/01/03",
@@ -67,7 +67,7 @@ func TestGetRating(t *testing.T) {
 
 	var tests = []string{
 		"Popeyes", // success
-		"KFC",     // Restaurant does not exist
+		"KFC1",    // Restaurant does not exist
 	}
 	for idx, test := range tests {
 		w := httptest.NewRecorder()

@@ -135,7 +135,7 @@ func TestUpdate(t *testing.T) {
 
 	var tests = []model.Customer{
 		model.Customer{
-			Username:     "ZhongkaiSun1",
+			Username:     "ZhongkaiSun",
 			Password:     "123456",
 			AddressLine1: "3824 SW Archer Road",
 			AddressLine2: "Apt 5-501",

@@ -23,7 +23,7 @@ func TestCreateUpdatePayment(t *testing.T) {
 
 	var tests = []model.Payment{
 		model.Payment{
-			Username:     "root",
+			Username:     "Raindrop",
 			CardHolder:   "YudiZheng",
 			CardNumber:   "2234567890XXXXXX",
 			ExpDate:      "09/25",
@@ -35,7 +35,7 @@ func TestCreateUpdatePayment(t *testing.T) {
 			Zipcode:      "",
 		}, // sucessful
 		model.Payment{
-			Username:     "root",
+			Username:     "root1",
 			CardHolder:   "YudiZheng",
 			CardNumber:   "3333333333333333",
 			ExpDate:      "09/25",
