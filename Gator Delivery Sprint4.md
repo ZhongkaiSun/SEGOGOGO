@@ -74,43 +74,23 @@ At the before sprints, we have done the following page work and made them connec
 
 ##  Accomplishment in Back-end
 
-We use **Go**, **Gin**, **Mysql,** and **Redis** for backend development, and here is what we have done:
+We use **Go**, **Gin**, **Mysql,** and **Redis** for backend development, and here is what we have done for sprint4:
 
-- Initialize the database
+- Add more data into the database
 
-- Accomplish the connection to database API
+- Add payment API test
 
-- Add token parse and release function for JWT
+- Update ReadUser API 
 
-- Create RESTful APIs --
+- Update model - cuisine&payment
 
-- **Register**: for new user to create an account
+- Add cuisine images to repository
 
-- **Login**: to log in 
+- Do joint tests
 
-- **DeleteUser**: to delete an account
+- fix bugs
 
-- **ReadUser**: to get user's information
 
-- **CreateCuisine**: to create new cuisines for a restaurant
-
-- **DeleteCuisine**: to delete cuisines
-
-- **ReadCuisine**: to get cuisines by restaurant
-
-- **CreateOrder**: to create new orders for users
-
-- **ReadOrder**: to get users' history orders
-
-- **CreateRating**: to rate restaurants
-
-- **GetRating**: to get a restaurant's rating
-
-- **ReadRestaurant**: to get the restaurant list
-
-- **CreatePayment**: to save a new payment method
-
-- **ReadPayment**: get customers' payment information
 
 
 

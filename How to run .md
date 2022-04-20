@@ -4,12 +4,17 @@ First, git clone all the files of our repository.
 
 **Back-End**
 
-You can run our backend service by one of the following ways:
+Open backend/config/application.yaml, enter the information your database.
 
-A: run the source file directly in your terminal
+Run create_table.sql firstly and the run insert_data.sql in your own MySQL tool.
 
-B: download our code files, and enter "go run main.go" in your IDE
+In your IDE terminal enter the following command by order:
 
+"cd backend"
+
+"go run main.go"
+
+Then you can start the serve successfully.
 
 **Front-End**
 
