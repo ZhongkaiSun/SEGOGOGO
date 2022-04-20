@@ -24,6 +24,7 @@ https://github.com/ZhongkaiSun/SEGOGOGO
 
 ## Project Demo(video)
 
+https://youtu.be/AbO2vddCuzo
 
 ## Accomplishment in Front-end
 
