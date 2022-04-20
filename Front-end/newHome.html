@@ -178,12 +178,12 @@
 <table style="border-collapse:separate; display: flex; justify-content: center">
     <tr>
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;">
+            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" id="fav1">
                 <img src="img/popeyes.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">Popeyes</h5>
                     <p class="card-text"></p>
-                    <a onclick="toRestaurant('Popeyes')" class="btn btn-primary">Order Now</a>
+                    <a onclick="toRestaurant('Popeyes')" class="btn btn-primary" id="order1">Order Now</a>
                 </div>
             </div>
         </td>
@@ -351,7 +351,7 @@
     <!--        <p>Total <span>$39.96</span></p>-->
     <!--    </div> &lt;!&ndash; cd-cart-total &ndash;&gt;-->
 
-    <a href="#0" class="checkout-btn" onclick="checkOut()">Checkout</a>
+    <a href="#0" class="checkout-btn" id="checkout" onclick="checkOut()">Checkout</a>
 
     <!--    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>-->
     <sergey-import src=""/>
