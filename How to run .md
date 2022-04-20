@@ -20,9 +20,9 @@ Then you can start the serve successfully.
 
 Open Config.json under Frontend fold, and enter your IP address in the third line before ":1060".
 
-Open the newHome.html on **Chrome**.
+Download Live Server extension and open the newHome.html with Live Server.
 
-Then you can see the web page.
+Then you can see the web page and run the application.
  
 
 
