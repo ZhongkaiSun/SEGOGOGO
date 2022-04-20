@@ -63,6 +63,10 @@ At the before sprints, we have done the following page work and made them connec
 
 - Account information page: Fix some show-up and send information bugs.  
 
+- Payment page: Fix the problem of connecting to server.
+
+- Search Function: Make each page which own input area can work and jump to restaurant page. 
+
   
   
   Also, we add or update test units of the home page,  restaurant, and restaurant cuisine page by **cypress**. You can see it in the other files
@@ -70,6 +74,42 @@ At the before sprints, we have done the following page work and made them connec
 ##  Accomplishment in Back-end
 
 We use **Go**, **Gin**, **Mysql,** and **Redis** for backend development, and here is what we have done:
+
+- Initialize the database
+
+- Accomplish the connection to database API
+
+- Add token parse and release function for JWT
+
+- Create RESTful APIs --
+
+- **Register**: for new user to create an account
+
+- **Login**: to log in 
+
+- **DeleteUser**: to delete an account
+
+- **ReadUser**: to get user's information
+
+- **CreateCuisine**: to create new cuisines for a restaurant
+
+- **DeleteCuisine**: to delete cuisines
+
+- **ReadCuisine**: to get cuisines by restaurant
+
+- **CreateOrder**: to create new orders for users
+
+- **ReadOrder**: to get users' history orders
+
+- **CreateRating**: to rate restaurants
+
+- **GetRating**: to get a restaurant's rating
+
+- **ReadRestaurant**: to get the restaurant list
+
+- **CreatePayment**: to save a new payment method
+
+- **ReadPayment**: get customers' payment information
 
 
 
