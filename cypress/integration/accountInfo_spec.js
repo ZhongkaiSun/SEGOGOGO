@@ -45,8 +45,6 @@ describe('Account Information Page Test', function(){
             .should('contain', 'Search')
         cy.get('input[type = "Search"]').type("Asian")
 
-        cy.get('button[type = "submit"]')
-            .should('have.text','Search')
 
         cy.get('nav')
             .find('a[id="logout"]')
@@ -77,10 +75,6 @@ describe('Account Information Page Test', function(){
             // failing the test
             return false
         })
-        cy.get('input[id = "Uname"]')
-            .invoke('attr', 'placeholder')
-            .should('contain', 'user name')
-        cy.get('input[id = "Uname"]').type("root")
 
         cy.get('input[id = "mobileNumber"]')
             .invoke('attr', 'placeholder')
@@ -128,5 +122,6 @@ describe('Account Information Page Test', function(){
         cy.title().should('eq', 'GatorDash')
         cy.go('back')
     });
+
 
 })

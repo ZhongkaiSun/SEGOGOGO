@@ -71,7 +71,7 @@
 
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant">
-                <button class="btn btn-outline-success" type="submit" onclick="show()" >Search</button>
+                <a class="btn btn-outline-success" type="submit" onclick="show()" id="search">Search</a>
 
             </form>
 
@@ -115,7 +115,7 @@
     <div class="container">
         <div class="row g-1">
             <div class="col-md-3">
-                <div class="card p-3">
+                <div class="card p-3" id="card0">
                     <div class="text-center"> <img  width="200" height = "100" id="img0"> </div>
                     <div class="product-details"> <span class="font-weight-bold d-block" id="price0">price</span> <span id="cuisineName0">cuisine</span>
                         <div class="buttons d-flex flex-row">

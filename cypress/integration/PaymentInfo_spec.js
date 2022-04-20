@@ -43,17 +43,16 @@ describe('Payment Information Page Test', function(){
         cy.get('input[type = "Search"]')
             .invoke('attr', 'placeholder')
             .should('contain', 'Search')
-        cy.get('input[type = "Search"]').type("Asian")
+        cy.get('input[type = "Search"]').type("KFC")
 
-        cy.get('button[type = "submit"]')
+        cy.get('a[id = "search"]')
             .should('have.text','Search')
-
-        cy.get('nav')
-            .find('a[id="login"]')
             .click()
-        cy.url().should('include','Login')
-        cy.title().should('eq', 'Login')
+        cy.url().should('include','Restaurant')
+
         cy.go('back')
+
+
 
     })
 
@@ -77,10 +76,10 @@ describe('Payment Information Page Test', function(){
             // failing the test
             return false
         })
-        cy.get('input[id = "Uname"]')
+        cy.get('input[id = "cardHolder"]')
             .invoke('attr', 'placeholder')
-            .should('contain', 'name')
-        cy.get('input[id = "Uname"]').type("root")
+            .should('contain', 'card holder')
+        cy.get('input[id = "cardHolder"]').type("Hongru")
 
         cy.get('input[id = "cardNumber"]')
             .invoke('attr', 'placeholder')

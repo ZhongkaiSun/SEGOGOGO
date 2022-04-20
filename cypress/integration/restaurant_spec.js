@@ -42,25 +42,24 @@ describe('Restaurant Page Test', function() {
         cy.get('input[type = "Search"]')
             .invoke('attr', 'placeholder')
             .should('contain', 'Search')
-        cy.get('input[type = "Search"]').type("Asian")
 
-        cy.get('button[type = "submit"]')
-            .should('have.text', 'Search')
+        cy.get('input[type = "Search"]').type("Popeyes")
 
-    })
-
-    it('should visit home page', function () {
-        cy.get('nav')  // get the containing toolbar
-            .find('img[src*="gator_logo.png"]')     // *= gives a partial match on src
+        cy.get('a[id = "search"]')
+            .should('have.text','Search')
             .click()
-        Cypress.on('uncaught:exception', (err, runnable) => {
-            // returning false here prevents Cypress from
-            // failing the test
-            return false
-        })
-        cy.url().should('include', 'newHome')
-        cy.title().should('eq', 'GatorDash')
-        cy.go('back')
+        cy.url().should('include','Restaurant')
     })
+    it('test the menu', function () {
+        cy.get('#card0')
+            .contains("$ 4.79")
+
+        cy.get('#card0')
+            .contains("8PC Nuggets A La Carte")
+
+        cy.get('#card0')
+            .contains("Calories = 400")
+    });
+
 
 })
