@@ -57,6 +57,17 @@ describe('Sign Up Page Test', function(){
             expect(txt).to.contains('The user already exists');
         })
     })
+    it('check different username', function (){
+        cy.get('input[name = "Uname"]').type("root2")
+        cy.get('input[name = "Email"]').type("root2@gmail.com")
+        cy.get('#CPass').type("123456")
+        cy.get('#RPass').type("123456")
+        cy.get('#sign-up').click()
+        cy.on('window:alert',(txt)=> {
+            //Mocha assertions
+            expect(txt).to.contains('Successfully');
+        })
+    })
 })
 
 

@@ -42,32 +42,23 @@ describe('Order History Page Test', function() {
         cy.get('input[type = "Search"]')
             .invoke('attr', 'placeholder')
             .should('contain', 'Search')
-        cy.get('input[type = "Search"]').type("Asian")
+        cy.get('input[type = "Search"]').type("KFC")
 
-        cy.get('button[type = "submit"]')
+        cy.get('a[id = "search"]')
             .should('have.text', 'Search')
-
-    })
-
-    it('should visit home page', function () {
-        cy.get('nav')  // get the containing toolbar
-            .find('img[src*="gator_logo.png"]')     // *= gives a partial match on src
             .click()
-        Cypress.on('uncaught:exception', (err, runnable) => {
-            // returning false here prevents Cypress from
-            // failing the test
-            return false
-        })
-        cy.url().should('include', 'newHome')
-        cy.title().should('eq', 'GatorDash')
-        cy.go('back')
+        cy.url().should('include', 'Restaurant')
+        cy.visit('./Front-end/History.html')
+
     })
-
-
 
 
     it('test order history table', function () {
-        cy.get("tr")
+        cy.get("tr").contains("#")
+        cy.get("tr").contains("restaurantName")
+        cy.get("tr").contains("Date")
+        cy.get("tr").contains("cuisineName")
+        cy.get("tr").contains("Total price")
     })
 
 })

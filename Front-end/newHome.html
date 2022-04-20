@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/bootstrap.css">
     <title>GatorDash</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -16,8 +16,9 @@
 
     <div class="container-fluid">
         <!--        <a class="navbar-brand" href="#">GatorDash</a>-->
-        <img width="100" height="60" src="gator_logo.png" onclick="window.location='newHome.html'" >
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img width="100" height="60" src="gator_logo.png" onclick="window.location='newHome.html'">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,13 +30,16 @@
                     <a class="nav-link" href="History.html" id="History">History</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
                         About
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="AccountInfo.html">Account Information</a></li>
                         <li><a class="dropdown-item" href="PaymentInfo.html">Payment Information</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="#">Shop And Deliver</a></li>
                     </ul>
                 </li>
@@ -43,28 +47,28 @@
                     <a class="nav-link disabled">Spotlights</a>
                 </li>
             </ul>
-<!--            <form class="d-flex" role="search">-->
-<!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
+            <!--            <form class="d-flex" role="search">-->
+            <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
 
-<!--            </form>-->
+            <!--            </form>-->
 
 
+            <!--            <form class="d-flex" role="form" >-->
+            <!--                <a href="Login.html" class="btn btn-danger" role="button">Login</a>-->
+            <!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
+            <!--            </form>-->
 
-<!--            <form class="d-flex" role="form" >-->
-<!--                <a href="Login.html" class="btn btn-danger" role="button">Login</a>-->
-<!--                &lt;!&ndash;                <button type="button" class="btn btn-danger" >Login</button>&ndash;&gt;-->
-<!--            </form>-->
+            <a id="Login" href="Login.html" class="btn btn-danger" role="button">Login</a>
 
-            <a id = "Login" href="Login.html" class="btn btn-danger" role="button" >Login</a>
+            <a id="Logout" href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
 
-            <a id = "Logout"href="newHome.html" class="btn btn-danger" role="button" onclick="delCookie()">Log Out</a>
-
-            <form class="d-flex" role="form" >
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchRestaurant" >
-                <a class="btn btn-outline-success" type="submit" id="search" onclick="show()" >Search</a>
+            <form class="d-flex" role="form">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                       id="searchRestaurant">
+                <a class="btn btn-outline-success" type="submit" id="search" onclick="show()">Search</a>
             </form>
-            <form class="d-flex" role="form" >
+            <form class="d-flex" role="form">
                 <a href="Login.html" class="btn btn-warning" role="button"> Cartsssss</a>
             </form>
             <div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
@@ -109,13 +113,13 @@
 </div>
 
 
-
 <!--Cuisine Category-->
 <div id="menu-outer" style="height: 130px; background: #f5cd97; margin: auto">
     <div class="table" style="margin-top: auto;">
-        <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center" >
+        <ul id="horizontal-list" style="margin: auto; display: flex; justify-content: center">
             <li id="american" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85"   src="img/american.png" alt="list item 1" onclick="showDetails('American')"/>
+                <div href="#"><img height="85" src="img/american.png" alt="list item 1"
+                                   onclick="showDetails('American')"/>
                     <h4>American</h4>
                     <div style="clear:left"></div>
                 </div>
@@ -133,13 +137,15 @@
                 </div>
             </li>
             <li id="healthy" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/healthy.png" alt="list item 4" onclick="showDetails('Healthy')"/>
+                <div href="#"><img height="85" src="img/healthy.png" alt="list item 4"
+                                   onclick="showDetails('Healthy')"/>
                     <h4>Healthy</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
             <li id="mexican" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/mexican.png" alt="list item 5" onclick="showDetails('Mexican')"/>
+                <div href="#"><img height="85" src="img/mexican.png" alt="list item 5"
+                                   onclick="showDetails('Mexican')"/>
                     <h4>Mexican</h4>
                     <div style="clear:left"></div>
                 </div>
@@ -151,13 +157,15 @@
                 </div>
             </li>
             <li id="sushi" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/Fastfood.png" alt="list item 7" onclick="showDetails('Fastfood')"/>
+                <div href="#"><img height="85" src="img/Fastfood.png" alt="list item 7"
+                                   onclick="showDetails('Fastfood')"/>
                     <h4>Fast food</h4>
                     <div style="clear:left"></div>
                 </div>
             </li>
             <li id="dessert" style="margin-right: 50px; display: inline">
-                <div href="#"><img height="85" src="img/dessert.png" alt="list item 8" onclick="showDetails('Dessert')"/>
+                <div href="#"><img height="85" src="img/dessert.png" alt="list item 8"
+                                   onclick="showDetails('Dessert')"/>
                     <h4>Dessert</h4>
                     <div style="clear:left"></div>
                 </div>
@@ -170,8 +178,8 @@
 <table style="border-collapse:separate; display: flex; justify-content: center">
     <tr>
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/popeyes.png" class="card-img-top" alt="..."  height="240">
+            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;">
+                <img src="img/popeyes.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">Popeyes</h5>
                     <p class="card-text"></p>
@@ -180,7 +188,7 @@
             </div>
         </td>
         <td>
-            <div class="card" style="width: 14rem; margin: 50px 50px 50px 50px;" >
+            <div class="card" style="width: 14rem; margin: 50px 50px 50px 50px;">
                 <img src="Cuisine/KFC.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">KFC</h5>
@@ -191,7 +199,7 @@
         </td>
 
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
+            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;">
                 <img src="img/taco_bell.jpeg" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">Taco Bell</h5>
@@ -202,8 +210,8 @@
         </td>
 
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="img/chipotle.png" class="card-img-top" alt="..."  height="240">
+            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;">
+                <img src="img/chipotle.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">Chipotle's</h5>
                     <p class="card-text"></p>
@@ -216,8 +224,8 @@
     </tr>
     <tr>
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="Cuisine/Subway.png" class="card-img-top" alt="..."  height="240">
+            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;">
+                <img src="Cuisine/Subway.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">Subway</h5>
                     <p class="card-text"></p>
@@ -227,8 +235,8 @@
         </td>
 
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
-                <img src="Cuisine/Blaze Pizza.png" class="card-img-top" alt="..."  height="240">
+            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;">
+                <img src="Cuisine/Blaze Pizza.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">Blaze Pizza</h5>
                     <p class="card-text"></p>
@@ -238,7 +246,7 @@
         </td>
 
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
+            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;">
                 <img src="Cuisine/Bakery By Perkins.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">Bakery By Perkins</h5>
@@ -249,7 +257,7 @@
         </td>
 
         <td>
-            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;" >
+            <div class="card" style="width: 14rem;margin: 50px 50px 50px 50px;">
                 <img src="img/pizzahut.png" class="card-img-top" alt="..." height="240">
                 <div class="card-body">
                     <h5 class="card-title">Pizza Hut</h5>
@@ -262,8 +270,7 @@
 </table>
 
 
-
-<nav aria-label="Page navigation " >
+<nav aria-label="Page navigation ">
     <ul class="pagination justify-content-center">
         <li class="page-item"><a class="page-link" href="#">Previous</a></li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -283,81 +290,84 @@
     <ul class="cd-cart-items">
 
 
-
-        <div id = "item0" class="alert alert-light alert-dismissible fade show" role="alert">
-            <span class="cd-qty"></span>  <h2>Please login first !</h2>
+        <div id="item0" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty"></span>
+            <h2>Please login first !</h2>
             <div class="cd-price"></div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-            <div id = "item1" class="alert alert-light alert-dismissible fade show" role="alert">
-                <span  class="cd-qty">1x</span> <a id = "item1_name" >item1</a>
-                <div id = "p1"class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('1')"></button>
-            </div>
-            <div id = "item2" class="alert alert-light alert-dismissible fade show" role="alert">
-                <span class="cd-qty">1x</span><a id = "item2_name" >item2</a>
-                <div id = "p2"class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"onclick="remove('2')"></button>
-            </div>
-            <div id = "item3" class="alert alert-light alert-dismissible fade show" role="alert">
-                <span class="cd-qty">1x</span> <a id = "item3_name" >item3</a>
-                <div id = "p3" class="cd-price">$7.00</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('3')"></button>
-            </div>
-        <div id = "item4" class="alert alert-light alert-dismissible fade show" role="alert">
-            <span class="cd-qty">1x</span> <a id = "item4_name" >item4</a>
-            <div id = "p4" class="cd-price">$7.00</div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('4')"></button>
+        <div id="item1" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id="item1_name">item1</a>
+            <div id="p1" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="remove('1')"></button>
+        </div>
+        <div id="item2" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span><a id="item2_name">item2</a>
+            <div id="p2" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="remove('2')"></button>
+        </div>
+        <div id="item3" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id="item3_name">item3</a>
+            <div id="p3" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="remove('3')"></button>
+        </div>
+        <div id="item4" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id="item4_name">item4</a>
+            <div id="p4" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="remove('4')"></button>
         </div>
 
-        <div id = "item5" class="alert alert-light alert-dismissible fade show" role="alert">
-            <span class="cd-qty">1x</span> <a id = "item5_name" >item5</a>
-            <div id = "p5" class="cd-price">$7.00</div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('5')"></button>
+        <div id="item5" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id="item5_name">item5</a>
+            <div id="p5" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="remove('5')"></button>
         </div>
 
-        <div id = "item6" class="alert alert-light alert-dismissible fade show" role="alert">
-            <span class="cd-qty">1x</span> <a id = "item6_name" >item6</a>
-            <div id = "p6" class="cd-price">$7.00</div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="remove('6')"></button>
+        <div id="item6" class="alert alert-light alert-dismissible fade show" role="alert">
+            <span class="cd-qty">1x</span> <a id="item6_name">item6</a>
+            <div id="p6" class="cd-price">$7.00</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="remove('6')"></button>
         </div>
-
 
 
         <li>
-<!--            <span class="cd-qty">1x</span> Product Name-->
-<!--            <div class="cd-price">$9.99</div>-->
-<!--            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>-->
+            <!--            <span class="cd-qty">1x</span> Product Name-->
+            <!--            <div class="cd-price">$9.99</div>-->
+            <!--            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>-->
             <div class="cd-cart-total">
-                <p>Total <span id= "total" >$0.00</span></p>
+                <p>Total <span id="total">$0.00</span></p>
             </div>
         </li>
     </ul> <!-- cd-cart-items -->
 
-<!--    <div class="cd-cart-total">-->
-<!--        <p>Total <span>$39.96</span></p>-->
-<!--    </div> &lt;!&ndash; cd-cart-total &ndash;&gt;-->
+    <!--    <div class="cd-cart-total">-->
+    <!--        <p>Total <span>$39.96</span></p>-->
+    <!--    </div> &lt;!&ndash; cd-cart-total &ndash;&gt;-->
 
     <a href="#0" class="checkout-btn" onclick="checkOut()">Checkout</a>
 
-<!--    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>-->
-    <sergey-import src="" />
+    <!--    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>-->
+    <sergey-import src=""/>
 </div> <!-- cd-cart -->
 
-<link href="cart.html" rel="import" />
+<link href="cart.html" rel="import"/>
 <!-- jump to the restaurant of specific cuisine type -->
 <script type="text/javascript">
-    function showDetails(category)
-    {
+    function showDetails(category) {
         //store the parameter
         localStorage.string = category;
         window.location.href = 'Restaurant_Cuisine.html';
         console.log(category);
     }
 
-    function toRestaurant(category)
-    {
+    function toRestaurant(category) {
         //store the parameter
         localStorage.string = category;
         window.location.href = 'Restaurant.html';
@@ -368,24 +378,24 @@
     //     document.cookie = "cname=; token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     //
     // }
-    function delCookie(){
+    function delCookie() {
         // for(let i = 0 ; i < 7 ; i++){
         //     document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         // }
         // document.cookie = "cname=; token=; pwd=; cuisine1=; cuisine2=; cuisine3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
-        if(keys) {
-            for(var i = keys.length; i--;)
+        if (keys) {
+            for (var i = keys.length; i--;)
                 document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
         }
 
     }
 
-    function remove( n){
-        document.cookie="cuisine"+n.toString()+"=null";
-        document.cookie="price"+n.toString()+"=0";
-        totalprice =  totalprice - parseFloat(getCookie("price" + n));
-        document.getElementById( "total").innerText=("$" + totalprice.toString());
+    function remove(n) {
+        document.cookie = "cuisine" + n.toString() + "=null";
+        document.cookie = "price" + n.toString() + "=0";
+        totalprice = totalprice - parseFloat(getCookie("price" + n));
+        document.getElementById("total").innerText = ("$" + totalprice.toString());
         console.log(document.cookie);
         window.location.replace("newHome.html")
         // document.cookie = "cname=" + cname+ "|"  + "token="+ tk +  "|" +"pwd=" + pwd + "|" + "expires=" + expires + "|" + "cuisine1=" + cuisine1+ "|" + "cuisine2=" + cuisine2+ "|" + "cuisine3=" + cuisine3;
@@ -395,7 +405,7 @@
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(';');
-        for(let i = 0; i <ca.length; i++) {
+        for (let i = 0; i < ca.length; i++) {
             let c = ca[i];
             while (c.charAt(0) == ' ') {
                 c = c.substring(1);
@@ -414,8 +424,8 @@
     window.onload = function () {
 
         $.ajaxSettings.async = false;
-         // tk = document.cookie.split("; ")[1].substring(6);
-         // console.log(tk);
+        // tk = document.cookie.split("; ")[1].substring(6);
+        // console.log(tk);
         let ca = document.cookie.split('|');
         console.log(ca[0]);//cname
         console.log(ca[1]);//tk
@@ -432,103 +442,96 @@
         console.log(document.cookie);
         console.log(localStorage);
         //使用getJSON读取userinfo.json文件中的数据
-        $.getJSON("config.json", function(index){
+        $.getJSON("config.json", function (index) {
             url = JSON.stringify(index.url).slice(1, -1);
             // console.log(JSON.stringify(index.url));
             $.ajaxSettings.async = true;
         })
 
-         // a=getCookie("tk");
-         // c_start=document.cookie.indexOf("tk=");
+        // a=getCookie("tk");
+        // c_start=document.cookie.indexOf("tk=");
 
-            if (document.cookie.length > 20){
-                tk = document.cookie.split("|")[1].substring(6);
-                $("#item0").hide();
-                $("#Login").hide();
-                $("#Logout").show();
-                if(getCookie("cuisine1").endsWith("null")){
-                    $("#item1").hide();
-                }else {
-                    $("#item1").show();
-                    document.getElementById( "item1_name").innerText=getCookie("cuisine1");
-
-                    document.getElementById( "p1").innerText=("$" + getCookie("price1"));
-
-                }
-
-                if(getCookie("cuisine2").endsWith("null")){
-                    $("#item2").hide();
-                }
-                else {
-                    $("#item2").show();
-                    document.getElementById( "item2_name").innerText=getCookie("cuisine2");
-                    document.getElementById( "p2").innerText=("$" + getCookie("price2"));
-                }
-
-                if(getCookie("cuisine3").endsWith("null")){
-                    $("#item3").hide();
-                }
-                else {
-                    $("#item3").show();
-                    document.getElementById( "item3_name").innerText=getCookie("cuisine3");
-                    document.getElementById( "p3").innerText=("$" + getCookie("price3"));
-                }
-
-                if(getCookie("cuisine4").endsWith("null")){
-                    $("#item4").hide();
-                }
-                else {
-                    $("#item4").show();
-                    document.getElementById( "item4_name").innerText=getCookie("cuisine4");
-                    document.getElementById( "p4").innerText=("$" + getCookie("price4"));
-                }
-
-                if(getCookie("cuisine5").endsWith("null")){
-                    $("#item5").hide();
-                }
-                else {
-                    $("#item5").show();
-                    document.getElementById( "item5_name").innerText=getCookie("cuisine5");
-                    document.getElementById( "p5").innerText=("$" + getCookie("price5"));
-                }
-
-                if(getCookie("cuisine6").endsWith("null")){
-                    $("#item6").hide();
-                }
-                else {
-                    $("#item6").show();
-                    document.getElementById( "item6_name").innerText=getCookie("cuisine6");
-                    document.getElementById( "p6").innerText=("$" + getCookie("price6"));
-                }
-
-                 totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3")) + parseFloat(getCookie("price4")) + parseFloat(getCookie("price5")) + parseFloat(getCookie("price6"));
-                document.getElementById( "total").innerText=("$" + totalprice.toString());
-
-            }
-            else{
-                totalprice = 0 ;
-                $("#Login").show();
-                $("#Logout").hide();
+        if (document.cookie.length > 20) {
+            tk = document.cookie.split("|")[1].substring(6);
+            $("#item0").hide();
+            $("#Login").hide();
+            $("#Logout").show();
+            if (getCookie("cuisine1").endsWith("null")) {
                 $("#item1").hide();
-                $("#item2").hide();
-                $("#item3").hide();
-                $("#item4").hide();
-                $("#item5").hide();
-                $("#item6").hide();
-                $("#item0").show();
+            } else {
+                $("#item1").show();
+                document.getElementById("item1_name").innerText = getCookie("cuisine1");
+
+                document.getElementById("p1").innerText = ("$" + getCookie("price1"));
+
             }
+
+            if (getCookie("cuisine2").endsWith("null")) {
+                $("#item2").hide();
+            } else {
+                $("#item2").show();
+                document.getElementById("item2_name").innerText = getCookie("cuisine2");
+                document.getElementById("p2").innerText = ("$" + getCookie("price2"));
+            }
+
+            if (getCookie("cuisine3").endsWith("null")) {
+                $("#item3").hide();
+            } else {
+                $("#item3").show();
+                document.getElementById("item3_name").innerText = getCookie("cuisine3");
+                document.getElementById("p3").innerText = ("$" + getCookie("price3"));
+            }
+
+            if (getCookie("cuisine4").endsWith("null")) {
+                $("#item4").hide();
+            } else {
+                $("#item4").show();
+                document.getElementById("item4_name").innerText = getCookie("cuisine4");
+                document.getElementById("p4").innerText = ("$" + getCookie("price4"));
+            }
+
+            if (getCookie("cuisine5").endsWith("null")) {
+                $("#item5").hide();
+            } else {
+                $("#item5").show();
+                document.getElementById("item5_name").innerText = getCookie("cuisine5");
+                document.getElementById("p5").innerText = ("$" + getCookie("price5"));
+            }
+
+            if (getCookie("cuisine6").endsWith("null")) {
+                $("#item6").hide();
+            } else {
+                $("#item6").show();
+                document.getElementById("item6_name").innerText = getCookie("cuisine6");
+                document.getElementById("p6").innerText = ("$" + getCookie("price6"));
+            }
+
+            totalprice = parseFloat(getCookie("price1")) + parseFloat(getCookie("price2")) + parseFloat(getCookie("price3")) + parseFloat(getCookie("price4")) + parseFloat(getCookie("price5")) + parseFloat(getCookie("price6"));
+            document.getElementById("total").innerText = ("$" + totalprice.toString());
+
+        } else {
+            totalprice = 0;
+            $("#Login").show();
+            $("#Logout").hide();
+            $("#item1").hide();
+            $("#item2").hide();
+            $("#item3").hide();
+            $("#item4").hide();
+            $("#item5").hide();
+            $("#item6").hide();
+            $("#item0").show();
+        }
         console.log(url);
 
     }
 
-    function show()
-    {
+    function show() {
         //store the parameter
         localStorage.string = document.getElementById("searchRestaurant").value;
         window.location.href = 'Restaurant.html';
     }
 
-    function checkOut(){
+    function checkOut() {
         var xmlhttp;
         // var url = "http://10.136.70.250:1016";
         var username = document.cookie.split("|")[0].substring(6);
@@ -540,10 +543,8 @@
             // IE6, IE5 浏览器执行代码
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.onreadystatechange=function()
-        {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
                 eval("var jn_info=" + xmlhttp.responseText);
                 console.log(jn_info.msg);
@@ -551,45 +552,39 @@
             }
         }
         // get all the cuisines
-        if(!getCookie("cuisine1").endsWith("null")){
-            food1 = getCookie("cuisine1")+"x1 ";
-        }
-        else{
+        if (!getCookie("cuisine1").endsWith("null")) {
+            food1 = getCookie("cuisine1") + "x1 ";
+        } else {
             food1 = "";
         }
 
-        if(!getCookie("cuisine2").endsWith("null")){
-            food2 = food1.concat(getCookie("cuisine2")+"x1 ") ;
-        }
-        else {
+        if (!getCookie("cuisine2").endsWith("null")) {
+            food2 = food1.concat(getCookie("cuisine2") + "x1 ");
+        } else {
             food2 = food1;
         }
 
-        if(!getCookie("cuisine3").endsWith("null")){
-            food3 = food2.concat(getCookie("cuisine3")+"x1 ") ;
-        }
-        else {
+        if (!getCookie("cuisine3").endsWith("null")) {
+            food3 = food2.concat(getCookie("cuisine3") + "x1 ");
+        } else {
             food3 = food2;
         }
 
-        if(!getCookie("cuisine4").endsWith("null")){
-            food4 = food3.concat(getCookie("cuisine4")+"x1 ") ;
-        }
-        else {
+        if (!getCookie("cuisine4").endsWith("null")) {
+            food4 = food3.concat(getCookie("cuisine4") + "x1 ");
+        } else {
             food4 = food3;
         }
 
-        if(!getCookie("cuisine5").endsWith("null")){
-            food5 = food4.concat(getCookie("cuisine5")+"x1 ") ;
-        }
-        else {
+        if (!getCookie("cuisine5").endsWith("null")) {
+            food5 = food4.concat(getCookie("cuisine5") + "x1 ");
+        } else {
             food5 = food4;
         }
 
-        if(!getCookie("cuisine6").endsWith("null")){
-            food6 = food5.concat(getCookie("cuisine6")+"x1 ") ;
-        }
-        else {
+        if (!getCookie("cuisine6").endsWith("null")) {
+            food6 = food5.concat(getCookie("cuisine6") + "x1 ");
+        } else {
             food6 = food5;
         }
         // get the Date
@@ -609,25 +604,22 @@
             strDate = "0" + strDate;
         }
 
-        var nowDate =   nowMonth + seperator + strDate + seperator + date.getFullYear();
+        var nowDate = nowMonth + seperator + strDate + seperator + date.getFullYear();
 
 
-
-        xmlhttp.open("POST",url +"/order/create");
+        xmlhttp.open("POST", url + "/order/create");
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        if(totalprice == 0){
+        if (totalprice == 0) {
             alert("Please add something into your cart! Or login first.")
-        }
-        else {
+        } else {
             xmlhttp.send(JSON.stringify({
                 "userName": username,
-                "restaurantName":"Popeyes",
+                "restaurantName": "Popeyes",
                 "orderDate": nowDate,
-                "price":totalprice,
-                "cuisineName":food5 }));
+                "price": totalprice,
+                "cuisineName": food5
+            }));
         }
-
-
 
 
     }
