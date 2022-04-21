@@ -45,7 +45,7 @@ Then you can see the web page and run the application.
 
 ## Demo Video Functionality
 
-<video src="Gator_Dash.mp4"></video>
+<video src="https://github.com/ZhongkaiSun/SEGOGOGO/blob/master/Gator_Dash.mp4"></video>
 
 You can see more details at the following link（10mins）.
 
