@@ -17,7 +17,37 @@ Yinghuan Zhang ([zhangyinghuan@ufl.edu](mailto:zhangyinghuan@ufl.edu), 2741-2242
 
 Hongru Liu ([hongru.liu@ufl.edu](mailto:hongru.liu@ufl.edu), 5369-7439)
 
+## How To Run?
+
+First, git clone all the files of our repository.
+
+**Back-End**
+
+Open backend/config/application.yaml, enter the information your database.
+
+Run create_table.sql firstly and the run insert_data.sql in your own MySQL tool.
+
+In your IDE terminal enter the following command by order:
+
+"cd backend"
+
+"go run main.go"
+
+Then you can start the serve successfully.
+
+**Front-End**
+
+Open Config.json under Frontend fold, and enter your IP address in the third line before ":1060".
+
+Download Live Server extension and open the newHome.html with Live Server.
+
+Then you can see the web page and run the application.
+
 ## Demo Video Functionality
+
+<video src="Gator_Dash.mp4"></video>
+
+You can see more details at the following link（10mins）.
 
 https://youtu.be/AbO2vddCuzo
 
