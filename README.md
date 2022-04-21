@@ -47,6 +47,8 @@ Then you can see the web page and run the application.
 
 https://user-images.githubusercontent.com/89654058/164353085-e2a93ec4-5fd1-4873-8c31-3f8562b85449.mp4
 
+<video src="Gator_Dash.mp4"></video>
+
 You can see more details at the following link（10mins）.
 
 https://youtu.be/AbO2vddCuzo
@@ -59,6 +61,7 @@ https://user-images.githubusercontent.com/71891241/164344123-26883abe-bd50-442e-
 There are 2 or 3 test example for each API, one is successful and the rest are all fail.
 
 [Video Link](https://youtu.be/wSSHhRthjs4)
+
 ## Link To API Documentation
 [API](https://github.com/ZhongkaiSun/SEGOGOGO/blob/master/backend/backendAPI.md)
 ## Link To Project Board
