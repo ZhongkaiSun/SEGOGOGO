@@ -23,7 +23,6 @@ https://youtu.be/AbO2vddCuzo
 
 ## Cypress Test Video
 
-[Video Link](https://youtu.be/xI8BkjNEFxI)
 https://user-images.githubusercontent.com/71891241/164343820-b73a53a3-e32c-478c-a680-69f57025c43c.mp4
 
 
