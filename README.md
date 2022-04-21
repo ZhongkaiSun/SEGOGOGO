@@ -23,8 +23,7 @@ https://youtu.be/AbO2vddCuzo
 
 ## Cypress Test Video
 
-https://user-images.githubusercontent.com/71891241/164343820-b73a53a3-e32c-478c-a680-69f57025c43c.mp4
-
+https://user-images.githubusercontent.com/71891241/164344123-26883abe-bd50-442e-82a4-d4ac5959141a.mp4
 
 ## Backend Unit Test Video
 There are 2 or 3 test example for each API, one is successful and the rest are all fail.
